@@ -21,8 +21,8 @@ export default function HeroSection() {
         className="absolute inset-0 w-full h-full object-cover"
         style={{ zIndex: 0 }}
       >
-        <source src="/bg-video.mov" type="video/quicktime" />
-        <source src="/bg-video.mov" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dy0mpdwnw/video/upload/v1774820858/0328_jldi1l.mov" type="video/quicktime" />
+        <source src="https://res.cloudinary.com/dy0mpdwnw/video/upload/v1774820858/0328_jldi1l.mov" type="video/mp4" />
       </video>
 
       {/* ── Dark gradient overlay ── */}

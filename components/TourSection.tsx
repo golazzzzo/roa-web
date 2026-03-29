@@ -98,8 +98,8 @@ export default function TourSection() {
         style={{ y: videoY, zIndex: 0 }}
         className="absolute inset-0 w-full h-full object-cover scale-110"
       >
-        <source src="/tour-video.mov" type="video/quicktime" />
-        <source src="/tour-video.mov" type="video/mp4" />
+        <source src="https://res.cloudinary.com/dy0mpdwnw/video/upload/v1774820858/VIDEO_2_kzelt0.mov" type="video/quicktime" />
+        <source src="https://res.cloudinary.com/dy0mpdwnw/video/upload/v1774820858/VIDEO_2_kzelt0.mov" type="video/mp4" />
       </motion.video>
 
       {/* Dark overlay — keeps text readable */}

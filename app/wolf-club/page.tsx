@@ -30,8 +30,8 @@ export default function WolfClubPage() {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ zIndex: 0 }}
         >
-          <source src="/wolf-video.mov" type="video/quicktime" />
-          <source src="/wolf-video.mov" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dy0mpdwnw/video/upload/v1774820857/video_4_mhx6qu.mov" type="video/quicktime" />
+          <source src="https://res.cloudinary.com/dy0mpdwnw/video/upload/v1774820857/video_4_mhx6qu.mov" type="video/mp4" />
         </video>
         <div
           className="absolute inset-0"

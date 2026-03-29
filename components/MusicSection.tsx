@@ -79,8 +79,8 @@ export default function MusicSection() {
           style={{ y: videoY }}
           className="absolute inset-0 w-full h-full object-cover scale-110"
         >
-          <source src="/music-video.mov" type="video/quicktime" />
-          <source src="/music-video.mov" type="video/mp4" />
+          <source src="https://res.cloudinary.com/dy0mpdwnw/video/upload/v1774820856/video_3_zxzidr.mov" type="video/quicktime" />
+          <source src="https://res.cloudinary.com/dy0mpdwnw/video/upload/v1774820856/video_3_zxzidr.mov" type="video/mp4" />
         </motion.video>
 
         {/* Dark overlay */}
