@@ -89,7 +89,7 @@ function VideoCard({ post, onDelete, isOwner }: {
         {isOwner && (
           <button
             onClick={(e) => { e.stopPropagation(); onDelete(post.id) }}
-            className="absolute top-2 right-2 text-[#f2f2f2]/40 hover:text-red-400/70 transition-colors duration-200 font-tour text-[9px] tracking-[0.1em]"
+            className="absolute top-2 right-2 z-10 w-6 h-6 flex items-center justify-center text-[#f2f2f2]/0 group-hover:text-[#f2f2f2]/60 hover:!text-red-400 transition-colors duration-200 font-tour text-[10px]"
           >
             ✕
           </button>
@@ -178,15 +178,15 @@ export default function GallerySection() {
                     <p className="font-tour text-[9px] tracking-[0.15em] uppercase text-[#6b6b6b]">
                       {post.fans?.display_name ?? 'Fan'}
                     </p>
-                    {user?.id === post.fan_id && (
-                      <button
-                        onClick={() => handleDelete(post.id)}
-                        className="absolute top-2 right-2 text-[#f2f2f2]/40 hover:text-red-400/70 transition-colors duration-200 font-tour text-[9px] tracking-[0.1em]"
-                      >
-                        ✕
-                      </button>
-                    )}
                   </div>
+                  {user?.id === post.fan_id && (
+                    <button
+                      onClick={() => handleDelete(post.id)}
+                      className="absolute top-2 right-2 z-10 w-6 h-6 flex items-center justify-center text-[#f2f2f2]/0 group-hover:text-[#f2f2f2]/60 hover:!text-red-400 transition-colors duration-200 font-tour text-[10px]"
+                    >
+                      ✕
+                    </button>
+                  )}
                 </>
               )}
             </motion.div>
