@@ -16,9 +16,11 @@ export type FanProfile = {
 
 export type NewsPost = {
   id: string
-  title: string
+  title: string | null
   body: string
   image_url: string | null
+  media_url: string | null
+  media_type: 'image' | 'video' | null
   created_at: string
 }
 
@@ -26,6 +28,8 @@ export type ChatMessage = {
   id: string
   fan_id: string
   content: string
+  media_url: string | null
+  media_type: 'image' | 'video' | null
   created_at: string
   fans: { display_name: string } | null
 }
