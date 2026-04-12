@@ -42,5 +42,13 @@ export type CanalPost = {
   created_at: string
 }
 
+export type NewsReaction = {
+  id: string
+  post_id: string
+  fan_id: string
+  emoji: string
+  created_at: string
+}
+
 export const REACTION_EMOJIS = ['❤️', '🔥', '👏', '🐺'] as const
 export type ReactionEmoji = typeof REACTION_EMOJIS[number]
