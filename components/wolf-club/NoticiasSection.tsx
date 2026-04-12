@@ -36,18 +36,13 @@ export default function NoticiasSection() {
   useEffect(() => {
     const load = async () => {
       const { data: postsData } = await supabase
-        .from('news_posts')
-        .select('*')
-        .order('created_at', { ascending: true })
-
+        .from('news_posts').select('*').order('created_at', { ascending: true })
       if (!postsData || postsData.length === 0) { setLoading(false); return }
       setPosts(postsData as NewsPost[])
 
       const postIds = postsData.map((p: NewsPost) => p.id)
       const { data: reactionsData } = await supabase
-        .from('news_reactions')
-        .select('post_id, fan_id, emoji')
-        .in('post_id', postIds)
+        .from('news_reactions').select('post_id, fan_id, emoji').in('post_id', postIds)
 
       const counts: ReactionCounts = {}
       const mine = new Set<string>()
@@ -63,20 +58,15 @@ export default function NoticiasSection() {
     load()
   }, [user?.id])
 
-  useEffect(() => {
-    if (!loading) bottomRef.current?.scrollIntoView({ behavior: 'instant' })
-  }, [loading])
-
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [posts])
+  useEffect(() => { if (!loading) bottomRef.current?.scrollIntoView({ behavior: 'instant' }) }, [loading])
+  useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: 'smooth' }) }, [posts])
 
   useEffect(() => {
     const channel = supabase
       .channel('wolf-club-noticias')
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'news_posts' }, (payload) => {
-        const newPost = payload.new as NewsPost
-        setPosts(prev => prev.some(p => p.id === newPost.id) ? prev : [...prev, newPost])
+        const p = payload.new as NewsPost
+        setPosts(prev => prev.some(x => x.id === p.id) ? prev : [...prev, p])
       })
       .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'news_posts' }, (payload) => {
         setPosts(prev => prev.filter(p => p.id !== (payload.old as NewsPost).id))
@@ -89,7 +79,7 @@ export default function NoticiasSection() {
       .on('postgres_changes', { event: 'DELETE', schema: 'public', table: 'news_reactions' }, (payload) => {
         const { post_id, emoji, fan_id } = payload.old
         setReactionCounts(prev => ({ ...prev, [post_id]: { ...prev[post_id], [emoji]: Math.max(0, (prev[post_id]?.[emoji] ?? 1) - 1) } }))
-        if (fan_id === user?.id) setMyReactions(prev => { const next = new Set(prev); next.delete(`${post_id}:${emoji}`); return next })
+        if (fan_id === user?.id) setMyReactions(prev => { const n = new Set(prev); n.delete(`${post_id}:${emoji}`); return n })
       })
       .subscribe()
     return () => { supabase.removeChannel(channel) }
@@ -105,10 +95,9 @@ export default function NoticiasSection() {
     let mediaUrl: string | null = null
     let mediaType: 'image' | 'video' | null = null
     if (attachment) {
-      const result = await uploadMedia(attachment.file)
-      mediaUrl = result.url; mediaType = result.type
-      URL.revokeObjectURL(attachment.preview)
-      setAttachment(null)
+      const r = await uploadMedia(attachment.file)
+      mediaUrl = r.url; mediaType = r.type
+      URL.revokeObjectURL(attachment.preview); setAttachment(null)
     }
 
     const { data } = await supabase
@@ -158,11 +147,11 @@ export default function NoticiasSection() {
 
   return (
     <div className="flex flex-col flex-1 overflow-hidden">
-      <div className="flex-1 overflow-y-auto px-4 md:px-8 py-6 flex flex-col gap-3">
+      <div className="flex-1 overflow-y-auto px-8 py-8 flex flex-col gap-6">
         {loading ? (
-          <p className="font-tour text-[10px] tracking-[0.2em] uppercase text-[#3a3a3a] m-auto">Cargando...</p>
+          <p className="font-tour text-[9px] tracking-[0.3em] uppercase text-[#2e2e2e] m-auto">Cargando...</p>
         ) : posts.length === 0 ? (
-          <p className="font-tour text-[10px] tracking-[0.2em] uppercase text-[#2e2e2e] m-auto">Pronto — anuncios del club</p>
+          <p className="font-tour text-[9px] tracking-[0.3em] uppercase text-[#2e2e2e] m-auto">Pronto — anuncios del club</p>
         ) : posts.map((post) => {
           const hasText = post.body?.trim() && post.body.trim() !== ' '
           return (
@@ -170,43 +159,46 @@ export default function NoticiasSection() {
               key={post.id}
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-              className="flex gap-3 items-start group"
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="flex gap-4 items-start group"
             >
-              <img src="/roa-symbol.png" className="w-8 h-8 rounded-full object-cover border border-[#1f1f1f] shrink-0 mt-0.5 opacity-80" alt="ROA" />
+              <img src="/roa-symbol.png" className="w-7 h-7 object-contain opacity-50 shrink-0 mt-1" alt="" />
 
               <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="font-tour text-[10px] tracking-[0.2em] uppercase text-[#f2f2f2]">ROA</span>
-                  <span className="font-tour text-[9px] text-[#2e2e2e]">{formatDate(post.created_at)}</span>
+                <div className="flex items-baseline gap-3 mb-2">
+                  <span className="font-display text-[1rem] leading-none tracking-[0.08em] text-[#f2f2f2]">ROA</span>
+                  <span className="font-tour text-[8px] tracking-[0.15em] text-[#2e2e2e]">{formatDate(post.created_at)}</span>
                   {isAdmin && (
                     <button
                       onClick={() => deletePost(post.id)}
-                      className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity font-tour text-[9px] text-[#3a3a3a] hover:text-red-400/60"
-                    >Eliminar</button>
+                      className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity font-tour text-[8px] tracking-[0.1em] text-[#2e2e2e] hover:text-red-400/50"
+                    >eliminar</button>
                   )}
                 </div>
 
-                <div className="bg-[#111111] border border-[#1a1a1a] rounded-2xl rounded-tl-sm overflow-hidden max-w-[480px]">
-                  {(post.media_url || post.image_url) && (post.media_type === 'image' || post.image_url) && (
-                    <img src={post.media_url ?? post.image_url ?? ''} alt="" className="w-full max-h-[400px] object-cover" />
+                <div className="border border-[#1a1a1a] bg-[#0d0d0d] overflow-hidden max-w-[520px]">
+                  {post.media_url && post.media_type === 'image' && (
+                    <img src={post.media_url} alt="" className="w-full max-h-[440px] object-cover" />
                   )}
                   {post.media_url && post.media_type === 'video' && (
-                    <video src={post.media_url} className="w-full max-h-[400px]" controls />
+                    <video src={post.media_url} className="w-full max-h-[440px]" controls />
+                  )}
+                  {post.image_url && !post.media_url && (
+                    <img src={post.image_url} alt="" className="w-full max-h-[440px] object-cover" />
                   )}
                   {hasText && (
-                    <p className="font-tour text-[11px] tracking-[0.04em] text-[#d4cfc9] leading-relaxed px-4 py-3 whitespace-pre-line">
+                    <p className="font-tour text-[11px] tracking-[0.04em] text-[#c4bdb0] leading-relaxed px-5 py-4 whitespace-pre-line">
                       {post.body}
                     </p>
                   )}
                   {post.title && (
-                    <p className="font-tour text-[10px] tracking-[0.15em] uppercase text-[#6a6a6a] px-4 pb-3">
+                    <p className="font-display text-[1.1rem] leading-tight tracking-[0.06em] text-[#f2f2f2] px-5 pb-4">
                       {post.title}
                     </p>
                   )}
                 </div>
 
-                <div className="flex items-center gap-1.5 mt-2 flex-wrap">
+                <div className="flex items-center gap-1.5 mt-3 flex-wrap">
                   {REACTION_EMOJIS.map(emoji => {
                     const count = reactionCounts[post.id]?.[emoji] ?? 0
                     const isActive = myReactions.has(`${post.id}:${emoji}`)
@@ -214,10 +206,10 @@ export default function NoticiasSection() {
                       <button
                         key={emoji}
                         onClick={() => toggleReaction(post.id, emoji)}
-                        className={`flex items-center gap-1 px-2.5 py-1 rounded-full border transition-all duration-200 font-tour text-[11px] ${
+                        className={`flex items-center gap-1.5 px-3 py-1 border transition-all duration-200 font-tour text-[11px] ${
                           isActive
-                            ? 'border-[#f2f2f2]/20 bg-[#f2f2f2]/8 text-[#f2f2f2]'
-                            : 'border-[#1a1a1a] hover:border-[#2a2a2a] text-[#4a4a4a] hover:text-[#8a8a8a]'
+                            ? 'border-[#c4bdb0]/20 bg-[#c4bdb0]/5 text-[#c4bdb0]'
+                            : 'border-[#1a1a1a] hover:border-[#2a2a2a] text-[#3a3a3a] hover:text-[#6a6a6a]'
                         }`}
                       >
                         <span>{emoji}</span>
@@ -236,23 +228,23 @@ export default function NoticiasSection() {
       {isAdmin && (
         <>
           {attachment && (
-            <div className="shrink-0 px-4 md:px-8 pt-2">
+            <div className="shrink-0 px-8 pt-2">
               <div className="relative inline-block">
                 {attachment.type === 'image'
-                  ? <img src={attachment.preview} className="h-16 max-w-[120px] object-cover rounded-xl border border-[#2a2a2a]" alt="" />
-                  : <div className="h-16 w-28 bg-[#111] border border-[#2a2a2a] rounded-xl flex items-center justify-center">
-                      <span className="font-tour text-[9px] text-[#4a4a4a]">VIDEO</span>
+                  ? <img src={attachment.preview} className="h-16 max-w-[120px] object-cover border border-[#2a2a2a]" alt="" />
+                  : <div className="h-16 w-28 bg-[#0d0d0d] border border-[#2a2a2a] flex items-center justify-center">
+                      <span className="font-tour text-[9px] text-[#4a4a4a] tracking-[0.1em]">VIDEO</span>
                     </div>
                 }
-                <button onClick={removeAttachment} className="absolute -top-1 -right-1 w-4 h-4 bg-[#0a0a0a] border border-[#2a2a2a] rounded-full flex items-center justify-center text-[#f2f2f2]/40 hover:text-red-400/70 font-tour text-[7px]">✕</button>
+                <button onClick={removeAttachment} className="absolute -top-1 -right-1 w-4 h-4 bg-[#0a0a0a] border border-[#2a2a2a] flex items-center justify-center font-tour text-[8px] text-[#4a4a4a] hover:text-red-400/60">✕</button>
               </div>
             </div>
           )}
-          <div className="shrink-0 border-t border-[#141414] px-4 md:px-8 py-3 flex items-end gap-2.5">
+          <div className="shrink-0 border-t border-[#141414] px-8 py-4 flex items-end gap-3">
             <input ref={fileInputRef} type="file" accept="image/*,video/*" className="hidden" onChange={handleFileSelect} />
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center border border-[#1f1f1f] hover:border-[#3a3a3a] text-[#4a4a4a] hover:text-[#f2f2f2] transition-all duration-200 text-base leading-none"
+              className="shrink-0 w-8 h-8 flex items-center justify-center border border-[#1f1f1f] hover:border-[#3a3a3a] text-[#3a3a3a] hover:text-[#f2f2f2] transition-all duration-200 font-tour text-base leading-none"
             >+</button>
             <textarea
               ref={textareaRef}
@@ -262,14 +254,16 @@ export default function NoticiasSection() {
               placeholder="Escribe un anuncio..."
               maxLength={2000}
               rows={1}
-              className="flex-1 bg-[#111111] border border-[#1f1f1f] focus:border-[#2a2a2a] rounded-2xl outline-none resize-none px-4 py-2 font-tour text-[11px] tracking-[0.04em] text-[#f2f2f2] placeholder:text-[#3a3a3a] transition-colors duration-200"
+              className="flex-1 bg-transparent border border-[#1a1a1a] focus:border-[#2e2e2e] outline-none resize-none px-4 py-2.5 font-tour text-[11px] tracking-[0.04em] text-[#c4bdb0] placeholder:text-[#2e2e2e] transition-colors duration-200"
               style={{ lineHeight: '1.6' }}
             />
             <button
               onClick={publish}
               disabled={(!input.trim() && !attachment) || sending}
-              className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-[#f2f2f2]/5 border border-[#2a2a2a] hover:bg-[#f2f2f2]/10 disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-200 font-tour text-[#f2f2f2] text-sm"
-            >↑</button>
+              className="shrink-0 border border-[#1f1f1f] hover:border-[#3a3a3a] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-2.5 font-tour text-[9px] tracking-[0.2em] uppercase text-[#f2f2f2] transition-all duration-200"
+            >
+              {sending ? '...' : 'Publicar'}
+            </button>
           </div>
         </>
       )}
