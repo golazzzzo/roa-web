@@ -74,11 +74,11 @@ export default function WolfClubPage() {
               )}
             </AnimatePresence>
 
-            {/* Right link — Snippets */}
+            {/* Right link — Chat */}
             <AnimatePresence>
               {wolfHovered && (
                 <motion.a
-                  href="/wolf-club/snippets"
+                  href="/wolf-club/chat"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
@@ -86,7 +86,7 @@ export default function WolfClubPage() {
                   style={{ textShadow: '0 2px 12px rgba(0,0,0,0.9)' }}
                   className="absolute top-1/2 -translate-y-1/2 left-full pl-8 font-display text-[clamp(1rem,2.5vw,1.8rem)] tracking-[0.12em] uppercase text-[#c4bdb0] hover:text-[#d8d2c8] transition-colors duration-200 whitespace-nowrap"
                 >
-                  Snippets
+                  Chat
                 </motion.a>
               )}
             </AnimatePresence>

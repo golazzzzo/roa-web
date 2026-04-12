@@ -16,8 +16,10 @@ const NAV_LINKS = [
 ]
 
 const WOLF_LINKS = [
-  { label: 'Snippets', href: '/wolf-club/snippets' },
-  { label: 'Galería', href: '/wolf-club/galeria' },
+  { label: 'Noticias', href: '/wolf-club/noticias' },
+  { label: 'Chat',     href: '/wolf-club/chat'     },
+  { label: 'Canal',    href: '/wolf-club/canal'    },
+  { label: 'Galería',  href: '/wolf-club/galeria'  },
 ]
 
 export default function Navigation() {
@@ -101,20 +103,37 @@ export default function Navigation() {
         )}
 
         {/* Right: nav links */}
-        <div className="flex-1 flex items-center justify-end gap-10">
-          {!isWolfClub && NAV_LINKS.map((link, i) => (
-            <motion.a
-              key={link.label}
-              href={link.href}
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -2 }}
-              className="font-body text-xs tracking-[0.25em] uppercase text-[#f2f2f2] transition-colors duration-200"
-            >
-              {link.label}
-            </motion.a>
-          ))}
+        <div className="flex-1 flex items-center justify-end gap-6 md:gap-8">
+          {isWolfClub && !isWolfClubLanding
+            ? WOLF_LINKS.map((link, i) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.2 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ y: -2 }}
+                  className={`font-tour text-[10px] tracking-[0.2em] uppercase transition-colors duration-200 ${
+                    pathname === link.href ? 'text-[#f2f2f2]' : 'text-[#4a4a4a] hover:text-[#f2f2f2]'
+                  }`}
+                >
+                  {link.label}
+                </motion.a>
+              ))
+            : !isWolfClub && NAV_LINKS.map((link, i) => (
+                <motion.a
+                  key={link.label}
+                  href={link.href}
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.2 + i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                  whileHover={{ y: -2 }}
+                  className="font-body text-xs tracking-[0.25em] uppercase text-[#f2f2f2] transition-colors duration-200"
+                >
+                  {link.label}
+                </motion.a>
+              ))
+          }
         </div>
       </motion.nav>
 

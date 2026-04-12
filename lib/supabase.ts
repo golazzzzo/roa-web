@@ -12,3 +12,30 @@ export type FanProfile = {
   location: string | null
   created_at: string
 }
+
+export type NewsPost = {
+  id: string
+  title: string
+  body: string
+  image_url: string | null
+  created_at: string
+}
+
+export type ChatMessage = {
+  id: string
+  fan_id: string
+  content: string
+  created_at: string
+  fans: { display_name: string } | null
+}
+
+export type CanalPost = {
+  id: string
+  body: string
+  media_url: string | null
+  media_type: 'image' | 'video' | null
+  created_at: string
+}
+
+export const REACTION_EMOJIS = ['❤️', '🔥', '👏', '🐺'] as const
+export type ReactionEmoji = typeof REACTION_EMOJIS[number]

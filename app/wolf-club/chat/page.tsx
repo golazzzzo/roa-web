@@ -4,10 +4,10 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/lib/auth-context'
 import Navigation from '@/components/Navigation'
-import SnippetsSection from '@/components/wolf-club/SnippetsSection'
+import ChatSection from '@/components/wolf-club/ChatSection'
 
-export default function SnippetsPage() {
-  const { user, loading, signOut } = useAuth()
+export default function ChatPage() {
+  const { user, loading } = useAuth()
   const router = useRouter()
 
   useEffect(() => {
@@ -19,8 +19,8 @@ export default function SnippetsPage() {
   return (
     <main className="relative min-h-[100dvh] bg-[#0a0a0a]">
       <Navigation />
-      <div className="pt-24">
-        <SnippetsSection />
+      <div className="pt-24 h-[100dvh] flex flex-col">
+        <ChatSection />
       </div>
     </main>
   )
