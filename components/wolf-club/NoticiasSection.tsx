@@ -111,12 +111,26 @@ export default function NoticiasSection() {
       setAttachment(null)
     }
 
+    // optimistic: add instantly
+    const tempId = `temp-${Date.now()}`
+    const tempPost: NewsPost = {
+      id: tempId,
+      title: null,
+      body: content || ' ',
+      image_url: null,
+      media_url: mediaUrl,
+      media_type: mediaType,
+      created_at: new Date().toISOString(),
+    }
+    setPosts(prev => [...prev, tempPost])
+    setSending(false)
+
+    // sync and replace temp
     const { data } = await supabase
       .from('news_posts')
       .insert({ title: null, body: content || ' ', image_url: null, media_url: mediaUrl, media_type: mediaType })
       .select().single()
-    if (data) setPosts(prev => prev.some(p => p.id === data.id) ? prev : [...prev, data as NewsPost])
-    setSending(false)
+    if (data) setPosts(prev => prev.map(p => p.id === tempId ? data as NewsPost : p))
   }
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -142,13 +156,40 @@ export default function NoticiasSection() {
     await supabase.from('news_posts').delete().eq('id', id)
   }
 
-  const toggleReaction = async (postId: string, emoji: string) => {
+  const toggleReaction = (postId: string, emoji: string) => {
     if (!user) return
     const key = `${postId}:${emoji}`
-    if (myReactions.has(key)) {
-      await supabase.from('news_reactions').delete().eq('post_id', postId).eq('fan_id', user.id).eq('emoji', emoji)
+    const isActive = myReactions.has(key)
+
+    // optimistic: instant
+    setMyReactions(prev => {
+      const next = new Set(prev)
+      isActive ? next.delete(key) : next.add(key)
+      return next
+    })
+    setReactionCounts(prev => ({
+      ...prev,
+      [postId]: { ...prev[postId], [emoji]: Math.max(0, (prev[postId]?.[emoji] ?? 0) + (isActive ? -1 : 1)) },
+    }))
+
+    // sync in background, revert on error
+    if (isActive) {
+      supabase.from('news_reactions').delete()
+        .eq('post_id', postId).eq('fan_id', user.id).eq('emoji', emoji)
+        .then(({ error }) => {
+          if (error) {
+            setMyReactions(prev => new Set(prev).add(key))
+            setReactionCounts(prev => ({ ...prev, [postId]: { ...prev[postId], [emoji]: (prev[postId]?.[emoji] ?? 0) + 1 } }))
+          }
+        })
     } else {
-      await supabase.from('news_reactions').insert({ post_id: postId, fan_id: user.id, emoji })
+      supabase.from('news_reactions').insert({ post_id: postId, fan_id: user.id, emoji })
+        .then(({ error }) => {
+          if (error) {
+            setMyReactions(prev => { const next = new Set(prev); next.delete(key); return next })
+            setReactionCounts(prev => ({ ...prev, [postId]: { ...prev[postId], [emoji]: Math.max(0, (prev[postId]?.[emoji] ?? 1) - 1) } }))
+          }
+        })
     }
   }
 

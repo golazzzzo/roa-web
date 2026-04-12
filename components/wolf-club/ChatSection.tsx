@@ -106,18 +106,31 @@ export default function ChatSection() {
       setAttachment(null)
     }
 
+    // optimistic: add instantly with a temp id
+    const tempId = `temp-${Date.now()}`
+    const tempMsg: ChatMessage = {
+      id: tempId,
+      fan_id: user.id,
+      content: content || ' ',
+      media_url: mediaUrl,
+      media_type: mediaType,
+      created_at: new Date().toISOString(),
+      fans: { display_name: fanProfile?.display_name ?? 'Tú' },
+    }
+    setMessages(prev => [...prev, tempMsg])
+    setSending(false)
+
+    // sync to db and replace temp with real
     const { data } = await supabase
       .from('chat_messages')
       .insert({ fan_id: user.id, content: content || ' ', media_url: mediaUrl, media_type: mediaType })
       .select('*, fans(display_name)')
       .single()
 
-    // optimistically add own message
     if (data) {
-      setMessages(prev => prev.some(m => m.id === data.id) ? prev : [...prev, data as ChatMessage])
+      setMessages(prev => prev.map(m => m.id === tempId ? data as ChatMessage : m))
     }
-    setSending(false)
-  }, [input, attachment, user, sending])
+  }, [input, attachment, user, fanProfile, sending])
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
