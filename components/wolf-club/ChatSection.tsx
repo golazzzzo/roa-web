@@ -99,17 +99,6 @@ export default function ChatSection() {
 
   return (
     <div className="flex flex-col flex-1 overflow-hidden">
-      {/* Header */}
-      <div className="px-8 md:px-16 py-6 border-b border-[#1f1f1f] flex items-center justify-between shrink-0">
-        <h2 className="font-display text-[clamp(2rem,4vw,3.5rem)] leading-none tracking-[0.05em] text-[#f2f2f2]">
-          CHAT
-        </h2>
-        <div className="flex items-center gap-2">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#4a9a6a] animate-pulse" />
-          <span className="font-tour text-[9px] tracking-[0.2em] uppercase text-[#4a4a4a]">En vivo</span>
-        </div>
-      </div>
-
       {/* Messages */}
       <div className="flex-1 overflow-y-auto px-8 md:px-16 py-6 flex flex-col gap-4">
         {loading ? (

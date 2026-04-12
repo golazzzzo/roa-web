@@ -16,10 +16,8 @@ const NAV_LINKS = [
 ]
 
 const WOLF_LINKS = [
-  { label: 'Noticias', href: '/wolf-club/noticias' },
-  { label: 'Chat',     href: '/wolf-club/chat'     },
-  { label: 'Canal',    href: '/wolf-club/canal'    },
-  { label: 'Galería',  href: '/wolf-club/galeria'  },
+  { label: 'Comunidad', href: '/wolf-club/chat'    },
+  { label: 'Galería',   href: '/wolf-club/galeria' },
 ]
 
 export default function Navigation() {
