@@ -10,6 +10,7 @@ export type FanProfile = {
   display_name: string
   email: string
   location: string | null
+  is_admin: boolean
   created_at: string
 }
 

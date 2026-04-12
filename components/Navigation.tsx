@@ -103,21 +103,39 @@ export default function Navigation() {
         {/* Right: nav links */}
         <div className="flex-1 flex items-center justify-end gap-6 md:gap-8">
           {isWolfClub && !isWolfClubLanding
-            ? WOLF_LINKS.map((link, i) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  initial={{ opacity: 0, y: -8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.2 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                  whileHover={{ y: -2 }}
-                  className={`font-tour text-[10px] tracking-[0.2em] uppercase transition-colors duration-200 ${
-                    pathname === link.href ? 'text-[#f2f2f2]' : 'text-[#4a4a4a] hover:text-[#f2f2f2]'
-                  }`}
-                >
-                  {link.label}
-                </motion.a>
-              ))
+            ? (
+                <>
+                  {WOLF_LINKS.map((link, i) => (
+                    <motion.a
+                      key={link.label}
+                      href={link.href}
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 1.2 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                      whileHover={{ y: -2 }}
+                      className={`font-tour text-[10px] tracking-[0.2em] uppercase transition-colors duration-200 ${
+                        pathname === link.href ? 'text-[#f2f2f2]' : 'text-[#4a4a4a] hover:text-[#f2f2f2]'
+                      }`}
+                    >
+                      {link.label}
+                    </motion.a>
+                  ))}
+                  {fanProfile?.is_admin && (
+                    <motion.a
+                      href="/wolf-club/admin"
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 1.2 + WOLF_LINKS.length * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                      whileHover={{ y: -2 }}
+                      className={`font-tour text-[10px] tracking-[0.2em] uppercase transition-colors duration-200 ${
+                        pathname === '/wolf-club/admin' ? 'text-[#f2f2f2]' : 'text-[#4a4a4a] hover:text-[#f2f2f2]'
+                      }`}
+                    >
+                      Admin
+                    </motion.a>
+                  )}
+                </>
+              )
             : !isWolfClub && NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.label}
