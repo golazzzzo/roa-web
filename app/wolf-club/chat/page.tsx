@@ -82,9 +82,9 @@ export default function ComunidadPage() {
                 transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 className="flex-1 flex flex-col overflow-hidden"
               >
-                {active === 'noticias' && <div className="flex-1 overflow-y-auto"><NoticiasSection /></div>}
+                {active === 'noticias' && <NoticiasSection />}
                 {active === 'general'  && <ChatSection />}
-                {active === 'canal'    && <div className="flex-1 overflow-y-auto"><CanalSection /></div>}
+                {active === 'canal'    && <CanalSection />}
               </motion.div>
             </AnimatePresence>
           </div>
