@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Space_Mono } from 'next/font/google'
+import { Space_Mono, Inter } from 'next/font/google'
 import { AuthProvider } from '@/lib/auth-context'
 import './globals.css'
 
@@ -7,6 +7,12 @@ const spaceMono = Space_Mono({
   weight: ['400', '700'],
   subsets: ['latin'],
   variable: '--font-space-mono',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
   display: 'swap',
 })
 
@@ -26,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={spaceMono.variable}>
+    <html lang="es" className={`${spaceMono.variable} ${inter.variable}`}>
       <body>
         <AuthProvider>
           {children}

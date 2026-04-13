@@ -236,7 +236,7 @@ export default function NoticiasSection() {
                     <video src={post.media_url} className="w-full max-h-[400px]" controls />
                   )}
                   {hasText && (
-                    <p className="font-tour text-[11px] tracking-[0.04em] text-[#d4cfc9] leading-relaxed px-4 py-3 whitespace-pre-line">
+                    <p className="font-ui text-[13px] text-[#d8d8d8] leading-relaxed px-4 py-3 whitespace-pre-line">
                       {post.body}
                     </p>
                   )}
@@ -303,7 +303,7 @@ export default function NoticiasSection() {
               placeholder="Escribe un anuncio..."
               maxLength={2000}
               rows={1}
-              className="flex-1 bg-[#111111] border border-[#1f1f1f] focus:border-[#2a2a2a] rounded-2xl outline-none resize-none px-4 py-2 font-tour text-[11px] tracking-[0.04em] text-[#f2f2f2] placeholder:text-[#3a3a3a] transition-colors duration-200"
+              className="flex-1 bg-[#111111] border border-[#1f1f1f] focus:border-[#2a2a2a] rounded-2xl outline-none resize-none px-4 py-2 font-ui text-[13px] text-[#e0e0e0] placeholder:text-[#333] transition-colors duration-200"
               style={{ lineHeight: '1.6' }}
             />
             <button

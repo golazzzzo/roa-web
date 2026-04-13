@@ -170,11 +170,11 @@ export default function ChatSection() {
 
   return (
     <div className="flex flex-col flex-1 overflow-hidden">
-      <div className="flex-1 overflow-y-auto px-4 md:px-8 py-6 flex flex-col gap-1">
+      <div className="flex-1 overflow-y-auto px-5 py-4 flex flex-col gap-3">
         {loading ? (
-          <p className="font-tour text-[10px] tracking-[0.2em] uppercase text-[#3a3a3a] m-auto">Cargando...</p>
+          <p className="font-ui text-[12px] text-[#3a3a3a] m-auto">Cargando...</p>
         ) : messages.length === 0 ? (
-          <p className="font-tour text-[10px] tracking-[0.2em] uppercase text-[#2e2e2e] m-auto">Sé el primero en escribir</p>
+          <p className="font-ui text-[12px] text-[#3a3a3a] m-auto">Sé el primero en escribir</p>
         ) : (
           <AnimatePresence initial={false}>
             {grouped.map((group) => {
@@ -183,57 +183,48 @@ export default function ChatSection() {
               return (
                 <motion.div
                   key={group.msgs[0].id}
-                  initial={{ opacity: 0, y: 6 }}
+                  initial={{ opacity: 0, y: 4 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                  className={`flex gap-2 items-end mb-2 ${isOwn ? 'flex-row-reverse' : 'flex-row'}`}
+                  transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className={`flex flex-col gap-0.5 max-w-[68%] ${isOwn ? 'self-end items-end' : 'self-start items-start'}`}
                 >
-                  {!isOwn && <Avatar name={name} />}
-
-                  <div className={`flex flex-col gap-0.5 max-w-[72%] ${isOwn ? 'items-end' : 'items-start'}`}>
-                    {!isOwn && (
-                      <span className="font-tour text-[9px] tracking-[0.15em] uppercase text-[#4a4a4a] px-1 mb-1">
-                        {name}
-                      </span>
-                    )}
-                    {group.msgs.map((msg, i) => {
-                      const hasText = msg.content?.trim() && msg.content.trim() !== ' '
-                      const isFirst = i === 0
-                      const isLast = i === group.msgs.length - 1
-                      return (
-                        <div key={msg.id} className="relative group">
-                          <div className={`overflow-hidden ${
-                            isOwn
-                              ? `bg-[#1e1e1e] border border-[#2a2a2a] ${isFirst ? 'rounded-t-2xl rounded-bl-2xl' : ''} ${isLast ? 'rounded-b-2xl rounded-tl-2xl' : 'rounded-l-2xl'} rounded-tr-sm`
-                              : `bg-[#161616] border border-[#1f1f1f] ${isFirst ? 'rounded-t-2xl rounded-br-2xl' : ''} ${isLast ? 'rounded-b-2xl rounded-tr-2xl' : 'rounded-r-2xl'} rounded-tl-sm`
-                          }`}>
-                            {msg.media_url && msg.media_type === 'image' && (
-                              <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block" />
-                            )}
-                            {msg.media_url && msg.media_type === 'video' && (
-                              <video src={msg.media_url} className="max-w-[260px] block" controls />
-                            )}
-                            {hasText && (
-                              <p className="font-tour text-[11px] tracking-[0.04em] text-[#e8e8e8] leading-relaxed px-3.5 py-2">
-                                {msg.content}
-                              </p>
-                            )}
-                          </div>
-                          {isOwn && (
-                            <button
-                              onClick={() => deleteMessage(msg.id)}
-                              className="absolute top-1/2 -translate-y-1/2 -left-5 opacity-0 group-hover:opacity-100 transition-opacity font-tour text-[8px] text-[#3a3a3a] hover:text-red-400/60"
-                            >✕</button>
-                          )}
-                        </div>
-                      )
-                    })}
-                    <span className="font-tour text-[8px] tracking-[0.1em] text-[#2e2e2e] px-1 mt-0.5">
+                  <div className={`flex items-center gap-1.5 px-1 mb-0.5 ${isOwn ? 'flex-row-reverse' : ''}`}>
+                    <span className="font-ui text-[11px] font-semibold text-[#6a6a6a]">
+                      {isOwn ? 'Tú' : name}
+                    </span>
+                    <span className="font-ui text-[10px] text-[#2e2e2e]">
                       {formatTime(group.msgs[group.msgs.length - 1].created_at)}
                     </span>
                   </div>
 
-                  {isOwn && <div className="w-7 shrink-0" />}
+                  {group.msgs.map((msg) => {
+                    const hasText = msg.content?.trim() && msg.content.trim() !== ' '
+                    return (
+                      <div key={msg.id} className="relative group">
+                        <div className={`overflow-hidden border ${
+                          isOwn ? 'bg-[#1c1c1c] border-[#2e2e2e]' : 'bg-[#141414] border-[#202020]'
+                        }`}>
+                          {msg.media_url && msg.media_type === 'image' && (
+                            <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block" />
+                          )}
+                          {msg.media_url && msg.media_type === 'video' && (
+                            <video src={msg.media_url} className="max-w-[260px] block" controls />
+                          )}
+                          {hasText && (
+                            <p className="font-ui text-[13px] text-[#e0e0e0] leading-snug px-3.5 py-2">
+                              {msg.content}
+                            </p>
+                          )}
+                        </div>
+                        {isOwn && (
+                          <button
+                            onClick={() => deleteMessage(msg.id)}
+                            className="absolute top-1/2 -translate-y-1/2 -left-5 opacity-0 group-hover:opacity-100 transition-opacity font-ui text-[10px] text-[#3a3a3a] hover:text-red-400/60"
+                          >✕</button>
+                        )}
+                      </div>
+                    )
+                  })}
                 </motion.div>
               )
             })}
@@ -243,24 +234,24 @@ export default function ChatSection() {
       </div>
 
       {attachment && (
-        <div className="shrink-0 px-4 md:px-8 pt-2">
+        <div className="shrink-0 px-5 pt-2">
           <div className="relative inline-block">
             {attachment.type === 'image'
-              ? <img src={attachment.preview} className="h-16 max-w-[120px] object-cover rounded-xl border border-[#2a2a2a]" alt="" />
-              : <div className="h-16 w-28 bg-[#111] border border-[#2a2a2a] rounded-xl flex items-center justify-center">
-                  <span className="font-tour text-[9px] text-[#4a4a4a]">VIDEO</span>
+              ? <img src={attachment.preview} className="h-16 max-w-[120px] object-cover border border-[#2a2a2a]" alt="" />
+              : <div className="h-16 w-28 bg-[#141414] border border-[#2a2a2a] flex items-center justify-center">
+                  <span className="font-ui text-[11px] text-[#4a4a4a]">VIDEO</span>
                 </div>
             }
-            <button onClick={removeAttachment} className="absolute -top-1 -right-1 w-4 h-4 bg-[#0a0a0a] border border-[#2a2a2a] rounded-full flex items-center justify-center text-[#f2f2f2]/40 hover:text-red-400/70 font-tour text-[7px]">✕</button>
+            <button onClick={removeAttachment} className="absolute -top-1 -right-1 w-4 h-4 bg-[#0a0a0a] border border-[#2a2a2a] flex items-center justify-center font-ui text-[9px] text-[#4a4a4a] hover:text-red-400/60">✕</button>
           </div>
         </div>
       )}
 
-      <div className="shrink-0 border-t border-[#141414] px-4 md:px-8 py-3 flex items-end gap-2.5">
+      <div className="shrink-0 border-t border-[#161616] px-5 py-3 flex items-end gap-2.5">
         <input ref={fileInputRef} type="file" accept="image/*,video/*" className="hidden" onChange={handleFileSelect} />
         <button
           onClick={() => fileInputRef.current?.click()}
-          className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center border border-[#1f1f1f] hover:border-[#3a3a3a] text-[#4a4a4a] hover:text-[#f2f2f2] transition-all duration-200 text-base leading-none"
+          className="shrink-0 w-8 h-8 flex items-center justify-center border border-[#202020] hover:border-[#3a3a3a] text-[#3a3a3a] hover:text-[#aaa] transition-all duration-200 font-ui text-lg leading-none"
         >+</button>
         <textarea
           ref={textareaRef}
@@ -270,14 +261,16 @@ export default function ChatSection() {
           placeholder="Mensaje..."
           maxLength={500}
           rows={1}
-          className="flex-1 bg-[#111111] border border-[#1f1f1f] focus:border-[#2a2a2a] rounded-2xl outline-none resize-none px-4 py-2 font-tour text-[11px] tracking-[0.04em] text-[#f2f2f2] placeholder:text-[#3a3a3a] transition-colors duration-200"
-          style={{ lineHeight: '1.6' }}
+          className="flex-1 bg-[#141414] border border-[#202020] focus:border-[#333] outline-none resize-none px-3.5 py-2 font-ui text-[13px] text-[#e0e0e0] placeholder:text-[#333] transition-colors duration-200"
+          style={{ lineHeight: '1.5' }}
         />
         <button
           onClick={sendMessage}
           disabled={(!input.trim() && !attachment) || sending}
-          className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-[#f2f2f2]/5 border border-[#2a2a2a] hover:bg-[#f2f2f2]/10 disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-200 font-tour text-[#f2f2f2] text-sm"
-        >↑</button>
+          className="shrink-0 bg-[#1e1e1e] hover:bg-[#282828] border border-[#2e2e2e] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-2 font-ui text-[12px] font-medium text-[#e0e0e0] transition-all duration-200"
+        >
+          {sending ? '...' : 'Enviar'}
+        </button>
       </div>
     </div>
   )
