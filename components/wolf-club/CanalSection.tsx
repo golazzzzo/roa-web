@@ -229,21 +229,15 @@ export default function CanalSection() {
                   )}
                 </div>
 
-                <div className="relative pl-4 py-0.5 max-w-[480px]">
-                  {/* Sigil border — red angular brackets */}
-                  <div className="absolute left-0 top-0 h-px w-3 bg-[#c41e1e]" />
-                  <div className="absolute left-0 top-0 w-px h-2 bg-[#c41e1e]" />
-                  <div className="absolute left-0 top-2 bottom-2 w-px bg-[#c41e1e]" />
-                  <div className="absolute left-0 bottom-0 w-px h-2 bg-[#c41e1e]" />
-                  <div className="absolute left-0 bottom-0 h-px w-3 bg-[#c41e1e]" />
+                <div className="border-l-2 border-l-[#c41e1e] border-t-0 border-r-0 border-b-0 pl-4 rounded-2xl rounded-tl-sm overflow-hidden max-w-[480px]">
                   {post.media_url && post.media_type === 'image' && (
-                    <img src={post.media_url} alt="" className="w-full max-h-[400px] object-cover mb-1" />
+                    <img src={post.media_url} alt="" className="w-full max-h-[400px] object-cover" />
                   )}
                   {post.media_url && post.media_type === 'video' && (
-                    <video src={post.media_url} className="w-full max-h-[400px] mb-1" controls />
+                    <video src={post.media_url} className="w-full max-h-[400px]" controls />
                   )}
                   {hasText && (
-                    <p className="font-ui text-[13px] text-[#f2f2f2] leading-relaxed whitespace-pre-line">
+                    <p className="font-ui text-[13px] text-[#d8d8d8] leading-relaxed px-4 py-3 whitespace-pre-line">
                       {post.body}
                     </p>
                   )}
