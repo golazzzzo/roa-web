@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { supabase, REACTION_EMOJIS } from '@/lib/supabase'
 import { useAuth } from '@/lib/auth-context'
 import type { NewsPost } from '@/lib/supabase'
+import GothicFrame from './GothicFrame'
 
 type ReactionCounts = Record<string, Record<string, number>>
 type Attachment = { file: File; preview: string; type: 'image' | 'video' }
@@ -228,23 +229,25 @@ export default function NoticiasSection() {
                   )}
                 </div>
 
-                <div className="border-l-2 border-l-[#c41e1e] border-t-0 border-r-0 border-b-0 pl-4 rounded-2xl rounded-tl-sm overflow-hidden max-w-[480px]">
-                  {(post.media_url || post.image_url) && (post.media_type === 'image' || post.image_url) && (
-                    <img src={post.media_url ?? post.image_url ?? ''} alt="" className="w-full max-h-[400px] object-cover" />
-                  )}
-                  {post.media_url && post.media_type === 'video' && (
-                    <video src={post.media_url} className="w-full max-h-[400px]" controls />
-                  )}
-                  {hasText && (
-                    <p className="font-ui text-[13px] text-[#d8d8d8] leading-relaxed px-4 py-3 whitespace-pre-line">
-                      {post.body}
-                    </p>
-                  )}
-                  {post.title && (
-                    <p className="font-tour text-[10px] tracking-[0.15em] uppercase text-[#6a6a6a] px-4 pb-3">
-                      {post.title}
-                    </p>
-                  )}
+                <div className="max-w-[480px]">
+                  <GothicFrame color="#c41e1e">
+                    {post.title && (
+                      <p className="font-tour text-[9px] tracking-[0.15em] uppercase text-[#c41e1e] mb-1">
+                        {post.title}
+                      </p>
+                    )}
+                    {(post.media_url || post.image_url) && (post.media_type === 'image' || post.image_url) && (
+                      <img src={post.media_url ?? post.image_url ?? ''} alt="" className="w-full max-h-[400px] object-cover mb-1" />
+                    )}
+                    {post.media_url && post.media_type === 'video' && (
+                      <video src={post.media_url} className="w-full max-h-[400px] mb-1" controls />
+                    )}
+                    {hasText && (
+                      <p className="font-ui text-[13px] text-[#f2f2f2] leading-relaxed whitespace-pre-line">
+                        {post.body}
+                      </p>
+                    )}
+                  </GothicFrame>
                 </div>
 
                 <div className="flex items-center gap-1.5 mt-2 flex-wrap">

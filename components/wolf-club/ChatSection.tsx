@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/lib/auth-context'
 import type { ChatMessage } from '@/lib/supabase'
+import GothicFrame from './GothicFrame'
 
 type Attachment = { file: File; preview: string; type: 'image' | 'video' }
 
@@ -23,6 +24,7 @@ function Avatar({ name }: { name: string }) {
     </div>
   )
 }
+
 
 export default function ChatSection() {
   const { user, fanProfile } = useAuth()
@@ -202,39 +204,23 @@ export default function ChatSection() {
                     const isLast = i === group.msgs.length - 1
                     return (
                       <div key={msg.id} className="relative group">
-                        {isOwn ? (
-                          <div className={`overflow-hidden bg-[#c41e1e] ${isLast ? 'rounded-sm rounded-br-none' : 'rounded-sm'}`}>
-                            {msg.media_url && msg.media_type === 'image' && (
-                              <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block" />
-                            )}
-                            {msg.media_url && msg.media_type === 'video' && (
-                              <video src={msg.media_url} className="max-w-[260px] block" controls />
-                            )}
-                            {hasText && (
-                              <p className="font-ui text-[13px] leading-relaxed px-3.5 py-2.5 text-[#f2f2f2]">
-                                {msg.content}
-                              </p>
-                            )}
-                          </div>
-                        ) : (
-                          <div className="overflow-hidden">
-                            {msg.media_url && msg.media_type === 'image' && (
-                              <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block border border-[#1a1a1a]" />
-                            )}
-                            {msg.media_url && msg.media_type === 'video' && (
-                              <video src={msg.media_url} className="max-w-[260px] block" controls />
-                            )}
-                            {hasText && (
-                              <p className="font-ui text-[13px] leading-relaxed text-[#888] border-l border-[#2a2a2a] pl-3">
-                                {msg.content}
-                              </p>
-                            )}
-                          </div>
-                        )}
+                        <GothicFrame color={isOwn ? '#c41e1e' : '#2a2a2a'}>
+                          {msg.media_url && msg.media_type === 'image' && (
+                            <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block mb-1" />
+                          )}
+                          {msg.media_url && msg.media_type === 'video' && (
+                            <video src={msg.media_url} className="max-w-[260px] block mb-1" controls />
+                          )}
+                          {hasText && (
+                            <p className={`font-ui text-[13px] leading-relaxed ${isOwn ? 'text-[#f2f2f2]' : 'text-[#777]'}`}>
+                              {msg.content}
+                            </p>
+                          )}
+                        </GothicFrame>
                         {isOwn && (
                           <button
                             onClick={() => deleteMessage(msg.id)}
-                            className="absolute top-1/2 -translate-y-1/2 -left-5 opacity-0 group-hover:opacity-100 transition-opacity font-tour text-[9px] text-[#333] hover:text-[#c41e1e]"
+                            className="absolute top-0 -right-5 opacity-0 group-hover:opacity-100 transition-opacity font-tour text-[9px] text-[#333] hover:text-[#c41e1e]"
                           >✕</button>
                         )}
                       </div>
