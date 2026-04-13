@@ -213,8 +213,8 @@ export default function ChatSection() {
 
                         <div className={`overflow-hidden ${
                           isOwn
-                            ? `bg-[#2d2860] border border-[#3d3778] rounded-2xl ${isLast ? 'rounded-br-sm' : ''}`
-                            : `bg-[#1e1e28] border border-[#2e2e3a] rounded-2xl ${isLast ? 'rounded-bl-sm' : ''}`
+                            ? `bg-[#3d2f8f] border border-[#5040aa] rounded-2xl ${isLast ? 'rounded-br-sm' : ''}`
+                            : `bg-[#252530] border border-[#363648] rounded-2xl ${isLast ? 'rounded-bl-sm' : ''}`
                         }`}>
                           {msg.media_url && msg.media_type === 'image' && (
                             <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block" />
@@ -223,7 +223,7 @@ export default function ChatSection() {
                             <video src={msg.media_url} className="max-w-[260px] block" controls />
                           )}
                           {hasText && (
-                            <p className={`font-ui text-[13px] leading-snug px-3.5 py-2.5 ${isOwn ? 'text-[#d8d4ff]' : 'text-[#d8d8e0]'}`}>
+                            <p className={`font-ui text-[13px] leading-snug px-3.5 py-2.5 ${isOwn ? 'text-[#ede9ff]' : 'text-[#d0d0dc]'}`}>
                               {msg.content}
                             </p>
                           )}
@@ -279,7 +279,7 @@ export default function ChatSection() {
         <button
           onClick={sendMessage}
           disabled={(!input.trim() && !attachment) || sending}
-          className="shrink-0 bg-[#2d2860] hover:bg-[#3a3478] border border-[#3d3778] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-2 font-ui text-[12px] font-medium text-[#d8d4ff] transition-all duration-200"
+          className="shrink-0 bg-[#3d2f8f] hover:bg-[#4a3aaa] border border-[#5040aa] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-2 font-ui text-[12px] font-medium text-[#ede9ff] transition-all duration-200"
         >
           {sending ? '...' : 'Enviar'}
         </button>

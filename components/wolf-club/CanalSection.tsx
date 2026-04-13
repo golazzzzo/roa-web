@@ -229,7 +229,7 @@ export default function CanalSection() {
                   )}
                 </div>
 
-                <div className="bg-[#18181f] border border-[#28283a] rounded-2xl rounded-tl-sm overflow-hidden max-w-[480px]">
+                <div className="bg-[#1e1e2e] border border-[#32324a] rounded-2xl rounded-tl-sm overflow-hidden max-w-[480px]">
                   {post.media_url && post.media_type === 'image' && (
                     <img src={post.media_url} alt="" className="w-full max-h-[400px] object-cover" />
                   )}
