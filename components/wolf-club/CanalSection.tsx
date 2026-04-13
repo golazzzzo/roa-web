@@ -229,7 +229,7 @@ export default function CanalSection() {
                   )}
                 </div>
 
-                <div className="bg-[#111111] border border-[#1a1a1a] rounded-2xl rounded-tl-sm overflow-hidden max-w-[480px]">
+                <div className="bg-[#18181f] border border-[#28283a] rounded-2xl rounded-tl-sm overflow-hidden max-w-[480px]">
                   {post.media_url && post.media_type === 'image' && (
                     <img src={post.media_url} alt="" className="w-full max-h-[400px] object-cover" />
                   )}
@@ -286,7 +286,7 @@ export default function CanalSection() {
               </div>
             </div>
           )}
-          <div className="shrink-0 border-t border-[#141414] px-4 md:px-8 py-3 flex items-end gap-2.5">
+          <div className="shrink-0 border-t border-[#1e1e28] px-4 md:px-8 py-3 flex items-end gap-2.5">
             <input ref={fileInputRef} type="file" accept="image/*,video/*" className="hidden" onChange={handleFileSelect} />
             <button
               onClick={() => fileInputRef.current?.click()}
@@ -300,7 +300,7 @@ export default function CanalSection() {
               placeholder="Escribe algo para tus fans..."
               maxLength={1000}
               rows={1}
-              className="flex-1 bg-[#111111] border border-[#1f1f1f] focus:border-[#2a2a2a] rounded-2xl outline-none resize-none px-4 py-2 font-ui text-[13px] text-[#e0e0e0] placeholder:text-[#333] transition-colors duration-200"
+              className="flex-1 bg-[#1a1a24] border border-[#2a2a38] focus:border-[#3a3a50] rounded-2xl outline-none resize-none px-4 py-2 font-ui text-[13px] text-[#e0e0e0] placeholder:text-[#444] transition-colors duration-200"
               style={{ lineHeight: '1.6' }}
             />
             <button
