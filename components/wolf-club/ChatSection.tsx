@@ -197,12 +197,24 @@ export default function ChatSection() {
                     </span>
                   </div>
 
-                  {group.msgs.map((msg) => {
+                  {group.msgs.map((msg, i) => {
                     const hasText = msg.content?.trim() && msg.content.trim() !== ' '
+                    const isLast = i === group.msgs.length - 1
                     return (
                       <div key={msg.id} className="relative group">
-                        <div className={`overflow-hidden border ${
-                          isOwn ? 'bg-[#1c1c1c] border-[#2e2e2e]' : 'bg-[#141414] border-[#202020]'
+                        {/* ── OPTION A — Indigo (cool, modern) ── */}
+                        {/* own: bg-[#1e1b35] border-[#2d2850] | others: bg-[#161616] border-[#222] */}
+
+                        {/* ── OPTION B — Warm amber (matches site palette) ── */}
+                        {/* own: bg-[#1e1508] border-[#2e2010] | others: bg-[#161616] border-[#222] */}
+
+                        {/* ── OPTION C — Deep green (dark forest) ── */}
+                        {/* own: bg-[#0e1e14] border-[#162b1e] | others: bg-[#161616] border-[#222] */}
+
+                        <div className={`overflow-hidden ${
+                          isOwn
+                            ? `bg-[#1e1b35] rounded-2xl ${isLast ? 'rounded-br-sm' : ''}`
+                            : `bg-[#161616] border border-[#222] rounded-2xl ${isLast ? 'rounded-bl-sm' : ''}`
                         }`}>
                           {msg.media_url && msg.media_type === 'image' && (
                             <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block" />
@@ -211,7 +223,7 @@ export default function ChatSection() {
                             <video src={msg.media_url} className="max-w-[260px] block" controls />
                           )}
                           {hasText && (
-                            <p className="font-ui text-[13px] text-[#e0e0e0] leading-snug px-3.5 py-2">
+                            <p className={`font-ui text-[13px] leading-snug px-3.5 py-2.5 ${isOwn ? 'text-[#e8e4ff]' : 'text-[#e0e0e0]'}`}>
                               {msg.content}
                             </p>
                           )}
