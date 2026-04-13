@@ -215,7 +215,7 @@ export default function CanalSection() {
               className="flex gap-3 items-start group"
             >
               {/* ROA avatar */}
-              <img src="/roa-symbol.png" className="w-8 h-8 rounded-full object-cover border border-[#1f1f1f] shrink-0 mt-0.5 opacity-80" alt="ROA" />
+              <img src="/roa-avatar.jpg" className="w-8 h-8 rounded-full object-cover border border-[#1f1f1f] shrink-0 mt-0.5 opacity-80" alt="ROA" />
 
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1.5">
