@@ -31,15 +31,15 @@ export default function ComunidadPage() {
   const activeChannel = CHANNELS.find(c => c.id === active)!
 
   return (
-    <main className="h-[100dvh] flex flex-col overflow-hidden bg-[#0d0d10]">
+    <main className="h-[100dvh] flex flex-col overflow-hidden bg-[#080404]">
       <Navigation />
 
       <div className="flex flex-1 overflow-hidden pt-[72px]">
 
         {/* Sidebar */}
-        <aside className="w-52 shrink-0 bg-[#0d0d10] border-r border-[#1e1e24] flex flex-col overflow-y-auto">
-          <div className="px-4 pt-5 pb-3 border-b border-[#1e1e24]">
-            <p className="font-ui text-[10px] font-semibold tracking-[0.2em] uppercase text-[#444]">
+        <aside className="w-52 shrink-0 bg-[#080404] border-r border-[#2a0f0f] flex flex-col overflow-y-auto">
+          <div className="px-4 pt-5 pb-3 border-b border-[#2a0f0f]">
+            <p className="font-ui text-[10px] font-semibold tracking-[0.2em] uppercase text-[#5a2a2a]">
               Comunidad
             </p>
           </div>
@@ -53,11 +53,11 @@ export default function ComunidadPage() {
                   onClick={() => setActive(ch.id)}
                   className={`w-full text-left px-3 py-2.5 flex items-center gap-2.5 transition-all duration-150 rounded-md ${
                     isActive
-                      ? 'bg-[#222228] text-[#f0f0f0]'
-                      : 'text-[#555] hover:text-[#aaa] hover:bg-[#16161a]'
+                      ? 'bg-[#3d0f0f] text-[#f5d0d0]'
+                      : 'text-[#4a2a2a] hover:text-[#c08080] hover:bg-[#1a0808]'
                   }`}
                 >
-                  <span className={`font-ui text-[11px] font-medium ${isActive ? 'text-[#7a7a9a]' : 'text-[#333]'}`}>#</span>
+                  <span className={`font-ui text-[11px] font-medium ${isActive ? 'text-[#c04040]' : 'text-[#3a1a1a]'}`}>#</span>
                   <span className="font-ui text-[12px] font-medium tracking-[0.01em]">{ch.label}</span>
                 </button>
               )
@@ -66,29 +66,22 @@ export default function ComunidadPage() {
         </aside>
 
         {/* Content */}
-        <div className="flex-1 flex flex-col overflow-hidden relative">
-
-          {/* Background image scoped to content area */}
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: 'url(/roa-avatar.jpg)' }}
-          />
-          <div className="absolute inset-0 bg-black/80" />
+        <div className="flex-1 flex flex-col overflow-hidden bg-[#0c0505]">
 
           {/* Channel header */}
-          <div className="relative z-10 shrink-0 border-b border-white/10 px-6 h-11 flex items-center gap-3 bg-black/30 backdrop-blur-sm">
-            <span className="font-ui text-[12px] font-medium text-[#555]">#</span>
-            <span className="font-ui text-[13px] font-semibold text-[#e8e8e8] tracking-[-0.01em]">
+          <div className="shrink-0 border-b border-[#2a0f0f] px-6 h-11 flex items-center gap-3 bg-[#0a0404]">
+            <span className="font-ui text-[12px] font-medium text-[#5a2a2a]">#</span>
+            <span className="font-ui text-[13px] font-semibold text-[#f0d8d8] tracking-[-0.01em]">
               {activeChannel.label}
             </span>
-            <div className="w-px h-3.5 bg-[#2a2a30]" />
-            <span className="font-ui text-[11px] text-[#444]">
+            <div className="w-px h-3.5 bg-[#2a0f0f]" />
+            <span className="font-ui text-[11px] text-[#5a2a2a]">
               {activeChannel.description}
             </span>
           </div>
 
           {/* Section content */}
-          <div className="relative z-10 flex-1 overflow-hidden flex flex-col">
+          <div className="flex-1 overflow-hidden flex flex-col">
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}

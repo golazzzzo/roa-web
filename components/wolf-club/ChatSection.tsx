@@ -189,10 +189,10 @@ export default function ChatSection() {
                   className={`flex flex-col gap-0.5 max-w-[68%] ${isOwn ? 'self-end items-end' : 'self-start items-start'}`}
                 >
                   <div className={`flex items-center gap-1.5 px-1 mb-0.5 ${isOwn ? 'flex-row-reverse' : ''}`}>
-                    <span className="font-ui text-[11px] font-semibold text-[#6a6a6a]">
+                    <span className="font-ui text-[11px] font-semibold text-[#c06060]">
                       {isOwn ? 'Tú' : name}
                     </span>
-                    <span className="font-ui text-[10px] text-[#2e2e2e]">
+                    <span className="font-ui text-[10px] text-[#4a2a2a]">
                       {formatTime(group.msgs[group.msgs.length - 1].created_at)}
                     </span>
                   </div>
@@ -213,8 +213,8 @@ export default function ChatSection() {
 
                         <div className={`overflow-hidden ${
                           isOwn
-                            ? `bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl ${isLast ? 'rounded-br-sm' : ''}`
-                            : `bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl ${isLast ? 'rounded-bl-sm' : ''}`
+                            ? `bg-[#6b1010] border border-[#8b1a1a] rounded-2xl ${isLast ? 'rounded-br-sm' : ''}`
+                            : `bg-[#130808] border border-[#2a0f0f] rounded-2xl ${isLast ? 'rounded-bl-sm' : ''}`
                         }`}>
                           {msg.media_url && msg.media_type === 'image' && (
                             <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block" />
@@ -223,7 +223,7 @@ export default function ChatSection() {
                             <video src={msg.media_url} className="max-w-[260px] block" controls />
                           )}
                           {hasText && (
-                            <p className={`font-ui text-[13px] leading-snug px-3.5 py-2.5 ${isOwn ? 'text-white' : 'text-white/80'}`}>
+                            <p className={`font-ui text-[13px] leading-snug px-3.5 py-2.5 ${isOwn ? 'text-[#fde8e8]' : 'text-[#d4b8b8]'}`}>
                               {msg.content}
                             </p>
                           )}
@@ -259,11 +259,11 @@ export default function ChatSection() {
         </div>
       )}
 
-      <div className="shrink-0 border-t border-white/10 bg-black/30 backdrop-blur-md px-5 py-3 flex items-end gap-2.5">
+      <div className="shrink-0 border-t border-[#2a0f0f] bg-[#0a0404] px-5 py-3 flex items-end gap-2.5">
         <input ref={fileInputRef} type="file" accept="image/*,video/*" className="hidden" onChange={handleFileSelect} />
         <button
           onClick={() => fileInputRef.current?.click()}
-          className="shrink-0 w-8 h-8 flex items-center justify-center border border-[#202020] hover:border-[#3a3a3a] text-[#3a3a3a] hover:text-[#aaa] transition-all duration-200 font-ui text-lg leading-none"
+          className="shrink-0 w-8 h-8 flex items-center justify-center border border-[#2a0f0f] hover:border-[#5a1a1a] text-[#5a2a2a] hover:text-[#c04040] transition-all duration-200 font-ui text-lg leading-none"
         >+</button>
         <textarea
           ref={textareaRef}
@@ -273,13 +273,13 @@ export default function ChatSection() {
           placeholder="Mensaje..."
           maxLength={500}
           rows={1}
-          className="flex-1 bg-black/30 backdrop-blur-md border border-white/15 focus:border-white/30 outline-none resize-none px-3.5 py-2 font-ui text-[13px] text-white placeholder:text-white/30 transition-colors duration-200"
+          className="flex-1 bg-[#130808] border border-[#2a0f0f] focus:border-[#5a1a1a] outline-none resize-none px-3.5 py-2 font-ui text-[13px] text-[#f0d8d8] placeholder:text-[#4a2a2a] transition-colors duration-200"
           style={{ lineHeight: '1.5' }}
         />
         <button
           onClick={sendMessage}
           disabled={(!input.trim() && !attachment) || sending}
-          className="shrink-0 bg-white/15 hover:bg-white/25 border border-white/20 disabled:opacity-20 disabled:cursor-not-allowed px-4 py-2 font-ui text-[12px] font-medium text-white transition-all duration-200"
+          className="shrink-0 bg-[#7f1d1d] hover:bg-[#991b1b] border border-[#8b1a1a] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-2 font-ui text-[12px] font-medium text-[#fde8e8] transition-all duration-200"
         >
           {sending ? '...' : 'Enviar'}
         </button>
