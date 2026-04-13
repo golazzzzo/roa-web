@@ -213,8 +213,8 @@ export default function ChatSection() {
 
                         <div className={`overflow-hidden ${
                           isOwn
-                            ? `bg-[#3d2f8f] border border-[#5040aa] rounded-2xl ${isLast ? 'rounded-br-sm' : ''}`
-                            : `bg-[#252530] border border-[#363648] rounded-2xl ${isLast ? 'rounded-bl-sm' : ''}`
+                            ? `bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl ${isLast ? 'rounded-br-sm' : ''}`
+                            : `bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl ${isLast ? 'rounded-bl-sm' : ''}`
                         }`}>
                           {msg.media_url && msg.media_type === 'image' && (
                             <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block" />
@@ -223,7 +223,7 @@ export default function ChatSection() {
                             <video src={msg.media_url} className="max-w-[260px] block" controls />
                           )}
                           {hasText && (
-                            <p className={`font-ui text-[13px] leading-snug px-3.5 py-2.5 ${isOwn ? 'text-[#ede9ff]' : 'text-[#d0d0dc]'}`}>
+                            <p className={`font-ui text-[13px] leading-snug px-3.5 py-2.5 ${isOwn ? 'text-white' : 'text-white/80'}`}>
                               {msg.content}
                             </p>
                           )}
@@ -259,7 +259,7 @@ export default function ChatSection() {
         </div>
       )}
 
-      <div className="shrink-0 border-t border-[#1e1e28] px-5 py-3 flex items-end gap-2.5">
+      <div className="shrink-0 border-t border-white/10 bg-black/30 backdrop-blur-md px-5 py-3 flex items-end gap-2.5">
         <input ref={fileInputRef} type="file" accept="image/*,video/*" className="hidden" onChange={handleFileSelect} />
         <button
           onClick={() => fileInputRef.current?.click()}
@@ -273,13 +273,13 @@ export default function ChatSection() {
           placeholder="Mensaje..."
           maxLength={500}
           rows={1}
-          className="flex-1 bg-[#1a1a24] border border-[#2a2a38] focus:border-[#3a3a50] outline-none resize-none px-3.5 py-2 font-ui text-[13px] text-[#e0e0e0] placeholder:text-[#444] transition-colors duration-200"
+          className="flex-1 bg-black/30 backdrop-blur-md border border-white/15 focus:border-white/30 outline-none resize-none px-3.5 py-2 font-ui text-[13px] text-white placeholder:text-white/30 transition-colors duration-200"
           style={{ lineHeight: '1.5' }}
         />
         <button
           onClick={sendMessage}
           disabled={(!input.trim() && !attachment) || sending}
-          className="shrink-0 bg-[#3d2f8f] hover:bg-[#4a3aaa] border border-[#5040aa] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-2 font-ui text-[12px] font-medium text-[#ede9ff] transition-all duration-200"
+          className="shrink-0 bg-white/15 hover:bg-white/25 border border-white/20 disabled:opacity-20 disabled:cursor-not-allowed px-4 py-2 font-ui text-[12px] font-medium text-white transition-all duration-200"
         >
           {sending ? '...' : 'Enviar'}
         </button>
