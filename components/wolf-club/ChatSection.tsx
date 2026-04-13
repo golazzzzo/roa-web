@@ -16,10 +16,29 @@ async function uploadMedia(file: File): Promise<{ url: string; type: 'image' | '
   return { url: publicUrl, type: file.type.startsWith('video/') ? 'video' : 'image' }
 }
 
-function Avatar({ name }: { name: string }) {
+function Avatar({ name, isOwn }: { name: string; isOwn: boolean }) {
   return (
-    <div className="w-7 h-7 rounded-full bg-[#1f1f1f] border border-[#2a2a2a] flex items-center justify-center shrink-0">
-      <span className="font-tour text-[9px] text-[#6a6a6a] uppercase">{name[0]}</span>
+    <div className={`w-7 h-7 flex items-center justify-center shrink-0 border ${isOwn ? 'border-[#c41e1e] bg-[#1a0505]' : 'border-[#222] bg-[#111]'}`}>
+      <span className={`font-tour text-[9px] uppercase ${isOwn ? 'text-[#c41e1e]' : 'text-[#444]'}`}>{name[0]}</span>
+    </div>
+  )
+}
+
+function SigilBorder({ children, isOwn }: { children: React.ReactNode; isOwn: boolean }) {
+  const color = isOwn ? '#c41e1e' : '#2a2a2a'
+  return (
+    <div className="relative pl-4 py-0.5">
+      {/* Top corner: horizontal tick */}
+      <div className="absolute left-0 top-0 h-px w-3" style={{ background: color }} />
+      {/* Top corner: short vertical down */}
+      <div className="absolute left-0 top-0 w-px h-2" style={{ background: color }} />
+      {/* Left vertical line */}
+      <div className="absolute left-0 top-2 bottom-2 w-px" style={{ background: color }} />
+      {/* Bottom corner: short vertical up */}
+      <div className="absolute left-0 bottom-0 w-px h-2" style={{ background: color }} />
+      {/* Bottom corner: horizontal tick */}
+      <div className="absolute left-0 bottom-0 h-px w-3" style={{ background: color }} />
+      {children}
     </div>
   )
 }
@@ -186,60 +205,49 @@ export default function ChatSection() {
                   initial={{ opacity: 0, y: 4 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.15 }}
-                  className={`flex flex-col gap-1 max-w-[65%] ${isOwn ? 'self-end items-end' : 'self-start items-start'}`}
+                  className="flex gap-3 items-start"
                 >
-                  <div className={`flex items-center gap-2 px-0.5 ${isOwn ? 'flex-row-reverse' : ''}`}>
-                    <span className={`font-tour text-[9px] tracking-[0.15em] uppercase ${isOwn ? 'text-[#c41e1e]' : 'text-[#444]'}`}>
-                      {isOwn ? 'Tú' : name}
-                    </span>
-                    <span className="font-tour text-[9px] text-[#252525]">
-                      {formatTime(group.msgs[group.msgs.length - 1].created_at)}
-                    </span>
-                  </div>
+                  <Avatar name={isOwn ? 'Tú' : name} isOwn={isOwn} />
 
-                  {group.msgs.map((msg, i) => {
-                    const hasText = msg.content?.trim() && msg.content.trim() !== ' '
-                    const isLast = i === group.msgs.length - 1
-                    return (
-                      <div key={msg.id} className="relative group">
-                        {isOwn ? (
-                          <div className={`overflow-hidden bg-[#c41e1e] ${isLast ? 'rounded-sm rounded-br-none' : 'rounded-sm'}`}>
-                            {msg.media_url && msg.media_type === 'image' && (
-                              <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block" />
-                            )}
-                            {msg.media_url && msg.media_type === 'video' && (
-                              <video src={msg.media_url} className="max-w-[260px] block" controls />
-                            )}
-                            {hasText && (
-                              <p className="font-ui text-[13px] leading-relaxed px-3.5 py-2.5 text-[#f2f2f2]">
-                                {msg.content}
-                              </p>
+                  <div className="flex flex-col gap-1.5 flex-1 min-w-0">
+                    <div className="flex items-center gap-2">
+                      <span className={`font-tour text-[9px] tracking-[0.15em] uppercase ${isOwn ? 'text-[#c41e1e]' : 'text-[#444]'}`}>
+                        {isOwn ? 'Tú' : name}
+                      </span>
+                      <span className="font-tour text-[9px] text-[#222]">
+                        {formatTime(group.msgs[group.msgs.length - 1].created_at)}
+                      </span>
+                    </div>
+
+                    <div className="flex flex-col gap-1">
+                      {group.msgs.map((msg) => {
+                        const hasText = msg.content?.trim() && msg.content.trim() !== ' '
+                        return (
+                          <div key={msg.id} className="relative group max-w-[480px]">
+                            <SigilBorder isOwn={isOwn}>
+                              {msg.media_url && msg.media_type === 'image' && (
+                                <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block mb-1" />
+                              )}
+                              {msg.media_url && msg.media_type === 'video' && (
+                                <video src={msg.media_url} className="max-w-[260px] block mb-1" controls />
+                              )}
+                              {hasText && (
+                                <p className={`font-ui text-[13px] leading-relaxed ${isOwn ? 'text-[#f2f2f2]' : 'text-[#777]'}`}>
+                                  {msg.content}
+                                </p>
+                              )}
+                            </SigilBorder>
+                            {isOwn && (
+                              <button
+                                onClick={() => deleteMessage(msg.id)}
+                                className="absolute top-0 -right-5 opacity-0 group-hover:opacity-100 transition-opacity font-tour text-[9px] text-[#333] hover:text-[#c41e1e]"
+                              >✕</button>
                             )}
                           </div>
-                        ) : (
-                          <div className="overflow-hidden">
-                            {msg.media_url && msg.media_type === 'image' && (
-                              <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block border border-[#1a1a1a]" />
-                            )}
-                            {msg.media_url && msg.media_type === 'video' && (
-                              <video src={msg.media_url} className="max-w-[260px] block" controls />
-                            )}
-                            {hasText && (
-                              <p className="font-ui text-[13px] leading-relaxed text-[#888] border-l border-[#2a2a2a] pl-3">
-                                {msg.content}
-                              </p>
-                            )}
-                          </div>
-                        )}
-                        {isOwn && (
-                          <button
-                            onClick={() => deleteMessage(msg.id)}
-                            className="absolute top-1/2 -translate-y-1/2 -left-5 opacity-0 group-hover:opacity-100 transition-opacity font-tour text-[9px] text-[#333] hover:text-[#c41e1e]"
-                          >✕</button>
-                        )}
-                      </div>
-                    )
-                  })}
+                        )
+                      })}
+                    </div>
+                  </div>
                 </motion.div>
               )
             })}
