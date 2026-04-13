@@ -229,7 +229,7 @@ export default function CanalSection() {
                   )}
                 </div>
 
-                <div className="bg-[#130808] border border-[#2a0f0f] rounded-2xl rounded-tl-sm overflow-hidden max-w-[480px]">
+                <div className="border-l-2 border-l-[#c41e1e] border-t-0 border-r-0 border-b-0 pl-4 rounded-2xl rounded-tl-sm overflow-hidden max-w-[480px]">
                   {post.media_url && post.media_type === 'image' && (
                     <img src={post.media_url} alt="" className="w-full max-h-[400px] object-cover" />
                   )}
@@ -286,7 +286,7 @@ export default function CanalSection() {
               </div>
             </div>
           )}
-          <div className="shrink-0 border-t border-[#2a0f0f] bg-[#0a0404] px-4 md:px-8 py-3 flex items-end gap-2.5">
+          <div className="shrink-0 border-t border-[#1a1a1a] bg-[#0a0a0a] px-4 md:px-8 py-3 flex items-end gap-3">
             <input ref={fileInputRef} type="file" accept="image/*,video/*" className="hidden" onChange={handleFileSelect} />
             <button
               onClick={() => fileInputRef.current?.click()}
@@ -300,13 +300,13 @@ export default function CanalSection() {
               placeholder="Escribe algo para tus fans..."
               maxLength={1000}
               rows={1}
-              className="flex-1 bg-[#130808] border border-[#2a0f0f] focus:border-[#5a1a1a] rounded-2xl outline-none resize-none px-4 py-2 font-ui text-[13px] text-[#f0d8d8] placeholder:text-[#4a2a2a] transition-colors duration-200"
+              className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#c41e1e] outline-none resize-none py-1.5 font-ui text-[13px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
               style={{ lineHeight: '1.6' }}
             />
             <button
               onClick={publish}
               disabled={(!input.trim() && !attachment) || sending}
-              className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center bg-[#f2f2f2]/5 border border-[#2a2a2a] hover:bg-[#f2f2f2]/10 disabled:opacity-20 disabled:cursor-not-allowed transition-all duration-200 font-tour text-[#f2f2f2] text-sm"
+              className="shrink-0 bg-[#c41e1e] hover:bg-[#a01818] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-1.5 font-tour text-[9px] tracking-[0.15em] uppercase text-[#f2f2f2] transition-all duration-200"
             >↑</button>
           </div>
         </>

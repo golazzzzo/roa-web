@@ -31,34 +31,35 @@ export default function ComunidadPage() {
   const activeChannel = CHANNELS.find(c => c.id === active)!
 
   return (
-    <main className="h-[100dvh] flex flex-col overflow-hidden bg-[#080404]">
+    <main className="h-[100dvh] flex flex-col overflow-hidden bg-[#0a0a0a]">
       <Navigation />
 
       <div className="flex flex-1 overflow-hidden pt-[72px]">
 
         {/* Sidebar */}
-        <aside className="w-52 shrink-0 bg-[#080404] border-r border-[#2a0f0f] flex flex-col overflow-y-auto">
-          <div className="px-4 pt-5 pb-3 border-b border-[#2a0f0f]">
-            <p className="font-ui text-[10px] font-semibold tracking-[0.2em] uppercase text-[#5a2a2a]">
-              Comunidad
+        <aside className="w-48 shrink-0 bg-[#0a0a0a] border-r border-[#1a1a1a] flex flex-col overflow-y-auto">
+          <div className="px-4 pt-5 pb-3 border-b border-[#1a1a1a]">
+            <p className="font-tour text-[9px] tracking-[0.25em] uppercase text-[#333]">
+              Wolf Club
             </p>
           </div>
 
-          <nav className="flex flex-col gap-0.5 px-2 pt-3">
+          <nav className="flex flex-col gap-0 px-2 pt-3">
             {CHANNELS.map(ch => {
               const isActive = active === ch.id
               return (
                 <button
                   key={ch.id}
                   onClick={() => setActive(ch.id)}
-                  className={`w-full text-left px-3 py-2.5 flex items-center gap-2.5 transition-all duration-150 rounded-md ${
+                  className={`w-full text-left px-3 py-2 flex items-center gap-2 transition-all duration-150 ${
                     isActive
-                      ? 'bg-[#3d0f0f] text-[#f5d0d0]'
-                      : 'text-[#4a2a2a] hover:text-[#c08080] hover:bg-[#1a0808]'
+                      ? 'text-[#f2f2f2]'
+                      : 'text-[#333] hover:text-[#888]'
                   }`}
                 >
-                  <span className={`font-ui text-[11px] font-medium ${isActive ? 'text-[#c04040]' : 'text-[#3a1a1a]'}`}>#</span>
-                  <span className="font-ui text-[12px] font-medium tracking-[0.01em]">{ch.label}</span>
+                  <span className={`font-tour text-[10px] ${isActive ? 'text-[#c41e1e]' : 'text-[#252525]'}`}>#</span>
+                  <span className="font-tour text-[10px] tracking-[0.05em] uppercase">{ch.label}</span>
+                  {isActive && <span className="ml-auto w-1 h-1 bg-[#c41e1e] rounded-full" />}
                 </button>
               )
             })}
@@ -66,17 +67,16 @@ export default function ComunidadPage() {
         </aside>
 
         {/* Content */}
-        <div className="flex-1 flex flex-col overflow-hidden bg-[#0c0505]">
+        <div className="flex-1 flex flex-col overflow-hidden bg-[#0a0a0a]">
 
           {/* Channel header */}
-          <div className="shrink-0 border-b border-[#2a0f0f] px-6 h-11 flex items-center gap-3 bg-[#0a0404]">
-            <span className="font-ui text-[12px] font-medium text-[#5a2a2a]">#</span>
-            <span className="font-ui text-[13px] font-semibold text-[#f0d8d8] tracking-[-0.01em]">
+          <div className="shrink-0 border-b border-[#1a1a1a] px-6 h-10 flex items-center gap-3">
+            <span className="font-tour text-[10px] text-[#c41e1e]">#</span>
+            <span className="font-tour text-[10px] tracking-[0.1em] uppercase text-[#f2f2f2]">
               {activeChannel.label}
             </span>
-            <div className="w-px h-3.5 bg-[#2a0f0f]" />
-            <span className="font-ui text-[11px] text-[#5a2a2a]">
-              {activeChannel.description}
+            <span className="font-tour text-[9px] text-[#2a2a2a] tracking-[0.1em] uppercase ml-2">
+              — {activeChannel.description}
             </span>
           </div>
 
@@ -85,10 +85,10 @@ export default function ComunidadPage() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -6 }}
-                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
                 className="flex-1 flex flex-col overflow-hidden"
               >
                 {active === 'noticias' && <NoticiasSection />}
