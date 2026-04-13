@@ -108,6 +108,7 @@ export default function ComunidadPage() {
           </div>
         </div>
       </div>
+      </div>
     </main>
   )
 }
