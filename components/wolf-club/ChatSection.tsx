@@ -204,7 +204,7 @@ export default function ChatSection() {
                     const isLast = i === group.msgs.length - 1
                     return (
                       <div key={msg.id} className="relative group">
-                        <GothicFrame color={isOwn ? '#c41e1e' : '#2a2a2a'}>
+                        <GothicFrame color={isOwn ? '#c41e1e' : '#4a4a4a'}>
                           {msg.media_url && msg.media_type === 'image' && (
                             <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block mb-1" />
                           )}
@@ -212,7 +212,7 @@ export default function ChatSection() {
                             <video src={msg.media_url} className="max-w-[260px] block mb-1" controls />
                           )}
                           {hasText && (
-                            <p className={`font-ui text-[13px] leading-relaxed ${isOwn ? 'text-[#f2f2f2]' : 'text-[#777]'}`}>
+                            <p className={`font-ui text-[13px] leading-relaxed ${isOwn ? 'text-white' : 'text-[#c8c8c8]'}`}>
                               {msg.content}
                             </p>
                           )}

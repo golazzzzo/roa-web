@@ -289,46 +289,98 @@ const DRAGON = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀�
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`
+const WING = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⡴⠊⠳⡄⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣄⠀⡀⠀⠀⢀⢀⣇⠀⠀⠀⠀⢷⡞⢀⡷⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢁⡤⠶⠛⢻⡿⠳⢶⣧⣤⣀⣠⣼⡇⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⣰⢶⣄⡼⠋⠀⠀⠀⢸⡇⠀⠀⠀⠈⠉⠀⢸⡇⠀⠘⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢸⣧⣹⡏⠁⠀⠀⣠⡄⢸⡇⣴⡀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠉⢻⡇⠁⠀⢠⣽⣹⣼⣧⢧⢏⡆⠀⠀⠀⢸⡇⠀⠀⠀⠀⣶⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢸⡇⠀⠀⠈⢿⣽⣿⣿⣭⠞⠁⠀⠀⣠⣿⣧⠀⠀⠀⠀⣟⠀⠀⠀⠀⢀⢀⡀
+⠀⠰⠾⢻⣿⡛⠓⠛⠛⢻⡟⠛⠛⠛⠛⠛⢷⣿⡿⠛⠛⠛⠛⡿⠛⠛⠋⠉⠉⠉⠉
+⠀⠀⠀⠘⠻⣿⣯⣅⣀⣸⡧⠒⠲⣄⠀⠀⠀⣿⠇⠀⠀⠀⠀⡇⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⡼⢃⡝⠀⣸⣇⣀⠀⢸⡇⠀⠀⣿⠀⣀⡀⠀⠈⠁⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠉⠉⠀⠀⠈⢩⢽⡿⠏⠠⢾⡇⠀⠀⣿⠀⠁⠛⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⡀⠀⠀⠀⠀⠀⣀⣸⡇⠀⢰⡾⠁⠀⠀⣿⣠⣤⣠⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣧⡀⣠⣦⣔⠒⠒⢻⡏⠛⢻⣇⡄⠀⣼⣿⠁⠀⢹⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠈⢻⠏⣅⣽⢃⣀⢸⣧⢠⡄⠀⡀⡾⠁⣿⠀⠰⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⡎⠀⠉⠁⠘⢾⢿⡟⣯⣼⣟⣿⠁⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⣃⠠⣦⡀⠀⠈⢻⡿⠁⠈⢽⡗⢶⠀⣏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠘⢿⣦⣼⢿⣀⡀⢸⣇⣴⡾⠛⠓⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠈⠙⠻⠿⠛⢿⠟⠻⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⠀⠀⣸⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢠⡤⢺⡗⠛⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢿⣇⢸⣇⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠙⢻⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`
 
-const PRE = 'absolute font-tour leading-[1.15] text-[7px] text-white pointer-events-none select-none z-0 whitespace-pre'
+const P = 'absolute font-tour leading-[1.15] text-[7px] text-white pointer-events-none select-none z-0 whitespace-pre'
 
-/* ── Noticias background: creature top-left, dragon top-right, crown center-left, figure bottom-right ── */
+/*
+  Layout strategy:
+  - Each piece has an approximate bounding box:
+    CREATURE  ~69 lines × 40 chars  (monster, sparse)
+    FIGURE    ~74 lines × 114 chars (wide complex figure)
+    CROWN     ~34 lines × 40 chars
+    STICK     ~41 lines × 33 chars
+    DRAGON    ~42 lines × 40 chars
+    SPIRAL    ~12 lines × 48 chars  (tiny)
+    WING      ~24 lines × 31 chars
+  - At 7px font with 1.15 leading: each line ≈ 8px tall, each char ≈ 4.2px wide
+  - Screen is roughly 900px wide × 700px tall (content area)
+  - We position pieces to tile without heavy overlap
+*/
+
 function NoticiasWatermark() {
   return (
     <>
-      <pre aria-hidden className={`${PRE} top-2 left-0`} style={{ opacity: 0.075 }}>{CREATURE}</pre>
-      <pre aria-hidden className={`${PRE} top-0 right-0`} style={{ opacity: 0.065 }}>{DRAGON}</pre>
-      <pre aria-hidden className={`${PRE} top-1/3 left-0`} style={{ opacity: 0.07 }}>{CROWN}</pre>
-      <pre aria-hidden className={`${PRE} bottom-0 right-0`} style={{ opacity: 0.06 }}>{FIGURE}</pre>
-      <pre aria-hidden className={`${PRE} bottom-16 left-1/3`} style={{ opacity: 0.05 }}>{SPIRAL}</pre>
+      {/* TOP STRIP */}
+      <pre aria-hidden className={`${P} top-0 left-0`}      style={{ opacity: 0.08 }}>{FIGURE}</pre>
+      <pre aria-hidden className={`${P} top-0 right-2`}     style={{ opacity: 0.075 }}>{CREATURE}</pre>
+      {/* MID STRIP */}
+      <pre aria-hidden className={`${P} top-[38%] left-0`}  style={{ opacity: 0.075 }}>{CROWN}</pre>
+      <pre aria-hidden className={`${P} top-[35%] left-[40%]`} style={{ opacity: 0.065 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-[30%] right-2`} style={{ opacity: 0.07 }}>{STICK}</pre>
+      {/* BOTTOM STRIP */}
+      <pre aria-hidden className={`${P} bottom-0 left-0`}   style={{ opacity: 0.075 }}>{DRAGON}</pre>
+      <pre aria-hidden className={`${P} bottom-0 left-[38%]`} style={{ opacity: 0.065 }}>{SPIRAL}</pre>
+      <pre aria-hidden className={`${P} bottom-0 right-2`}  style={{ opacity: 0.07 }}>{WING}</pre>
     </>
   )
 }
 
-/* ── General chat background: figure left+right flanking, stick center-bottom, dragon top-center ── */
 function GeneralWatermark() {
   return (
     <>
-      <pre aria-hidden className={`${PRE} top-0 left-0`} style={{ opacity: 0.07 }}>{FIGURE}</pre>
-      <pre aria-hidden className={`${PRE} top-0 right-0`} style={{ opacity: 0.065 }}>{CREATURE}</pre>
-      <pre aria-hidden className={`${PRE} top-1/4 right-8`} style={{ opacity: 0.06 }}>{STICK}</pre>
-      <pre aria-hidden className={`${PRE} bottom-0 left-0`} style={{ opacity: 0.075 }}>{CROWN}</pre>
-      <pre aria-hidden className={`${PRE} bottom-8 right-4`} style={{ opacity: 0.07 }}>{DRAGON}</pre>
-      <pre aria-hidden className={`${PRE} top-1/2 left-1/3`} style={{ opacity: 0.045 }}>{SPIRAL}</pre>
+      {/* TOP */}
+      <pre aria-hidden className={`${P} top-0 left-0`}      style={{ opacity: 0.075 }}>{CREATURE}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[38%]`}  style={{ opacity: 0.065 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-0 right-2`}     style={{ opacity: 0.07 }}>{STICK}</pre>
+      {/* MIDDLE */}
+      <pre aria-hidden className={`${P} top-[36%] left-0`}  style={{ opacity: 0.08 }}>{FIGURE}</pre>
+      <pre aria-hidden className={`${P} top-[40%] right-2`} style={{ opacity: 0.07 }}>{CROWN}</pre>
+      {/* BOTTOM */}
+      <pre aria-hidden className={`${P} bottom-0 left-0`}   style={{ opacity: 0.075 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} bottom-0 left-[35%]`} style={{ opacity: 0.065 }}>{SPIRAL}</pre>
+      <pre aria-hidden className={`${P} bottom-0 right-2`}  style={{ opacity: 0.075 }}>{DRAGON}</pre>
     </>
   )
 }
 
-/* ── Canal ROA background: dragon top-left, stick top-right, figure bottom-left, crown bottom-right ── */
 function CanalWatermark() {
   return (
     <>
-      <pre aria-hidden className={`${PRE} top-0 left-0`} style={{ opacity: 0.08 }}>{DRAGON}</pre>
-      <pre aria-hidden className={`${PRE} top-2 right-0`} style={{ opacity: 0.07 }}>{STICK}</pre>
-      <pre aria-hidden className={`${PRE} top-1/3 left-0`} style={{ opacity: 0.065 }}>{CREATURE}</pre>
-      <pre aria-hidden className={`${PRE} top-1/4 right-4`} style={{ opacity: 0.06 }}>{FIGURE}</pre>
-      <pre aria-hidden className={`${PRE} bottom-0 left-0`} style={{ opacity: 0.07 }}>{CROWN}</pre>
-      <pre aria-hidden className={`${PRE} bottom-12 right-0`} style={{ opacity: 0.06 }}>{SPIRAL}</pre>
+      {/* TOP */}
+      <pre aria-hidden className={`${P} top-0 left-0`}      style={{ opacity: 0.08 }}>{STICK}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[30%]`}  style={{ opacity: 0.07 }}>{CROWN}</pre>
+      <pre aria-hidden className={`${P} top-0 right-2`}     style={{ opacity: 0.075 }}>{FIGURE}</pre>
+      {/* MIDDLE */}
+      <pre aria-hidden className={`${P} top-[38%] left-0`}  style={{ opacity: 0.075 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-[42%] left-[42%]`} style={{ opacity: 0.065 }}>{SPIRAL}</pre>
+      <pre aria-hidden className={`${P} top-[35%] right-2`} style={{ opacity: 0.07 }}>{CREATURE}</pre>
+      {/* BOTTOM */}
+      <pre aria-hidden className={`${P} bottom-0 left-0`}   style={{ opacity: 0.08 }}>{DRAGON}</pre>
+      <pre aria-hidden className={`${P} bottom-0 right-2`}  style={{ opacity: 0.075 }}>{WING}</pre>
     </>
   )
 }
@@ -368,9 +420,7 @@ export default function ComunidadPage() {
                   key={ch.id}
                   onClick={() => setActive(ch.id)}
                   className={`w-full text-left px-3 py-2 flex items-center gap-2 transition-all duration-150 ${
-                    isActive
-                      ? 'text-[#f2f2f2]'
-                      : 'text-[#333] hover:text-[#888]'
+                    isActive ? 'text-[#f2f2f2]' : 'text-[#333] hover:text-[#888]'
                   }`}
                 >
                   <span className={`font-tour text-[10px] ${isActive ? 'text-[#c41e1e]' : 'text-[#252525]'}`}>#</span>
@@ -385,7 +435,6 @@ export default function ComunidadPage() {
         {/* Content */}
         <div className="flex-1 flex flex-col overflow-hidden bg-[#0a0a0a] relative">
 
-          {/* Per-channel braille art backgrounds */}
           {active === 'noticias' && <NoticiasWatermark />}
           {active === 'general'  && <GeneralWatermark />}
           {active === 'canal'    && <CanalWatermark />}

@@ -19,8 +19,8 @@ function TribalEdge({
   return (
     <g>
       {/* Horizontal connecting lines from frame edge to ornament base */}
-      <line x1={0} y1={cy} x2={x(-22)} y2={cy} stroke={color} strokeWidth="0.6" />
-      <line x1={x(22)} y1={cy} x2={frameW} y2={cy} stroke={color} strokeWidth="0.6" />
+      <line x1={0} y1={cy} x2={x(-22)} y2={cy} stroke={color} strokeWidth="0.9" />
+      <line x1={x(22)} y1={cy} x2={frameW} y2={cy} stroke={color} strokeWidth="0.9" />
 
       {/* ── Central blade (pointed teardrop going up/down) ── */}
       <path
@@ -64,13 +64,13 @@ function TribalEdge({
       <path
         d={`M ${x(-16)} ${y(2)}
             C ${x(-25)} ${y(11)} ${x(-35)} ${y(6)} ${x(-30)} ${y(-2)}`}
-        fill="none" stroke={color} strokeWidth={1.4 * scale} strokeLinecap="round"
+        fill="none" stroke={color} strokeWidth={1.8 * scale} strokeLinecap="round"
       />
       {/* Left outer blade (thin, tapers to point) */}
       <path
         d={`M ${x(-30)} ${y(-2)}
             C ${x(-38)} ${y(5)} ${x(-47)} ${y(0)} ${x(-43)} ${y(-8)}`}
-        fill="none" stroke={color} strokeWidth={0.8 * scale} strokeLinecap="round"
+        fill="none" stroke={color} strokeWidth={1.1 * scale} strokeLinecap="round"
       />
       {/* Left small inner loop on arm */}
       <path
@@ -84,13 +84,13 @@ function TribalEdge({
       <path
         d={`M ${x(16)} ${y(2)}
             C ${x(25)} ${y(11)} ${x(35)} ${y(6)} ${x(30)} ${y(-2)}`}
-        fill="none" stroke={color} strokeWidth={1.4 * scale} strokeLinecap="round"
+        fill="none" stroke={color} strokeWidth={1.8 * scale} strokeLinecap="round"
       />
       {/* Right outer blade */}
       <path
         d={`M ${x(30)} ${y(-2)}
             C ${x(38)} ${y(5)} ${x(47)} ${y(0)} ${x(43)} ${y(-8)}`}
-        fill="none" stroke={color} strokeWidth={0.8 * scale} strokeLinecap="round"
+        fill="none" stroke={color} strokeWidth={1.1 * scale} strokeLinecap="round"
       />
       {/* Right small inner loop on arm */}
       <path
@@ -147,9 +147,9 @@ export default function GothicFrame({
             {/* Bottom tribal ornament */}
             <TribalEdge cx={w / 2} cy={h} color={color} v={1} frameW={w} />
             {/* Left vertical line */}
-            <line x1={0} y1={0} x2={0} y2={h} stroke={color} strokeWidth="0.6" />
+            <line x1={0} y1={0} x2={0} y2={h} stroke={color} strokeWidth="0.9" />
             {/* Right vertical line */}
-            <line x1={w} y1={0} x2={w} y2={h} stroke={color} strokeWidth="0.6" />
+            <line x1={w} y1={0} x2={w} y2={h} stroke={color} strokeWidth="0.9" />
           </svg>
         )}
         <div style={{ position: 'relative', zIndex: 1 }}>{children}</div>
