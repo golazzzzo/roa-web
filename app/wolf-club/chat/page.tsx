@@ -333,16 +333,16 @@ const P = 'absolute font-tour leading-[1.15] text-[7px] text-white pointer-event
 function NoticiasWatermark() {
   return (
     <>
-      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.075 }}>{CREATURE}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[20%]`}        style={{ opacity: 0.075 }}>{STICK}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[42%]`}        style={{ opacity: 0.07 }}>{WING}</pre>
-      <pre aria-hidden className={`${P} top-0 right-0`}           style={{ opacity: 0.075 }}>{FIGURE}</pre>
+      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.20 }}>{CREATURE}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[20%]`}        style={{ opacity: 0.20 }}>{STICK}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[42%]`}        style={{ opacity: 0.18 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-0 right-0`}           style={{ opacity: 0.20 }}>{FIGURE}</pre>
 
-      <pre aria-hidden className={`${P} top-[42%] left-[12%]`}    style={{ opacity: 0.07 }}>{DRAGON}</pre>
-      <pre aria-hidden className={`${P} top-[40%] left-[36%]`}    style={{ opacity: 0.07 }}>{CROWN}</pre>
-      <pre aria-hidden className={`${P} top-[38%] left-[60%]`}    style={{ opacity: 0.065 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-[42%] left-[12%]`}    style={{ opacity: 0.18 }}>{DRAGON}</pre>
+      <pre aria-hidden className={`${P} top-[40%] left-[36%]`}    style={{ opacity: 0.18 }}>{CROWN}</pre>
+      <pre aria-hidden className={`${P} top-[38%] left-[60%]`}    style={{ opacity: 0.16 }}>{WING}</pre>
 
-      <pre aria-hidden className={`${P} bottom-0 left-[24%]`}     style={{ opacity: 0.07 }}>{SPIRAL}</pre>
+      <pre aria-hidden className={`${P} bottom-0 left-[24%]`}     style={{ opacity: 0.18 }}>{SPIRAL}</pre>
     </>
   )
 }
@@ -351,16 +351,16 @@ function GeneralWatermark() {
   /* General: chat feel — pieces wrap around where messages sit (left side) */
   return (
     <>
-      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.075 }}>{CREATURE}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[20%]`}        style={{ opacity: 0.075 }}>{STICK}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[42%]`}        style={{ opacity: 0.07 }}>{WING}</pre>
-      <pre aria-hidden className={`${P} top-0 right-0`}           style={{ opacity: 0.075 }}>{FIGURE}</pre>
+      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.20 }}>{CREATURE}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[20%]`}        style={{ opacity: 0.20 }}>{STICK}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[42%]`}        style={{ opacity: 0.18 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-0 right-0`}           style={{ opacity: 0.20 }}>{FIGURE}</pre>
 
-      <pre aria-hidden className={`${P} top-[42%] left-[12%]`}    style={{ opacity: 0.07 }}>{DRAGON}</pre>
-      <pre aria-hidden className={`${P} top-[40%] left-[36%]`}    style={{ opacity: 0.07 }}>{CROWN}</pre>
-      <pre aria-hidden className={`${P} top-[38%] left-[60%]`}    style={{ opacity: 0.065 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-[42%] left-[12%]`}    style={{ opacity: 0.18 }}>{DRAGON}</pre>
+      <pre aria-hidden className={`${P} top-[40%] left-[36%]`}    style={{ opacity: 0.18 }}>{CROWN}</pre>
+      <pre aria-hidden className={`${P} top-[38%] left-[60%]`}    style={{ opacity: 0.16 }}>{WING}</pre>
 
-      <pre aria-hidden className={`${P} bottom-0 left-[24%]`}     style={{ opacity: 0.07 }}>{SPIRAL}</pre>
+      <pre aria-hidden className={`${P} bottom-0 left-[24%]`}     style={{ opacity: 0.18 }}>{SPIRAL}</pre>
     </>
   )
 }
@@ -368,16 +368,16 @@ function GeneralWatermark() {
 function CanalWatermark() {
   return (
     <>
-      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.075 }}>{CREATURE}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[20%]`}        style={{ opacity: 0.075 }}>{STICK}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[42%]`}        style={{ opacity: 0.07 }}>{WING}</pre>
-      <pre aria-hidden className={`${P} top-0 right-0`}           style={{ opacity: 0.075 }}>{FIGURE}</pre>
+      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.20 }}>{CREATURE}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[20%]`}        style={{ opacity: 0.20 }}>{STICK}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[42%]`}        style={{ opacity: 0.18 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-0 right-0`}           style={{ opacity: 0.20 }}>{FIGURE}</pre>
 
-      <pre aria-hidden className={`${P} top-[42%] left-[12%]`}    style={{ opacity: 0.07 }}>{DRAGON}</pre>
-      <pre aria-hidden className={`${P} top-[40%] left-[36%]`}    style={{ opacity: 0.07 }}>{CROWN}</pre>
-      <pre aria-hidden className={`${P} top-[38%] left-[60%]`}    style={{ opacity: 0.065 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-[42%] left-[12%]`}    style={{ opacity: 0.18 }}>{DRAGON}</pre>
+      <pre aria-hidden className={`${P} top-[40%] left-[36%]`}    style={{ opacity: 0.18 }}>{CROWN}</pre>
+      <pre aria-hidden className={`${P} top-[38%] left-[60%]`}    style={{ opacity: 0.16 }}>{WING}</pre>
 
-      <pre aria-hidden className={`${P} bottom-0 left-[24%]`}     style={{ opacity: 0.07 }}>{SPIRAL}</pre>
+      <pre aria-hidden className={`${P} bottom-0 left-[24%]`}     style={{ opacity: 0.18 }}>{SPIRAL}</pre>
     </>
   )
 }
