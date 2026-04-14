@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { supabase, REACTION_EMOJIS } from '@/lib/supabase'
 import { useAuth } from '@/lib/auth-context'
 import type { NewsPost } from '@/lib/supabase'
-import GothicFrame from './GothicFrame'
+import SigilBubble from './SigilBubble'
 
 type ReactionCounts = Record<string, Record<string, number>>
 type Attachment = { file: File; preview: string; type: 'image' | 'video' }
@@ -230,7 +230,7 @@ export default function NoticiasSection() {
                 </div>
 
                 <div className="max-w-[480px]">
-                  <GothicFrame color="#c41e1e">
+                  <SigilBubble variant="broadcast">
                     {post.title && (
                       <p className="font-tour text-[9px] tracking-[0.15em] uppercase text-[#c41e1e] mb-1">
                         {post.title}
@@ -247,7 +247,7 @@ export default function NoticiasSection() {
                         {post.body}
                       </p>
                     )}
-                  </GothicFrame>
+                  </SigilBubble>
                 </div>
 
                 <div className="flex items-center gap-1.5 mt-2 flex-wrap">

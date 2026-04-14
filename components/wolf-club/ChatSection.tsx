@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/lib/auth-context'
 import type { ChatMessage } from '@/lib/supabase'
+import SigilBubble from './SigilBubble'
 
 type Attachment = { file: File; preview: string; type: 'image' | 'video' }
 
@@ -203,7 +204,7 @@ export default function ChatSection() {
                     const isLast = i === group.msgs.length - 1
                     return (
                       <div key={msg.id} className="relative group">
-                        <div className={`px-4 py-2.5 rounded-2xl ${isOwn ? 'rounded-tr-sm bg-[#c41e1e]' : 'rounded-tl-sm bg-[#1a1a1a]'}`}>
+                        <SigilBubble variant={isOwn ? 'own' : 'other'}>
                           {msg.media_url && msg.media_type === 'image' && (
                             <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block mb-1" />
                           )}
@@ -215,7 +216,7 @@ export default function ChatSection() {
                               {msg.content}
                             </p>
                           )}
-                        </div>
+                        </SigilBubble>
                         {isOwn && (
                           <button
                             onClick={() => deleteMessage(msg.id)}

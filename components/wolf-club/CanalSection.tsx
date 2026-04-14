@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { supabase, REACTION_EMOJIS } from '@/lib/supabase'
 import type { CanalPost } from '@/lib/supabase'
 import { useAuth } from '@/lib/auth-context'
-import GothicFrame from './GothicFrame'
+import SigilBubble from './SigilBubble'
 
 type ReactionCounts = Record<string, Record<string, number>>
 type Attachment = { file: File; preview: string; type: 'image' | 'video' }
@@ -231,7 +231,7 @@ export default function CanalSection() {
                 </div>
 
                 <div className="max-w-[480px]">
-                  <GothicFrame color="#c41e1e">
+                  <SigilBubble variant="broadcast">
                     {post.media_url && post.media_type === 'image' && (
                       <img src={post.media_url} alt="" className="w-full max-h-[400px] object-cover mb-1" />
                     )}
@@ -243,7 +243,7 @@ export default function CanalSection() {
                         {post.body}
                       </p>
                     )}
-                  </GothicFrame>
+                  </SigilBubble>
                 </div>
 
                 {/* Reactions */}
