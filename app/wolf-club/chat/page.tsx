@@ -86,7 +86,7 @@ const CREATURE = `⠄⢂⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀�
 ⠆⡐⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠴⣫⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠆⢠⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣴⡾⠕⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⡎⣠⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⡴⠾⠛⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`
-const FIGURE = `⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+const FIGURE   = `⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠁⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⡴⠞⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -160,7 +160,7 @@ const FIGURE = `⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀�
 ⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠁⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠆⠠⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`
-const SPIRAL = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠤
+const SPIRAL   = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠤
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡘⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠶⠚⠁⠀
 ⠀⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡜⠁⠀⠀⠀⠀⠀⠀⠐⢆⡀⠀⠀⠀⠀⢀⣤⣶⠟⠋⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠂⠀⠀⠐⠀⠀⠀⠂⠀⠀⠠⠀⠀⠀⠀⠀⠀⢀⣤⠞⠁⠀⠀⠀⠀⣀⣀⠀⠀⠈⠑⠲⢶⠒⠖⣺⡿⠏⠀⠀⠀⠀⠀⠀
@@ -172,7 +172,7 @@ const SPIRAL = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀�
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣯⢻⠁⠀⠀⠀⠀⠀⠀⠈⠙⠲⢄⡀⠀⠀⠀⠀⢀⠀⠠⠀⠀⠀⡀⠀⠀⠄⠀⠂⠀⠀
 ⠀⠀⠀⠀⠀⠀⠦⣀⡀⠀⠀⠀⠀⠀⠀⣠⣼⡵⠗⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⢀⠀⠂⠀⠠⠀⠀⠀⠈⠉⠓⠒⠶⠚⠙⠃⠉⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠀⠀⠀⠀⠀⠀⠀`
-const CROWN = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+const CROWN    = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -206,7 +206,7 @@ const CROWN = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀�
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`
-const STICK = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+const STICK    = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠄⠀⠀⠀⠀⢀⡲⢷⠷⢧⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⢠⠜⠁⠀⠀⠀⠀⠀⢠⣣⡓⡉⣧⠎⠋⢖⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⣰⠃⠀⠀⠀⠀⠀⠀⠀⠈⠉⢰⣻⣷⡦⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -247,7 +247,7 @@ const STICK = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⣆⠀�
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`
-const DRAGON = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀
+const DRAGON   = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠂
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠃⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠰⠃⠀⠀
@@ -289,7 +289,7 @@ const DRAGON = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀�
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢱⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`
-const WING = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+const WING     = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠀⡴⠊⠳⡄⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⣄⠀⡀⠀⠀⢀⢀⣇⠀⠀⠀⠀⢷⡞⢀⡷⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⢁⡤⠶⠛⢻⡿⠳⢶⣧⣤⣀⣠⣼⡇⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -317,70 +317,69 @@ const WING = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 const P = 'absolute font-tour leading-[1.15] text-[7px] text-white pointer-events-none select-none z-0 whitespace-pre'
 
 /*
-  Layout strategy:
-  - Each piece has an approximate bounding box:
-    CREATURE  ~69 lines × 40 chars  (monster, sparse)
-    FIGURE    ~74 lines × 114 chars (wide complex figure)
-    CROWN     ~34 lines × 40 chars
-    STICK     ~41 lines × 33 chars
-    DRAGON    ~42 lines × 40 chars
-    SPIRAL    ~12 lines × 48 chars  (tiny)
-    WING      ~24 lines × 31 chars
-  - At 7px font with 1.15 leading: each line ≈ 8px tall, each char ≈ 4.2px wide
-  - Screen is roughly 900px wide × 700px tall (content area)
-  - We position pieces to tile without heavy overlap
+  Piece pixel sizes (4.2px/char × 8px/line):
+    CREATURE  168 × 552   FIGURE  479 × 592
+    CROWN     168 × 272   STICK   139 × 328
+    DRAGON    168 × 336   WING    130 × 192
+    SPIRAL    202 ×  96
+
+  Layout rules applied:
+  - FIGURE always anchored right-0 (fills the right 479px column)
+  - Remaining ~820px split into left / left-center / center zones
+  - Pieces staggered vertically so no two same-width pieces at identical (left,top)
+  - bottom-0 pieces anchor from bottom, creating a layered floor
 */
 
 function NoticiasWatermark() {
+  /* Noticias: editorial top-down feel — creature left, figure right, rest scattered */
   return (
     <>
-      {/* TOP STRIP */}
-      <pre aria-hidden className={`${P} top-0 left-0`}      style={{ opacity: 0.08 }}>{FIGURE}</pre>
-      <pre aria-hidden className={`${P} top-0 right-2`}     style={{ opacity: 0.075 }}>{CREATURE}</pre>
-      {/* MID STRIP */}
-      <pre aria-hidden className={`${P} top-[38%] left-0`}  style={{ opacity: 0.075 }}>{CROWN}</pre>
-      <pre aria-hidden className={`${P} top-[35%] left-[40%]`} style={{ opacity: 0.065 }}>{WING}</pre>
-      <pre aria-hidden className={`${P} top-[30%] right-2`} style={{ opacity: 0.07 }}>{STICK}</pre>
-      {/* BOTTOM STRIP */}
-      <pre aria-hidden className={`${P} bottom-0 left-0`}   style={{ opacity: 0.075 }}>{DRAGON}</pre>
-      <pre aria-hidden className={`${P} bottom-0 left-[38%]`} style={{ opacity: 0.065 }}>{SPIRAL}</pre>
-      <pre aria-hidden className={`${P} bottom-0 right-2`}  style={{ opacity: 0.07 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.08 }}>{CREATURE}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[14%]`}        style={{ opacity: 0.075 }}>{STICK}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[36%]`}        style={{ opacity: 0.07 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-0 right-0`}           style={{ opacity: 0.075 }}>{FIGURE}</pre>
+
+      <pre aria-hidden className={`${P} top-[40%] left-[8%]`}     style={{ opacity: 0.075 }}>{CROWN}</pre>
+      <pre aria-hidden className={`${P} top-[38%] left-[34%]`}    style={{ opacity: 0.07 }}>{DRAGON}</pre>
+      <pre aria-hidden className={`${P} top-[42%] left-[58%]`}    style={{ opacity: 0.065 }}>{WING}</pre>
+
+      <pre aria-hidden className={`${P} bottom-0 left-[18%]`}     style={{ opacity: 0.07 }}>{SPIRAL}</pre>
     </>
   )
 }
 
 function GeneralWatermark() {
+  /* General: chat feel — pieces wrap around where messages sit (left side) */
   return (
     <>
-      {/* TOP */}
-      <pre aria-hidden className={`${P} top-0 left-0`}      style={{ opacity: 0.075 }}>{CREATURE}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[38%]`}  style={{ opacity: 0.065 }}>{WING}</pre>
-      <pre aria-hidden className={`${P} top-0 right-2`}     style={{ opacity: 0.07 }}>{STICK}</pre>
-      {/* MIDDLE */}
-      <pre aria-hidden className={`${P} top-[36%] left-0`}  style={{ opacity: 0.08 }}>{FIGURE}</pre>
-      <pre aria-hidden className={`${P} top-[40%] right-2`} style={{ opacity: 0.07 }}>{CROWN}</pre>
-      {/* BOTTOM */}
-      <pre aria-hidden className={`${P} bottom-0 left-0`}   style={{ opacity: 0.075 }}>{WING}</pre>
-      <pre aria-hidden className={`${P} bottom-0 left-[35%]`} style={{ opacity: 0.065 }}>{SPIRAL}</pre>
-      <pre aria-hidden className={`${P} bottom-0 right-2`}  style={{ opacity: 0.075 }}>{DRAGON}</pre>
+      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.075 }}>{CREATURE}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[20%]`}        style={{ opacity: 0.075 }}>{STICK}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[42%]`}        style={{ opacity: 0.07 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-0 right-0`}           style={{ opacity: 0.075 }}>{FIGURE}</pre>
+
+      <pre aria-hidden className={`${P} top-[42%] left-[12%]`}    style={{ opacity: 0.07 }}>{DRAGON}</pre>
+      <pre aria-hidden className={`${P} top-[40%] left-[36%]`}    style={{ opacity: 0.07 }}>{CROWN}</pre>
+      <pre aria-hidden className={`${P} top-[38%] left-[60%]`}    style={{ opacity: 0.065 }}>{WING}</pre>
+
+      <pre aria-hidden className={`${P} bottom-0 left-[24%]`}     style={{ opacity: 0.07 }}>{SPIRAL}</pre>
     </>
   )
 }
 
 function CanalWatermark() {
+  /* Canal ROA: broadcast feel — heavier left, spiral accent center, figure dominates right */
   return (
     <>
-      {/* TOP */}
-      <pre aria-hidden className={`${P} top-0 left-0`}      style={{ opacity: 0.08 }}>{STICK}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[30%]`}  style={{ opacity: 0.07 }}>{CROWN}</pre>
-      <pre aria-hidden className={`${P} top-0 right-2`}     style={{ opacity: 0.075 }}>{FIGURE}</pre>
-      {/* MIDDLE */}
-      <pre aria-hidden className={`${P} top-[38%] left-0`}  style={{ opacity: 0.075 }}>{WING}</pre>
-      <pre aria-hidden className={`${P} top-[42%] left-[42%]`} style={{ opacity: 0.065 }}>{SPIRAL}</pre>
-      <pre aria-hidden className={`${P} top-[35%] right-2`} style={{ opacity: 0.07 }}>{CREATURE}</pre>
-      {/* BOTTOM */}
-      <pre aria-hidden className={`${P} bottom-0 left-0`}   style={{ opacity: 0.08 }}>{DRAGON}</pre>
-      <pre aria-hidden className={`${P} bottom-0 right-2`}  style={{ opacity: 0.075 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.08 }}>{DRAGON}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[16%]`}        style={{ opacity: 0.075 }}>{CROWN}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[40%]`}        style={{ opacity: 0.07 }}>{STICK}</pre>
+      <pre aria-hidden className={`${P} top-0 right-0`}           style={{ opacity: 0.075 }}>{FIGURE}</pre>
+
+      <pre aria-hidden className={`${P} top-[44%] left-0`}        style={{ opacity: 0.075 }}>{CREATURE}</pre>
+      <pre aria-hidden className={`${P} top-[40%] left-[18%]`}    style={{ opacity: 0.07 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-[38%] left-[40%]`}    style={{ opacity: 0.065 }}>{WING}</pre>
+
+      <pre aria-hidden className={`${P} bottom-0 left-[26%]`}     style={{ opacity: 0.07 }}>{SPIRAL}</pre>
     </>
   )
 }
@@ -411,7 +410,6 @@ export default function ComunidadPage() {
               Wolf Club
             </p>
           </div>
-
           <nav className="flex flex-col gap-0 px-2 pt-3">
             {CHANNELS.map(ch => {
               const isActive = active === ch.id
