@@ -1,18 +1,19 @@
 import type { Metadata } from 'next'
-import { Space_Mono, Inter } from 'next/font/google'
+import { Cinzel, Cormorant_Garamond } from 'next/font/google'
 import { AuthProvider } from '@/lib/auth-context'
 import './globals.css'
 
-const spaceMono = Space_Mono({
-  weight: ['400', '700'],
+const cinzel = Cinzel({
+  weight: ['400', '500', '700'],
   subsets: ['latin'],
-  variable: '--font-space-mono',
+  variable: '--font-cinzel',
   display: 'swap',
 })
 
-const inter = Inter({
+const cormorant = Cormorant_Garamond({
+  weight: ['300', '400', '500', '600'],
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-cormorant',
   display: 'swap',
 })
 
@@ -32,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${spaceMono.variable} ${inter.variable}`}>
+    <html lang="es" className={`${cinzel.variable} ${cormorant.variable}`}>
       <body>
         <AuthProvider>
           {children}

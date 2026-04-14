@@ -239,7 +239,7 @@ export default function CanalSection() {
                       <video src={post.media_url} className="w-full max-h-[400px] mb-1" controls />
                     )}
                     {hasText && (
-                      <p className="font-ui text-[13px] text-white leading-relaxed whitespace-pre-line">
+                      <p className="font-ui text-[15px] text-white leading-relaxed whitespace-pre-line">
                         {post.body}
                       </p>
                     )}
@@ -303,7 +303,7 @@ export default function CanalSection() {
               placeholder="Escribe algo para tus fans..."
               maxLength={1000}
               rows={1}
-              className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#c41e1e] outline-none resize-none py-1.5 font-ui text-[13px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
+              className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#c41e1e] outline-none resize-none py-1.5 font-ui text-[15px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
               style={{ lineHeight: '1.6' }}
             />
             <button

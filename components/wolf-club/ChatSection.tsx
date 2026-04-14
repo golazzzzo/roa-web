@@ -212,7 +212,7 @@ export default function ChatSection() {
                             <video src={msg.media_url} className="max-w-[260px] block mb-1" controls />
                           )}
                           {hasText && (
-                            <p className={`font-ui text-[13px] leading-relaxed ${isOwn ? 'text-white' : 'text-[#c8c8c8]'}`}>
+                            <p className={`font-ui text-[15px] leading-relaxed ${isOwn ? 'text-white' : 'text-[#c8c8c8]'}`}>
                               {msg.content}
                             </p>
                           )}
@@ -262,7 +262,7 @@ export default function ChatSection() {
           placeholder="Mensaje..."
           maxLength={500}
           rows={1}
-          className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#c41e1e] outline-none resize-none py-1.5 font-ui text-[13px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
+          className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#c41e1e] outline-none resize-none py-1.5 font-ui text-[15px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
           style={{ lineHeight: '1.5' }}
         />
         <button

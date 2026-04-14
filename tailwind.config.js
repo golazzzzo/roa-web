@@ -9,8 +9,8 @@ module.exports = {
       fontFamily: {
         display: ['GothicValentine', 'serif'],
         body: ['GothicValentine', 'serif'],
-        tour: ['var(--font-space-mono)', 'monospace'],
-        ui: ['var(--font-inter)', 'sans-serif'],
+        tour: ['var(--font-cinzel)', 'serif'],
+        ui: ['var(--font-cormorant)', 'serif'],
       },
       colors: {
         roa: {
