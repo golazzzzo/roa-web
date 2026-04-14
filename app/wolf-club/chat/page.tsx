@@ -331,19 +331,18 @@ const P = 'absolute font-tour leading-[1.15] text-[7px] text-white pointer-event
 */
 
 function NoticiasWatermark() {
-  /* Noticias: editorial top-down feel — creature left, figure right, rest scattered */
   return (
     <>
-      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.08 }}>{CREATURE}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[14%]`}        style={{ opacity: 0.075 }}>{STICK}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[36%]`}        style={{ opacity: 0.07 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.075 }}>{CREATURE}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[20%]`}        style={{ opacity: 0.075 }}>{STICK}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[42%]`}        style={{ opacity: 0.07 }}>{WING}</pre>
       <pre aria-hidden className={`${P} top-0 right-0`}           style={{ opacity: 0.075 }}>{FIGURE}</pre>
 
-      <pre aria-hidden className={`${P} top-[40%] left-[8%]`}     style={{ opacity: 0.075 }}>{CROWN}</pre>
-      <pre aria-hidden className={`${P} top-[38%] left-[34%]`}    style={{ opacity: 0.07 }}>{DRAGON}</pre>
-      <pre aria-hidden className={`${P} top-[42%] left-[58%]`}    style={{ opacity: 0.065 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-[42%] left-[12%]`}    style={{ opacity: 0.07 }}>{DRAGON}</pre>
+      <pre aria-hidden className={`${P} top-[40%] left-[36%]`}    style={{ opacity: 0.07 }}>{CROWN}</pre>
+      <pre aria-hidden className={`${P} top-[38%] left-[60%]`}    style={{ opacity: 0.065 }}>{WING}</pre>
 
-      <pre aria-hidden className={`${P} bottom-0 left-[18%]`}     style={{ opacity: 0.07 }}>{SPIRAL}</pre>
+      <pre aria-hidden className={`${P} bottom-0 left-[24%]`}     style={{ opacity: 0.07 }}>{SPIRAL}</pre>
     </>
   )
 }
@@ -367,19 +366,18 @@ function GeneralWatermark() {
 }
 
 function CanalWatermark() {
-  /* Canal ROA: broadcast feel — heavier left, spiral accent center, figure dominates right */
   return (
     <>
-      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.08 }}>{DRAGON}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[16%]`}        style={{ opacity: 0.075 }}>{CROWN}</pre>
-      <pre aria-hidden className={`${P} top-0 left-[40%]`}        style={{ opacity: 0.07 }}>{STICK}</pre>
+      <pre aria-hidden className={`${P} top-0 left-0`}            style={{ opacity: 0.075 }}>{CREATURE}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[20%]`}        style={{ opacity: 0.075 }}>{STICK}</pre>
+      <pre aria-hidden className={`${P} top-0 left-[42%]`}        style={{ opacity: 0.07 }}>{WING}</pre>
       <pre aria-hidden className={`${P} top-0 right-0`}           style={{ opacity: 0.075 }}>{FIGURE}</pre>
 
-      <pre aria-hidden className={`${P} top-[44%] left-0`}        style={{ opacity: 0.075 }}>{CREATURE}</pre>
-      <pre aria-hidden className={`${P} top-[40%] left-[18%]`}    style={{ opacity: 0.07 }}>{WING}</pre>
-      <pre aria-hidden className={`${P} top-[38%] left-[40%]`}    style={{ opacity: 0.065 }}>{WING}</pre>
+      <pre aria-hidden className={`${P} top-[42%] left-[12%]`}    style={{ opacity: 0.07 }}>{DRAGON}</pre>
+      <pre aria-hidden className={`${P} top-[40%] left-[36%]`}    style={{ opacity: 0.07 }}>{CROWN}</pre>
+      <pre aria-hidden className={`${P} top-[38%] left-[60%]`}    style={{ opacity: 0.065 }}>{WING}</pre>
 
-      <pre aria-hidden className={`${P} bottom-0 left-[26%]`}     style={{ opacity: 0.07 }}>{SPIRAL}</pre>
+      <pre aria-hidden className={`${P} bottom-0 left-[24%]`}     style={{ opacity: 0.07 }}>{SPIRAL}</pre>
     </>
   )
 }
