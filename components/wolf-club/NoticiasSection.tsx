@@ -232,7 +232,7 @@ export default function NoticiasSection() {
                 <div className="max-w-[480px]">
                   <SigilBubble variant="broadcast">
                     {post.title && (
-                      <p className="font-tour text-[9px] tracking-[0.15em] uppercase text-[#c41e1e] mb-1">
+                      <p className="font-tour text-[9px] tracking-[0.15em] uppercase text-[#c41e1e]/70 mb-1">
                         {post.title}
                       </p>
                     )}
@@ -243,7 +243,7 @@ export default function NoticiasSection() {
                       <video src={post.media_url} className="w-full max-h-[400px] mb-1" controls />
                     )}
                     {hasText && (
-                      <p className="font-ui text-[15px] text-white leading-relaxed whitespace-pre-line">
+                      <p className="font-ui text-[15px] text-[#0a0a0a] leading-relaxed whitespace-pre-line">
                         {post.body}
                       </p>
                     )}
