@@ -401,8 +401,8 @@ export default function ComunidadPage() {
 
       <div className="flex flex-1 overflow-hidden pt-[72px] relative">
 
-        {/* Photo background — starts at top:48px (below header row), covers full width */}
-        <div className="absolute left-0 right-0 bottom-0 pointer-events-none" style={{ top: '48px', zIndex: 1, backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        {/* Photo background — top:120px = 72px nav padding + 48px header row */}
+        <div className="absolute left-0 right-0 bottom-0 pointer-events-none" style={{ top: '120px', zIndex: 1, backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
           <div className="absolute inset-0 bg-black/72" />
         </div>
 
