@@ -202,9 +202,9 @@ export default function NoticiasSection() {
     <div className="flex flex-col flex-1 overflow-hidden">
       <div className="flex-1 overflow-y-auto px-4 md:px-8 py-6 flex flex-col gap-3">
         {loading ? (
-          <p className="font-tour text-[10px] tracking-[0.2em] uppercase text-[#3a3a3a] m-auto">Cargando...</p>
+          <p className="font-wc-label text-[10px] tracking-[0.2em] uppercase text-[#3a3a3a] m-auto">Cargando...</p>
         ) : posts.length === 0 ? (
-          <p className="font-tour text-[10px] tracking-[0.2em] uppercase text-[#2e2e2e] m-auto">Pronto — anuncios del club</p>
+          <p className="font-wc-label text-[10px] tracking-[0.2em] uppercase text-[#2e2e2e] m-auto">Pronto — anuncios del club</p>
         ) : posts.map((post) => {
           const hasText = post.body?.trim() && post.body.trim() !== ' '
           return (
@@ -219,12 +219,12 @@ export default function NoticiasSection() {
 
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1.5">
-                  <span className="font-tour text-[10px] tracking-[0.2em] uppercase text-[#f2f2f2]">ROA</span>
-                  <span className="font-tour text-[9px] text-[#2e2e2e]">{formatDate(post.created_at)}</span>
+                  <span className="font-wc-label text-[10px] tracking-[0.2em] uppercase text-[#f2f2f2]">ROA</span>
+                  <span className="font-wc-label text-[9px] text-[#2e2e2e]">{formatDate(post.created_at)}</span>
                   {isAdmin && (
                     <button
                       onClick={() => deletePost(post.id)}
-                      className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity font-tour text-[9px] text-[#3a3a3a] hover:text-red-400/60"
+                      className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity font-wc-label text-[9px] text-[#3a3a3a] hover:text-red-400/60"
                     >Eliminar</button>
                   )}
                 </div>
@@ -232,7 +232,7 @@ export default function NoticiasSection() {
                 <div className="max-w-[480px]">
                   <SigilBubble variant="broadcast">
                     {post.title && (
-                      <p className="font-tour text-[9px] tracking-[0.15em] uppercase text-[#c41e1e]/70 mb-1">
+                      <p className="font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#c41e1e]/70 mb-1">
                         {post.title}
                       </p>
                     )}
@@ -243,7 +243,7 @@ export default function NoticiasSection() {
                       <video src={post.media_url} className="w-full max-h-[400px] mb-1" controls />
                     )}
                     {hasText && (
-                      <p className="font-ui text-[15px] text-[#0a0a0a] leading-relaxed whitespace-pre-line">
+                      <p className="font-wc text-[15px] text-[#0a0a0a] leading-relaxed whitespace-pre-line">
                         {post.body}
                       </p>
                     )}
@@ -258,7 +258,7 @@ export default function NoticiasSection() {
                       <button
                         key={emoji}
                         onClick={() => toggleReaction(post.id, emoji)}
-                        className={`flex items-center gap-1 px-2.5 py-1 rounded-full border transition-all duration-200 font-tour text-[11px] ${
+                        className={`flex items-center gap-1 px-2.5 py-1 rounded-full border transition-all duration-200 font-wc-label text-[11px] ${
                           isActive
                             ? 'border-[#f2f2f2]/20 bg-[#f2f2f2]/8 text-[#f2f2f2]'
                             : 'border-[#1a1a1a] hover:border-[#2a2a2a] text-[#4a4a4a] hover:text-[#8a8a8a]'
@@ -285,10 +285,10 @@ export default function NoticiasSection() {
                 {attachment.type === 'image'
                   ? <img src={attachment.preview} className="h-16 max-w-[120px] object-cover rounded-xl border border-[#2a2a2a]" alt="" />
                   : <div className="h-16 w-28 bg-[#111] border border-[#2a2a2a] rounded-xl flex items-center justify-center">
-                      <span className="font-tour text-[9px] text-[#4a4a4a]">VIDEO</span>
+                      <span className="font-wc-label text-[9px] text-[#4a4a4a]">VIDEO</span>
                     </div>
                 }
-                <button onClick={removeAttachment} className="absolute -top-1 -right-1 w-4 h-4 bg-[#0a0a0a] border border-[#2a2a2a] rounded-full flex items-center justify-center text-[#f2f2f2]/40 hover:text-red-400/70 font-tour text-[7px]">✕</button>
+                <button onClick={removeAttachment} className="absolute -top-1 -right-1 w-4 h-4 bg-[#0a0a0a] border border-[#2a2a2a] rounded-full flex items-center justify-center text-[#f2f2f2]/40 hover:text-red-400/70 font-wc-label text-[7px]">✕</button>
               </div>
             </div>
           )}
@@ -306,13 +306,13 @@ export default function NoticiasSection() {
               placeholder="Escribe un anuncio..."
               maxLength={2000}
               rows={1}
-              className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#c41e1e] outline-none resize-none py-1.5 font-ui text-[15px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
+              className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#c41e1e] outline-none resize-none py-1.5 font-wc text-[15px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
               style={{ lineHeight: '1.6' }}
             />
             <button
               onClick={publish}
               disabled={(!input.trim() && !attachment) || sending}
-              className="shrink-0 bg-[#c41e1e] hover:bg-[#a01818] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-1.5 font-tour text-[9px] tracking-[0.15em] uppercase text-[#f2f2f2] transition-all duration-200"
+              className="shrink-0 bg-[#c41e1e] hover:bg-[#a01818] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-1.5 font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#f2f2f2] transition-all duration-200"
             >↑</button>
           </div>
         </>

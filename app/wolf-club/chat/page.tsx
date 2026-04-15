@@ -314,7 +314,7 @@ const WING     = `⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀�
 ⠀⠀⠀⠀⠀⠀⠀⠀⠙⢻⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀`
 
-const P = 'absolute font-tour leading-[1.15] text-[7px] text-white pointer-events-none select-none z-0 whitespace-pre'
+const P = 'absolute font-wc-label leading-[1.15] text-[7px] text-white pointer-events-none select-none z-0 whitespace-pre'
 
 /*
   Piece pixel sizes (4.2px/char × 8px/line):
@@ -402,46 +402,71 @@ export default function ComunidadPage() {
       <div className="flex flex-1 overflow-hidden pt-[72px]">
 
         {/* Sidebar */}
-        <aside className="w-48 shrink-0 bg-[#0a0a0a] border-r border-[#1a1a1a] flex flex-col overflow-y-auto">
-          <div className="px-4 pt-5 pb-3 border-b border-[#1a1a1a]">
-            <p className="font-tour text-[9px] tracking-[0.25em] uppercase text-[#333]">
+        <aside className="w-52 shrink-0 bg-[#0a0a0a] flex flex-col overflow-y-auto relative">
+          {/* Header */}
+          <div className="px-5 pt-5 pb-4 relative">
+            <p className="font-wc-label text-[9px] tracking-[0.3em] uppercase text-[#c41e1e]/60">
               Wolf Club
             </p>
+            {/* Gradient separator */}
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#c41e1e]/40 via-[#c41e1e]/15 to-transparent" />
           </div>
-          <nav className="flex flex-col gap-0 px-2 pt-3">
-            {CHANNELS.map(ch => {
+
+          <nav className="flex flex-col px-3 pt-3 gap-1.5">
+            {CHANNELS.map((ch, i) => {
               const isActive = active === ch.id
               return (
                 <button
                   key={ch.id}
                   onClick={() => setActive(ch.id)}
-                  className={`w-full text-left px-3 py-2 flex items-center gap-2 transition-all duration-150 ${
-                    isActive ? 'text-[#f2f2f2]' : 'text-[#333] hover:text-[#888]'
-                  }`}
+                  className="w-full text-left relative transition-all duration-200"
                 >
-                  <span className={`font-tour text-[10px] ${isActive ? 'text-[#c41e1e]' : 'text-[#252525]'}`}>#</span>
-                  <span className="font-tour text-[10px] tracking-[0.05em] uppercase">{ch.label}</span>
-                  {isActive && <span className="ml-auto w-1 h-1 bg-[#c41e1e] rounded-full" />}
+                  {/* Sigil-shaped active card */}
+                  {isActive && (
+                    <div
+                      className="absolute inset-0 bg-[#c41e1e]/10"
+                      style={{ clipPath: 'polygon(8px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 8px)' }}
+                    />
+                  )}
+                  {/* Left accent bar */}
+                  {isActive && (
+                    <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#c41e1e] to-[#c41e1e]/30" />
+                  )}
+                  <div className={`relative px-3 py-2.5 flex items-center gap-2.5 ${isActive ? 'text-[#f2f2f2]' : 'text-[#3a3a3a] hover:text-[#666]'}`}>
+                    <span className={`font-wc-label text-[11px] leading-none ${isActive ? 'text-[#c41e1e]' : 'text-[#2a2a2a]'}`}>#</span>
+                    <span className="font-wc-label text-[9px] tracking-[0.12em] uppercase">{ch.label}</span>
+                  </div>
                 </button>
               )
             })}
           </nav>
+
+          {/* Right edge — double line */}
+          <div className="absolute right-0 top-0 bottom-0 flex gap-px">
+            <div className="w-px bg-[#222]" />
+            <div className="w-px bg-gradient-to-b from-[#c41e1e]/25 via-[#c41e1e]/08 to-transparent" />
+          </div>
         </aside>
 
         {/* Content */}
         <div className="flex-1 flex flex-col overflow-hidden bg-[#0a0a0a] relative">
 
-          {active === 'noticias' && <NoticiasWatermark />}
-          {active === 'general'  && <GeneralWatermark />}
-          {active === 'canal'    && <CanalWatermark />}
+          {/* Watermarks — hard-clipped to this container */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+            {active === 'noticias' && <NoticiasWatermark />}
+            {active === 'general'  && <GeneralWatermark />}
+            {active === 'canal'    && <CanalWatermark />}
+          </div>
 
           {/* Channel header */}
-          <div className="shrink-0 border-b border-[#1a1a1a] px-6 h-10 flex items-center gap-3 relative z-10">
-            <span className="font-tour text-[10px] text-[#c41e1e]">#</span>
-            <span className="font-tour text-[10px] tracking-[0.1em] uppercase text-[#f2f2f2]">
+          <div className="shrink-0 px-6 h-11 flex items-center gap-3 relative z-10">
+            {/* Gradient bottom border */}
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#c41e1e]/50 via-[#2a2a2a] to-transparent" />
+            <span className="font-wc-label text-[10px] text-[#c41e1e]">#</span>
+            <span className="font-wc-label text-[10px] tracking-[0.1em] uppercase text-[#f2f2f2]">
               {activeChannel.label}
             </span>
-            <span className="font-tour text-[9px] text-[#2a2a2a] tracking-[0.1em] uppercase ml-2">
+            <span className="font-wc-label text-[9px] text-[#2a2a2a] tracking-[0.1em] uppercase ml-2">
               — {activeChannel.description}
             </span>
           </div>

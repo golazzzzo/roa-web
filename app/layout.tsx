@@ -1,8 +1,23 @@
 import type { Metadata } from 'next'
-import { Cinzel, Cormorant_Garamond } from 'next/font/google'
+import { Space_Mono, Inter, Cinzel, Spectral } from 'next/font/google'
 import { AuthProvider } from '@/lib/auth-context'
 import './globals.css'
 
+// Global — used everywhere except Wolf Club chat
+const spaceMono = Space_Mono({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  variable: '--font-space-mono',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
+
+// Wolf Club exclusive — scoped via font-wc-label / font-wc Tailwind classes
 const cinzel = Cinzel({
   weight: ['400', '500', '700'],
   subsets: ['latin'],
@@ -10,10 +25,10 @@ const cinzel = Cinzel({
   display: 'swap',
 })
 
-const cormorant = Cormorant_Garamond({
+const spectral = Spectral({
   weight: ['300', '400', '500', '600'],
   subsets: ['latin'],
-  variable: '--font-cormorant',
+  variable: '--font-spectral',
   display: 'swap',
 })
 
@@ -33,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${cinzel.variable} ${cormorant.variable}`}>
+    <html lang="es" className={`${spaceMono.variable} ${inter.variable} ${cinzel.variable} ${spectral.variable}`}>
       <body>
         <AuthProvider>
           {children}

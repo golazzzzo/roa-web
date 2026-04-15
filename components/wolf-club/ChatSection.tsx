@@ -20,7 +20,7 @@ async function uploadMedia(file: File): Promise<{ url: string; type: 'image' | '
 function Avatar({ name }: { name: string }) {
   return (
     <div className="w-7 h-7 rounded-full bg-[#1f1f1f] border border-[#2a2a2a] flex items-center justify-center shrink-0">
-      <span className="font-tour text-[9px] text-[#6a6a6a] uppercase">{name[0]}</span>
+      <span className="font-wc-label text-[9px] text-[#6a6a6a] uppercase">{name[0]}</span>
     </div>
   )
 }
@@ -174,9 +174,9 @@ export default function ChatSection() {
     <div className="flex flex-col flex-1 overflow-hidden">
       <div className="flex-1 overflow-y-auto px-6 py-5 flex flex-col gap-4">
         {loading ? (
-          <p className="font-tour text-[10px] tracking-[0.15em] uppercase text-[#2a2a2a] m-auto">Cargando...</p>
+          <p className="font-wc-label text-[10px] tracking-[0.15em] uppercase text-[#2a2a2a] m-auto">Cargando...</p>
         ) : messages.length === 0 ? (
-          <p className="font-tour text-[10px] tracking-[0.15em] uppercase text-[#2a2a2a] m-auto">Sé el primero en escribir</p>
+          <p className="font-wc-label text-[10px] tracking-[0.15em] uppercase text-[#2a2a2a] m-auto">Sé el primero en escribir</p>
         ) : (
           <AnimatePresence initial={false}>
             {grouped.map((group) => {
@@ -191,10 +191,10 @@ export default function ChatSection() {
                   className={`flex flex-col gap-1 max-w-[65%] ${isOwn ? 'self-end items-end' : 'self-start items-start'}`}
                 >
                   <div className={`flex items-center gap-2 px-0.5 ${isOwn ? 'flex-row-reverse' : ''}`}>
-                    <span className={`font-tour text-[9px] tracking-[0.15em] uppercase ${isOwn ? 'text-[#c41e1e]' : 'text-[#444]'}`}>
+                    <span className={`font-wc-label text-[9px] tracking-[0.15em] uppercase ${isOwn ? 'text-[#c41e1e]' : 'text-[#444]'}`}>
                       {isOwn ? 'Tú' : name}
                     </span>
-                    <span className="font-tour text-[9px] text-[#252525]">
+                    <span className="font-wc-label text-[9px] text-[#252525]">
                       {formatTime(group.msgs[group.msgs.length - 1].created_at)}
                     </span>
                   </div>
@@ -212,7 +212,7 @@ export default function ChatSection() {
                             <video src={msg.media_url} className="max-w-[260px] block mb-1" controls />
                           )}
                           {hasText && (
-                            <p className={`font-ui text-[15px] leading-relaxed ${isOwn ? 'text-white' : 'text-[#d0d0d0]'}`}>
+                            <p className={`font-wc text-[15px] leading-relaxed ${isOwn ? 'text-white' : 'text-[#d0d0d0]'}`}>
                               {msg.content}
                             </p>
                           )}
@@ -220,7 +220,7 @@ export default function ChatSection() {
                         {isOwn && (
                           <button
                             onClick={() => deleteMessage(msg.id)}
-                            className="absolute top-0 -right-5 opacity-0 group-hover:opacity-100 transition-opacity font-tour text-[9px] text-[#333] hover:text-[#c41e1e]"
+                            className="absolute top-0 -right-5 opacity-0 group-hover:opacity-100 transition-opacity font-wc-label text-[9px] text-[#333] hover:text-[#c41e1e]"
                           >✕</button>
                         )}
                       </div>
@@ -240,10 +240,10 @@ export default function ChatSection() {
             {attachment.type === 'image'
               ? <img src={attachment.preview} className="h-16 max-w-[120px] object-cover border border-[#1a1a1a]" alt="" />
               : <div className="h-16 w-28 bg-[#111] border border-[#1a1a1a] flex items-center justify-center">
-                  <span className="font-tour text-[9px] tracking-[0.1em] uppercase text-[#333]">Video</span>
+                  <span className="font-wc-label text-[9px] tracking-[0.1em] uppercase text-[#333]">Video</span>
                 </div>
             }
-            <button onClick={removeAttachment} className="absolute -top-1 -right-1 w-4 h-4 bg-[#0a0a0a] border border-[#1a1a1a] flex items-center justify-center font-tour text-[9px] text-[#333] hover:text-[#c41e1e]">✕</button>
+            <button onClick={removeAttachment} className="absolute -top-1 -right-1 w-4 h-4 bg-[#0a0a0a] border border-[#1a1a1a] flex items-center justify-center font-wc-label text-[9px] text-[#333] hover:text-[#c41e1e]">✕</button>
           </div>
         </div>
       )}
@@ -252,7 +252,7 @@ export default function ChatSection() {
         <input ref={fileInputRef} type="file" accept="image/*,video/*" className="hidden" onChange={handleFileSelect} />
         <button
           onClick={() => fileInputRef.current?.click()}
-          className="shrink-0 w-7 h-7 flex items-center justify-center border border-[#1a1a1a] hover:border-[#c41e1e] text-[#333] hover:text-[#c41e1e] transition-all duration-200 font-tour text-base leading-none"
+          className="shrink-0 w-7 h-7 flex items-center justify-center border border-[#1a1a1a] hover:border-[#c41e1e] text-[#333] hover:text-[#c41e1e] transition-all duration-200 font-wc-label text-base leading-none"
         >+</button>
         <textarea
           ref={textareaRef}
@@ -262,13 +262,13 @@ export default function ChatSection() {
           placeholder="Mensaje..."
           maxLength={500}
           rows={1}
-          className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#c41e1e] outline-none resize-none py-1.5 font-ui text-[15px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
+          className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#c41e1e] outline-none resize-none py-1.5 font-wc text-[15px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
           style={{ lineHeight: '1.5' }}
         />
         <button
           onClick={sendMessage}
           disabled={(!input.trim() && !attachment) || sending}
-          className="shrink-0 bg-[#c41e1e] hover:bg-[#a01818] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-1.5 font-tour text-[9px] tracking-[0.15em] uppercase text-[#f2f2f2] transition-all duration-200"
+          className="shrink-0 bg-[#c41e1e] hover:bg-[#a01818] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-1.5 font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#f2f2f2] transition-all duration-200"
         >
           {sending ? '...' : 'Enviar'}
         </button>
