@@ -479,7 +479,11 @@ export default function ComunidadPage() {
           {/* Section content */}
           <div className="flex-1 overflow-hidden flex flex-col relative" style={{ zIndex: 5 }}>
             {/* Watermarks */}
-            {/* Watermarks hidden for now */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1, opacity: 0.68 }}>
+              {active === 'noticias' && <NoticiasWatermark />}
+              {active === 'general'  && <GeneralWatermark />}
+              {active === 'canal'    && <CanalWatermark />}
+            </div>
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
