@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/lib/auth-context'
 import type { ChatMessage } from '@/lib/supabase'
-import CyberFrame, { CyberFrameVariant } from './CyberFrame'
 
 type Attachment = { file: File; preview: string; type: 'image' | 'video' }
 
@@ -204,19 +203,23 @@ export default function ChatSection() {
                     const isLast = i === group.msgs.length - 1
                     return (
                       <div key={msg.id} className="relative group">
-                        <CyberFrame variant={isOwn ? 'own' : 'other'}>
+                        <div className={`px-4 py-2.5 ${
+                          isOwn
+                            ? 'bg-[#a0a0a0]/20 rounded-2xl rounded-br-sm'
+                            : 'bg-[#1a1a1a] rounded-2xl rounded-bl-sm'
+                        }`}>
                           {msg.media_url && msg.media_type === 'image' && (
-                            <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block mb-1" />
+                            <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block mb-1 rounded-lg" />
                           )}
                           {msg.media_url && msg.media_type === 'video' && (
-                            <video src={msg.media_url} className="max-w-[260px] block mb-1" controls />
+                            <video src={msg.media_url} className="max-w-[260px] block mb-1 rounded-lg" controls />
                           )}
                           {hasText && (
-                            <p className={`font-wc text-[15px] leading-relaxed ${isOwn ? 'text-[#e8e8e8]' : 'text-[#d0d0d0]'}`}>
+                            <p className={`font-wc text-[15px] leading-relaxed ${isOwn ? 'text-[#e8e8e8]' : 'text-[#b0b0b0]'}`}>
                               {msg.content}
                             </p>
                           )}
-                        </CyberFrame>
+                        </div>
                         {isOwn && (
                           <button
                             onClick={() => deleteMessage(msg.id)}

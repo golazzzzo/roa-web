@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { supabase, REACTION_EMOJIS } from '@/lib/supabase'
 import { useAuth } from '@/lib/auth-context'
 import type { NewsPost } from '@/lib/supabase'
-import CyberFrame from './CyberFrame'
 
 type ReactionCounts = Record<string, Record<string, number>>
 type Attachment = { file: File; preview: string; type: 'image' | 'video' }
@@ -230,24 +229,24 @@ export default function NoticiasSection() {
                 </div>
 
                 <div className="max-w-[480px]">
-                  <CyberFrame variant="broadcast">
+                  <div className="bg-[#141414] border border-[#2a2a2a] rounded-2xl px-5 py-4">
                     {post.title && (
-                      <p className="font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#a0a0a0]/70 mb-1">
+                      <p className="font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#a0a0a0]/70 mb-2">
                         {post.title}
                       </p>
                     )}
                     {(post.media_url || post.image_url) && (post.media_type === 'image' || post.image_url) && (
-                      <img src={post.media_url ?? post.image_url ?? ''} alt="" className="w-full max-h-[400px] object-cover mb-1" />
+                      <img src={post.media_url ?? post.image_url ?? ''} alt="" className="w-full max-h-[400px] object-cover mb-3 rounded-lg" />
                     )}
                     {post.media_url && post.media_type === 'video' && (
-                      <video src={post.media_url} className="w-full max-h-[400px] mb-1" controls />
+                      <video src={post.media_url} className="w-full max-h-[400px] mb-3 rounded-lg" controls />
                     )}
                     {hasText && (
                       <p className="font-wc text-[15px] text-[#e8e8e8] leading-relaxed whitespace-pre-line">
                         {post.body}
                       </p>
                     )}
-                  </CyberFrame>
+                  </div>
                 </div>
 
                 <div className="flex items-center gap-1.5 mt-2 flex-wrap">

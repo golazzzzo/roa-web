@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { supabase, REACTION_EMOJIS } from '@/lib/supabase'
 import type { CanalPost } from '@/lib/supabase'
 import { useAuth } from '@/lib/auth-context'
-import CyberFrame from './CyberFrame'
 
 type ReactionCounts = Record<string, Record<string, number>>
 type Attachment = { file: File; preview: string; type: 'image' | 'video' }
@@ -231,19 +230,19 @@ export default function CanalSection() {
                 </div>
 
                 <div className="max-w-[480px]">
-                  <CyberFrame variant="broadcast">
+                  <div className="bg-[#141414] border border-[#2a2a2a] rounded-2xl px-5 py-4">
                     {post.media_url && post.media_type === 'image' && (
-                      <img src={post.media_url} alt="" className="w-full max-h-[400px] object-cover mb-1" />
+                      <img src={post.media_url} alt="" className="w-full max-h-[400px] object-cover mb-3 rounded-lg" />
                     )}
                     {post.media_url && post.media_type === 'video' && (
-                      <video src={post.media_url} className="w-full max-h-[400px] mb-1" controls />
+                      <video src={post.media_url} className="w-full max-h-[400px] mb-3 rounded-lg" controls />
                     )}
                     {hasText && (
                       <p className="font-wc text-[15px] text-[#e8e8e8] leading-relaxed whitespace-pre-line">
                         {post.body}
                       </p>
                     )}
-                  </CyberFrame>
+                  </div>
                 </div>
 
                 {/* Reactions */}
