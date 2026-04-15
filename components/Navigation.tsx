@@ -86,7 +86,7 @@ export default function Navigation() {
         {isWolfClubLanding ? (
           <div className="w-24 h-24 shrink-0 opacity-0 pointer-events-none" />
         ) : isWolfClub ? (
-          <div className="relative shrink-0 w-12 h-12">
+          <div className="relative shrink-0 w-16 h-16">
             <Wolf2Scene3D />
             {/* Overlay to catch clicks (canvas consumes pointer events) */}
             <div
