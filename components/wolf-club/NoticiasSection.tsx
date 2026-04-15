@@ -229,7 +229,7 @@ export default function NoticiasSection() {
                 </div>
 
                 <div className="max-w-[480px]">
-                  <div className="rounded-2xl px-5 py-4" style={{ background: '#141414', border: '1px solid #222222' }}>
+                  <div className="rounded-2xl px-5 py-4" style={{ background: '#2a1212', border: '1px solid #3a1818' }}>
                     {post.title && (
                       <p className="font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#a0a0a0]/70 mb-2">
                         {post.title}
