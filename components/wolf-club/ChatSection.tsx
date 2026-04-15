@@ -207,7 +207,7 @@ export default function ChatSection() {
                           isOwn
                             ? 'rounded-2xl rounded-br-sm'
                             : 'rounded-2xl rounded-bl-sm'
-                        }`} style={{ background: isOwn ? 'rgba(255,255,255,0.09)' : 'rgba(255,255,255,0.03)' }}>
+                        }`} style={{ background: isOwn ? '#333333' : '#141414' }}>
                           {msg.media_url && msg.media_type === 'image' && (
                             <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block mb-1 rounded-lg" />
                           )}
