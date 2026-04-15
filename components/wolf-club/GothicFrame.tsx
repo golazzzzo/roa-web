@@ -105,7 +105,7 @@ function TribalEdge({
 
 export default function GothicFrame({
   children,
-  color = '#c41e1e',
+  color = '#5533ee',
 }: {
   children: React.ReactNode
   color?: string

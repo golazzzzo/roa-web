@@ -191,7 +191,7 @@ export default function ChatSection() {
                   className={`flex flex-col gap-1 max-w-[65%] ${isOwn ? 'self-end items-end' : 'self-start items-start'}`}
                 >
                   <div className={`flex items-center gap-2 px-0.5 ${isOwn ? 'flex-row-reverse' : ''}`}>
-                    <span className={`font-wc-label text-[9px] tracking-[0.15em] uppercase ${isOwn ? 'text-[#c41e1e]' : 'text-[#444]'}`}>
+                    <span className={`font-wc-label text-[9px] tracking-[0.15em] uppercase ${isOwn ? 'text-[#5533ee]' : 'text-[#444]'}`}>
                       {isOwn ? 'Tú' : name}
                     </span>
                     <span className="font-wc-label text-[9px] text-[#252525]">
@@ -220,7 +220,7 @@ export default function ChatSection() {
                         {isOwn && (
                           <button
                             onClick={() => deleteMessage(msg.id)}
-                            className="absolute top-0 -right-5 opacity-0 group-hover:opacity-100 transition-opacity font-wc-label text-[9px] text-[#333] hover:text-[#c41e1e]"
+                            className="absolute top-0 -right-5 opacity-0 group-hover:opacity-100 transition-opacity font-wc-label text-[9px] text-[#333] hover:text-[#5533ee]"
                           >✕</button>
                         )}
                       </div>
@@ -243,7 +243,7 @@ export default function ChatSection() {
                   <span className="font-wc-label text-[9px] tracking-[0.1em] uppercase text-[#333]">Video</span>
                 </div>
             }
-            <button onClick={removeAttachment} className="absolute -top-1 -right-1 w-4 h-4 bg-[#0a0a0a] border border-[#1a1a1a] flex items-center justify-center font-wc-label text-[9px] text-[#333] hover:text-[#c41e1e]">✕</button>
+            <button onClick={removeAttachment} className="absolute -top-1 -right-1 w-4 h-4 bg-[#0a0a0a] border border-[#1a1a1a] flex items-center justify-center font-wc-label text-[9px] text-[#333] hover:text-[#5533ee]">✕</button>
           </div>
         </div>
       )}
@@ -252,7 +252,7 @@ export default function ChatSection() {
         <input ref={fileInputRef} type="file" accept="image/*,video/*" className="hidden" onChange={handleFileSelect} />
         <button
           onClick={() => fileInputRef.current?.click()}
-          className="shrink-0 w-7 h-7 flex items-center justify-center border border-[#1a1a1a] hover:border-[#c41e1e] text-[#333] hover:text-[#c41e1e] transition-all duration-200 font-wc-label text-base leading-none"
+          className="shrink-0 w-7 h-7 flex items-center justify-center border border-[#1a1a1a] hover:border-[#5533ee] text-[#333] hover:text-[#5533ee] transition-all duration-200 font-wc-label text-base leading-none"
         >+</button>
         <textarea
           ref={textareaRef}
@@ -262,13 +262,13 @@ export default function ChatSection() {
           placeholder="Mensaje..."
           maxLength={500}
           rows={1}
-          className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#c41e1e] outline-none resize-none py-1.5 font-wc text-[15px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
+          className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#5533ee] outline-none resize-none py-1.5 font-wc text-[15px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
           style={{ lineHeight: '1.5' }}
         />
         <button
           onClick={sendMessage}
           disabled={(!input.trim() && !attachment) || sending}
-          className="shrink-0 bg-[#c41e1e] hover:bg-[#a01818] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-1.5 font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#f2f2f2] transition-all duration-200"
+          className="shrink-0 bg-[#5533ee] hover:bg-[#a01818] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-1.5 font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#f2f2f2] transition-all duration-200"
         >
           {sending ? '...' : 'Enviar'}
         </button>

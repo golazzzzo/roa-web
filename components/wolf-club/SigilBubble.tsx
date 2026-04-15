@@ -16,16 +16,16 @@ const CLIP: Record<SigilVariant, string> = {
 }
 
 const BG: Record<SigilVariant, string> = {
-  own: '#c41e1e',
-  other: '#161616',
-  broadcast: '#1a1408',
+  own: '#5533ee',
+  other: 'rgba(255,255,255,0.04)',
+  broadcast: 'transparent',
 }
 
 // drop-shadow follows the clip-path outline — acts as a thin glowing edge
 const GLOW: Record<SigilVariant, string> = {
-  own: 'drop-shadow(0 0 0.5px rgba(255,60,60,0.55)) drop-shadow(0 2px 8px rgba(196,30,30,0.2))',
-  other: 'drop-shadow(0 0 0.5px rgba(90,90,90,0.5))',
-  broadcast: 'drop-shadow(0 0 1px rgba(180,130,30,0.45)) drop-shadow(0 2px 14px rgba(0,0,0,0.5))',
+  own: 'drop-shadow(0 0 1px rgba(110,80,255,0.7)) drop-shadow(0 2px 10px rgba(85,51,238,0.35))',
+  other: 'drop-shadow(0 0 0.5px rgba(255,255,255,0.1))',
+  broadcast: 'drop-shadow(0 0 2px rgba(85,51,238,0.55)) drop-shadow(0 0 8px rgba(85,51,238,0.2))',
 }
 
 const PADDING: Record<SigilVariant, string> = {

@@ -405,12 +405,12 @@ export default function ComunidadPage() {
         <aside className="w-52 shrink-0 bg-[#0a0a0a] flex flex-col overflow-y-auto relative">
           {/* Header */}
           <div className="px-5 pt-5 pb-4 relative">
-            <p className="font-wc-label text-[9px] tracking-[0.3em] uppercase text-[#c41e1e]/70">
+            <p className="font-wc-label text-[9px] tracking-[0.3em] uppercase text-[#5533ee]/70">
               Wolf Club
             </p>
             {/* Thick compound header separator */}
             <div className="absolute bottom-0 left-0 right-0 flex flex-col">
-              <div className="h-[2px] bg-gradient-to-r from-[#c41e1e]/70 via-[#c41e1e]/30 to-transparent" />
+              <div className="h-[2px] bg-gradient-to-r from-[#5533ee]/70 via-[#5533ee]/30 to-transparent" />
               <div className="h-px bg-[#0d0d0d]" />
             </div>
           </div>
@@ -427,18 +427,18 @@ export default function ComunidadPage() {
                   {/* Sigil-shaped active card */}
                   {isActive && (
                     <div
-                      className="absolute inset-0 bg-[#c41e1e]/12"
+                      className="absolute inset-0 bg-[#5533ee]/12"
                       style={{ clipPath: 'polygon(10px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 10px)' }}
                     />
                   )}
                   {/* Left accent bar — 3px thick */}
                   <div className={`absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-200 ${
                     isActive
-                      ? 'bg-gradient-to-b from-[#c41e1e] via-[#c41e1e]/60 to-transparent'
+                      ? 'bg-gradient-to-b from-[#5533ee] via-[#5533ee]/60 to-transparent'
                       : 'bg-[#1a1a1a]'
                   }`} />
                   <div className={`relative pl-4 pr-3 py-3 flex items-center gap-2.5 ${isActive ? 'text-[#f2f2f2]' : 'text-[#383838] hover:text-[#666]'}`}>
-                    <span className={`font-wc-label text-[11px] leading-none ${isActive ? 'text-[#c41e1e]' : 'text-[#252525]'}`}>#</span>
+                    <span className={`font-wc-label text-[11px] leading-none ${isActive ? 'text-[#5533ee]' : 'text-[#252525]'}`}>#</span>
                     <span className="font-wc-label text-[10px] tracking-[0.12em] uppercase">{ch.label}</span>
                   </div>
                   {/* Bottom rule between channels */}
@@ -452,7 +452,7 @@ export default function ComunidadPage() {
 
           {/* Right edge — thick compound bar */}
           <div className="absolute right-0 top-0 bottom-0 flex">
-            <div className="w-[3px] bg-gradient-to-b from-[#c41e1e] via-[#c41e1e]/35 to-[#c41e1e]/10" />
+            <div className="w-[3px] bg-gradient-to-b from-[#5533ee] via-[#5533ee]/35 to-[#5533ee]/10" />
             <div className="w-[2px] bg-[#111]" />
             <div className="w-px bg-[#1e1e1e]" />
           </div>
@@ -470,7 +470,7 @@ export default function ComunidadPage() {
 
           {/* Channel header — solid bg masks watermarks */}
           <div className="shrink-0 bg-[#0a0a0a] px-6 h-12 flex items-center gap-3 relative" style={{ zIndex: 10 }}>
-            <span className="font-wc-label text-[10px] text-[#c41e1e]">#</span>
+            <span className="font-wc-label text-[10px] text-[#5533ee]">#</span>
             <span className="font-wc-label text-[11px] tracking-[0.12em] uppercase text-[#f2f2f2]">
               {activeChannel.label}
             </span>
@@ -479,7 +479,7 @@ export default function ComunidadPage() {
             </span>
             {/* Thick compound bottom separator */}
             <div className="absolute bottom-0 left-0 right-0 flex flex-col">
-              <div className="h-[3px] bg-gradient-to-r from-[#c41e1e] via-[#c41e1e]/40 to-transparent" />
+              <div className="h-[3px] bg-gradient-to-r from-[#5533ee] via-[#5533ee]/40 to-transparent" />
               <div className="h-[2px] bg-[#0d0d0d]" />
             </div>
           </div>
