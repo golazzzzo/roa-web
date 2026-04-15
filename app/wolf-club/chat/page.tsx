@@ -466,14 +466,7 @@ export default function ComunidadPage() {
         {/* Content */}
         <div className="flex-1 flex flex-col overflow-hidden bg-[#0a0a0a] relative">
 
-          {/* Watermarks — strictly clipped to this container */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
-            {active === 'noticias' && <NoticiasWatermark />}
-            {active === 'general'  && <GeneralWatermark />}
-            {active === 'canal'    && <CanalWatermark />}
-          </div>
-
-          {/* Channel header */}
+          {/* Channel header — solid, above the photo */}
           <div className="shrink-0 bg-[#0a0a0a] px-6 h-12 flex items-center gap-3 relative" style={{ zIndex: 10 }}>
             <span className="font-display text-[15px] text-[#a0a0a0]">#</span>
             <span className="font-display text-[14px] tracking-[0.08em] uppercase text-[#f2f2f2]">
@@ -484,10 +477,16 @@ export default function ComunidadPage() {
             </span>
           </div>
 
-          {/* Section content — photo lives only here, below the chain */}
-          <div className="flex-1 overflow-hidden flex flex-col relative z-10" style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          {/* Section content — photo + symbols live only here, below the chain */}
+          <div className="flex-1 overflow-hidden flex flex-col relative" style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             {/* Dark overlay */}
             <div className="absolute inset-0 bg-black/75 pointer-events-none" style={{ zIndex: 0 }} />
+            {/* Watermarks — on top of overlay, below messages */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
+              {active === 'noticias' && <NoticiasWatermark />}
+              {active === 'general'  && <GeneralWatermark />}
+              {active === 'canal'    && <CanalWatermark />}
+            </div>
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -495,7 +494,8 @@ export default function ComunidadPage() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.15 }}
-                className="flex-1 flex flex-col overflow-hidden"
+                className="flex-1 flex flex-col overflow-hidden relative"
+                style={{ zIndex: 2 }}
               >
                 {active === 'noticias' && <NoticiasSection />}
                 {active === 'general'  && <ChatSection />}
