@@ -399,7 +399,9 @@ export default function ComunidadPage() {
     <main className="h-[100dvh] flex flex-col overflow-hidden bg-[#0a0a0a]">
       <Navigation />
 
-      <div className="flex flex-1 overflow-hidden pt-[72px] relative">
+      <div className="flex flex-1 overflow-hidden pt-[72px] relative" style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        {/* Dark overlay — covers only below the header row */}
+        <div className="absolute left-0 right-0 bottom-0 bg-black/72 pointer-events-none" style={{ top: '48px', zIndex: 0 }} />
 
         {/* ── Separators — both in the same parent so they share one coordinate system ── */}
         {/* Vertical chain: right edge of sidebar (w-52 = 208px), starts below nav padding */}
@@ -418,9 +420,9 @@ export default function ComunidadPage() {
         }} />
 
         {/* Sidebar */}
-        <aside className="w-52 shrink-0 bg-[#0a0a0a] flex flex-col overflow-y-auto relative">
-          {/* Header — h-12 matches channel header height so horizontal chain lines up */}
-          <div className="h-12 px-5 flex items-center shrink-0">
+        <aside className="w-52 shrink-0 flex flex-col overflow-y-auto relative" style={{ zIndex: 5 }}>
+          {/* Header — solid black, above the photo */}
+          <div className="h-12 px-5 flex items-center shrink-0 bg-[#0a0a0a]">
             <p className="font-display text-[13px] tracking-[0.15em] uppercase text-[#a0a0a0]/70">
               Wolf Club
             </p>
@@ -448,8 +450,8 @@ export default function ComunidadPage() {
                       ? 'bg-gradient-to-b from-[#a0a0a0] via-[#a0a0a0]/60 to-transparent'
                       : 'bg-[#1a1a1a]'
                   }`} />
-                  <div className={`relative pl-4 pr-3 py-3 flex items-center gap-2.5 ${isActive ? 'text-[#f2f2f2]' : 'text-[#383838] hover:text-[#666]'}`}>
-                    <span className={`font-display text-[15px] leading-none ${isActive ? 'text-[#a0a0a0]' : 'text-[#252525]'}`}>#</span>
+                  <div className={`relative pl-4 pr-3 py-3 flex items-center gap-2.5 ${isActive ? 'text-[#f2f2f2]' : 'text-[#777] hover:text-[#bbb]'}`}>
+                    <span className={`font-display text-[15px] leading-none ${isActive ? 'text-[#a0a0a0]' : 'text-[#555]'}`}>#</span>
                     <span className="font-display text-[13px] tracking-[0.08em] uppercase">{ch.label}</span>
                   </div>
                   {/* Bottom rule between channels */}
@@ -464,9 +466,9 @@ export default function ComunidadPage() {
         </aside>
 
         {/* Content */}
-        <div className="flex-1 flex flex-col overflow-hidden bg-[#0a0a0a] relative">
+        <div className="flex-1 flex flex-col overflow-hidden relative" style={{ zIndex: 5 }}>
 
-          {/* Channel header — solid, above the photo */}
+          {/* Channel header — solid black, above the photo */}
           <div className="shrink-0 bg-[#0a0a0a] px-6 h-12 flex items-center gap-3 relative" style={{ zIndex: 10 }}>
             <span className="font-display text-[15px] text-[#a0a0a0]">#</span>
             <span className="font-display text-[14px] tracking-[0.08em] uppercase text-[#f2f2f2]">
@@ -477,11 +479,9 @@ export default function ComunidadPage() {
             </span>
           </div>
 
-          {/* Section content — photo + symbols live only here, below the chain */}
-          <div className="flex-1 overflow-hidden flex flex-col relative" style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            {/* Dark overlay */}
-            <div className="absolute inset-0 bg-black/75 pointer-events-none" style={{ zIndex: 0 }} />
-            {/* Watermarks — on top of overlay, below messages */}
+          {/* Section content */}
+          <div className="flex-1 overflow-hidden flex flex-col relative">
+            {/* Watermarks — on top of the dim overlay, below messages */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
               {active === 'noticias' && <NoticiasWatermark />}
               {active === 'general'  && <GeneralWatermark />}
