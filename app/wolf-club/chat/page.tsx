@@ -405,7 +405,7 @@ export default function ComunidadPage() {
         <aside className="w-52 shrink-0 bg-[#0a0a0a] flex flex-col overflow-y-auto relative">
           {/* Header */}
           <div className="px-5 pt-5 pb-4 relative">
-            <p className="font-wc-label text-[9px] tracking-[0.3em] uppercase text-[#5533ee]/70">
+            <p className="font-display text-[13px] tracking-[0.15em] uppercase text-[#5533ee]/70">
               Wolf Club
             </p>
             {/* Thick compound header separator */}
@@ -438,8 +438,8 @@ export default function ComunidadPage() {
                       : 'bg-[#1a1a1a]'
                   }`} />
                   <div className={`relative pl-4 pr-3 py-3 flex items-center gap-2.5 ${isActive ? 'text-[#f2f2f2]' : 'text-[#383838] hover:text-[#666]'}`}>
-                    <span className={`font-wc-label text-[11px] leading-none ${isActive ? 'text-[#5533ee]' : 'text-[#252525]'}`}>#</span>
-                    <span className="font-wc-label text-[10px] tracking-[0.12em] uppercase">{ch.label}</span>
+                    <span className={`font-display text-[15px] leading-none ${isActive ? 'text-[#5533ee]' : 'text-[#252525]'}`}>#</span>
+                    <span className="font-display text-[13px] tracking-[0.08em] uppercase">{ch.label}</span>
                   </div>
                   {/* Bottom rule between channels */}
                   {!isActive && (
@@ -470,8 +470,8 @@ export default function ComunidadPage() {
 
           {/* Channel header — solid bg masks watermarks */}
           <div className="shrink-0 bg-[#0a0a0a] px-6 h-12 flex items-center gap-3 relative" style={{ zIndex: 10 }}>
-            <span className="font-wc-label text-[10px] text-[#5533ee]">#</span>
-            <span className="font-wc-label text-[11px] tracking-[0.12em] uppercase text-[#f2f2f2]">
+            <span className="font-display text-[15px] text-[#5533ee]">#</span>
+            <span className="font-display text-[14px] tracking-[0.08em] uppercase text-[#f2f2f2]">
               {activeChannel.label}
             </span>
             <span className="font-wc-label text-[9px] text-[#2a2a2a] tracking-[0.1em] uppercase ml-2">

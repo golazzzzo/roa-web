@@ -111,7 +111,7 @@ export default function Navigation() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 1.2 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
                   whileHover={{ y: -2 }}
-                  className={`font-tour text-[10px] tracking-[0.2em] uppercase transition-colors duration-200 ${
+                  className={`font-display text-[13px] tracking-[0.15em] uppercase transition-colors duration-200 ${
                     pathname === link.href ? 'text-[#f2f2f2]' : 'text-[#4a4a4a] hover:text-[#f2f2f2]'
                   }`}
                 >
