@@ -409,9 +409,9 @@ export default function ComunidadPage() {
           backgroundRepeat: 'repeat-y',
           backgroundSize: '8px 16px',
         }} />
-        {/* Horizontal chain: below channel header (h-12 = 48px), starts at right edge of sidebar */}
-        <div className="absolute right-0 h-[8px] pointer-events-none" style={{
-          left: '216px', top: '48px', zIndex: 20,
+        {/* Horizontal chain: full width below header row (h-12 = 48px) */}
+        <div className="absolute left-0 right-0 h-[8px] pointer-events-none" style={{
+          top: '48px', zIndex: 20,
           backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 11.5,4 8,6.5 4.5,4" fill="none" stroke="rgba(160,160,160,0.6)" stroke-width="0.8"/><line x1="0" y1="4" x2="4.5" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/><line x1="11.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/></svg>')}")`,
           backgroundRepeat: 'repeat-x',
           backgroundSize: '16px 8px',
@@ -419,17 +419,11 @@ export default function ComunidadPage() {
 
         {/* Sidebar */}
         <aside className="w-52 shrink-0 bg-[#0a0a0a] flex flex-col overflow-y-auto relative">
-          {/* Header */}
-          <div className="px-5 pt-5 pb-4 relative">
+          {/* Header — h-12 matches channel header height so horizontal chain lines up */}
+          <div className="h-12 px-5 flex items-center shrink-0">
             <p className="font-display text-[13px] tracking-[0.15em] uppercase text-[#a0a0a0]/70">
               Wolf Club
             </p>
-            {/* Chain separator ◇─◇─◇ */}
-            <div className="absolute bottom-0 left-0 right-0 h-[8px]" style={{
-              backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 11.5,4 8,6.5 4.5,4" fill="none" stroke="rgba(160,160,160,0.55)" stroke-width="0.8"/><line x1="0" y1="4" x2="4.5" y2="4" stroke="rgba(160,160,160,0.35)" stroke-width="0.8"/><line x1="11.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.35)" stroke-width="0.8"/></svg>')}")`,
-              backgroundRepeat: 'repeat-x',
-              backgroundSize: '16px 8px',
-            }} />
           </div>
 
           <nav className="flex flex-col px-3 pt-4 gap-2">
