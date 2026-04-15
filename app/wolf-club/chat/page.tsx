@@ -432,14 +432,20 @@ export default function ComunidadPage() {
           </div>
         </div>
 
-        {/* ── ROW 2: Body — photo bg covers both sidebar nav + content ── */}
-        <div className="flex flex-1 overflow-hidden relative z-5"
-          style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: '50% auto', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat' }}>
-          {/* Dark overlay — heavy dim */}
-          <div className="absolute inset-0 bg-black/88 pointer-events-none" style={{ zIndex: 0 }} />
-          {/* Edge fades — blend into surrounding black */}
-          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: 'linear-gradient(to right, #0a0a0a 0%, transparent 18%, transparent 82%, #0a0a0a 100%)' }} />
-          <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, background: 'linear-gradient(to bottom, #0a0a0a 0%, transparent 12%, transparent 80%, #0a0a0a 100%)' }} />
+        {/* ── ROW 2: Body — photo floats centered, fades naturally ── */}
+        <div className="flex flex-1 overflow-hidden relative z-5 bg-[#0a0a0a]">
+          {/* Image — small, centered, radial mask for natural fade, slight blur to soften pixelation */}
+          <div className="absolute inset-0 pointer-events-none" style={{
+            zIndex: 0,
+            backgroundImage: 'url(/roa-pro.jpeg)',
+            backgroundSize: '32% auto',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.22,
+            filter: 'blur(0.4px)',
+            WebkitMaskImage: 'radial-gradient(ellipse 42% 60% at center, black 10%, transparent 72%)',
+            maskImage: 'radial-gradient(ellipse 42% 60% at center, black 10%, transparent 72%)',
+          }} />
 
           {/* Sidebar nav */}
           <aside className="w-52 shrink-0 overflow-y-auto relative" style={{ zIndex: 5 }}>
