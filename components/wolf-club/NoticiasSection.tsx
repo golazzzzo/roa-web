@@ -32,6 +32,7 @@ export default function NoticiasSection() {
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const bottomRef = useRef<HTMLDivElement>(null)
+  const postsRef = useRef<NewsPost[]>([])
 
   useEffect(() => {
     const load = async () => {
@@ -62,6 +63,9 @@ export default function NoticiasSection() {
     }
     load()
   }, [user?.id])
+
+  // Keep ref in sync so polling doesn't use stale posts
+  useEffect(() => { postsRef.current = posts }, [posts])
 
   useEffect(() => {
     if (!loading) bottomRef.current?.scrollIntoView({ behavior: 'instant' })
@@ -94,6 +98,27 @@ export default function NoticiasSection() {
       .subscribe()
     return () => { supabase.removeChannel(channel) }
   }, [user?.id])
+
+  // Polling fallback — fetches only posts newer than the last one every 3s
+  useEffect(() => {
+    if (!user) return
+    const poll = setInterval(async () => {
+      const last = postsRef.current[postsRef.current.length - 1]
+      const { data } = await supabase
+        .from('news_posts')
+        .select('*')
+        .order('created_at', { ascending: true })
+        .gt('created_at', last?.created_at ?? '1970-01-01')
+      if (!data || data.length === 0) return
+      const newPosts = data as NewsPost[]
+      setPosts(prev => {
+        const ids = new Set(prev.map(p => p.id))
+        const fresh = newPosts.filter(p => !ids.has(p.id))
+        return fresh.length ? [...prev, ...fresh] : prev
+      })
+    }, 3000)
+    return () => clearInterval(poll)
+  }, [user])
 
   const publish = async () => {
     if ((!input.trim() && !attachment) || sending) return
