@@ -402,6 +402,13 @@ export default function ComunidadPage() {
       <div className="flex flex-1 overflow-hidden pt-[72px] relative">
 
         {/* ── Separators — both in the same parent so they share one coordinate system ── */}
+        {/* Top horizontal chain: full width at top of chat window (below nav) */}
+        <div className="absolute left-0 right-0 h-[8px] pointer-events-none" style={{
+          top: '72px', zIndex: 20,
+          backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 11.5,4 8,6.5 4.5,4" fill="none" stroke="rgba(160,160,160,0.6)" stroke-width="0.8"/><line x1="0" y1="4" x2="4.5" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/><line x1="11.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/></svg>')}")`,
+          backgroundRepeat: 'repeat-x',
+          backgroundSize: '16px 8px',
+        }} />
         {/* Vertical chain: right edge of sidebar (w-52 = 208px), starts below nav padding */}
         <div className="absolute bottom-0 w-[8px] pointer-events-none" style={{
           left: '208px', top: '72px', zIndex: 20,
