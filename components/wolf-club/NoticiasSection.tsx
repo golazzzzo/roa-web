@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { supabase, REACTION_EMOJIS } from '@/lib/supabase'
 import { useAuth } from '@/lib/auth-context'
 import type { NewsPost } from '@/lib/supabase'
-import SigilBubble from './SigilBubble'
+import CyberFrame from './CyberFrame'
 
 type ReactionCounts = Record<string, Record<string, number>>
 type Attachment = { file: File; preview: string; type: 'image' | 'video' }
@@ -230,7 +230,7 @@ export default function NoticiasSection() {
                 </div>
 
                 <div className="max-w-[480px]">
-                  <SigilBubble variant="broadcast">
+                  <CyberFrame variant="broadcast">
                     {post.title && (
                       <p className="font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#a0a0a0]/70 mb-1">
                         {post.title}
@@ -247,7 +247,7 @@ export default function NoticiasSection() {
                         {post.body}
                       </p>
                     )}
-                  </SigilBubble>
+                  </CyberFrame>
                 </div>
 
                 <div className="flex items-center gap-1.5 mt-2 flex-wrap">

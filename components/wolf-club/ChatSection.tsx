@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { supabase } from '@/lib/supabase'
 import { useAuth } from '@/lib/auth-context'
 import type { ChatMessage } from '@/lib/supabase'
-import SigilBubble from './SigilBubble'
+import CyberFrame, { CyberFrameVariant } from './CyberFrame'
 
 type Attachment = { file: File; preview: string; type: 'image' | 'video' }
 
@@ -204,7 +204,7 @@ export default function ChatSection() {
                     const isLast = i === group.msgs.length - 1
                     return (
                       <div key={msg.id} className="relative group">
-                        <SigilBubble variant={isOwn ? 'own' : 'other'}>
+                        <CyberFrame variant={isOwn ? 'own' : 'other'}>
                           {msg.media_url && msg.media_type === 'image' && (
                             <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block mb-1" />
                           )}
@@ -212,11 +212,11 @@ export default function ChatSection() {
                             <video src={msg.media_url} className="max-w-[260px] block mb-1" controls />
                           )}
                           {hasText && (
-                            <p className={`font-wc text-[15px] leading-relaxed ${isOwn ? 'text-white' : 'text-[#d0d0d0]'}`}>
+                            <p className={`font-wc text-[15px] leading-relaxed ${isOwn ? 'text-[#e8e8e8]' : 'text-[#d0d0d0]'}`}>
                               {msg.content}
                             </p>
                           )}
-                        </SigilBubble>
+                        </CyberFrame>
                         {isOwn && (
                           <button
                             onClick={() => deleteMessage(msg.id)}
