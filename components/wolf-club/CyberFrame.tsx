@@ -5,47 +5,46 @@ import { ReactNode, useLayoutEffect, useRef, useState } from 'react'
 export type CyberFrameVariant = 'own' | 'other' | 'broadcast'
 
 const COLOR: Record<CyberFrameVariant, string> = {
-  own: 'rgba(210,210,210,0.95)',
-  other: 'rgba(130,130,130,0.4)',
-  broadcast: 'rgba(190,190,190,0.75)',
+  own:       'rgba(220,220,220,0.95)',
+  other:     'rgba(130,130,130,0.45)',
+  broadcast: 'rgba(195,195,195,0.78)',
 }
 
-// arm length, diagonal cut length, dot radius, overshoot outside div
-const ARM = 16
-const CUT = 4
-const DOT = 1.5
-const OVER = 2 // px the frame extends outside the div bounds
+const ARM  = 18   // arm length
+const TICK = 5    // perpendicular end-tick half-length
+const DOT  = 1.5  // vertex dot radius
+const PAD  = 2    // how many px the SVG overshoots the div
 
 interface CornerProps {
-  x: number
-  y: number
-  // which direction each arm goes: hDir +1=right, -1=left; vDir +1=down, -1=up
-  hDir: 1 | -1
-  vDir: 1 | -1
+  x: number; y: number
+  hDir: 1 | -1   // +1 = arm points right, -1 = left
+  vDir: 1 | -1   // +1 = arm points down,  -1 = up
   color: string
 }
 
 function Corner({ x, y, hDir, vDir, color }: CornerProps) {
-  // Horizontal arm: vertex → x+hDir*ARM, then diagonal cut ↗/↘ direction
-  // The diagonal cut goes +hDir*CUT horizontally and -vDir*CUT vertically (outward away from content)
-  const hEndX = x + hDir * ARM
-  const hCutX = hEndX + hDir * CUT
-  const hCutY = y - vDir * CUT
-
-  // Vertical arm: vertex → y+vDir*ARM, then diagonal cut
-  const vEndY = y + vDir * ARM
-  const vCutX = x + hDir * CUT
-  const vCutY = vEndY + vDir * CUT
+  const hEnd = x + hDir * ARM
+  const vEnd = y + vDir * ARM
 
   return (
-    <g stroke={color} strokeWidth="1" fill="none" strokeLinecap="round">
-      {/* Horizontal arm + diagonal cut */}
-      <line x1={x} y1={y} x2={hEndX} y2={y} />
-      <line x1={hEndX} y1={y} x2={hCutX} y2={hCutY} />
-      {/* Vertical arm + diagonal cut */}
-      <line x1={x} y1={y} x2={x} y2={vEndY} />
-      <line x1={x} y1={vEndY} x2={vCutX} y2={vCutY} />
-      {/* Dot at vertex */}
+    <g stroke={color} strokeLinecap="square" fill="none">
+      {/* Horizontal arm */}
+      <line strokeWidth={0.9} x1={x} y1={y} x2={hEnd} y2={y} />
+      {/* End-tick perpendicular to horizontal arm (inward toward content center) */}
+      <line strokeWidth={0.75}
+        x1={hEnd} y1={y - TICK * 0.4}
+        x2={hEnd} y2={y + vDir * TICK}
+      />
+
+      {/* Vertical arm */}
+      <line strokeWidth={0.9} x1={x} y1={y} x2={x} y2={vEnd} />
+      {/* End-tick perpendicular to vertical arm (inward toward content center) */}
+      <line strokeWidth={0.75}
+        x1={x - TICK * 0.4} y1={vEnd}
+        x2={x + hDir * TICK} y2={vEnd}
+      />
+
+      {/* Vertex dot */}
       <circle cx={x} cy={y} r={DOT} fill={color} stroke="none" />
     </g>
   )
@@ -64,60 +63,41 @@ export default function CyberFrame({ variant = 'other', children, className = ''
   useLayoutEffect(() => {
     const el = divRef.current
     if (!el) return
-
     const measure = () => {
-      const { width, height } = el.getBoundingClientRect()
-      setSize({ w: width, h: height })
+      const r = el.getBoundingClientRect()
+      setSize({ w: r.width, h: r.height })
     }
-
     measure()
-
     const ro = new ResizeObserver(measure)
     ro.observe(el)
     return () => ro.disconnect()
   }, [])
 
   const color = COLOR[variant]
-
-  // SVG viewport: slightly larger than the div so corners extend OVER px outside
-  const svgW = size ? size.w + OVER * 2 : 0
-  const svgH = size ? size.h + OVER * 2 : 0
-
-  // Corner anchor positions inside the SVG coordinate space
-  // top-left:     (OVER, OVER)
-  // top-right:    (svgW-OVER, OVER)
-  // bottom-left:  (OVER, svgH-OVER)
-  // bottom-right: (svgW-OVER, svgH-OVER)
+  const svgW = size ? size.w + PAD * 2 : 0
+  const svgH = size ? size.h + PAD * 2 : 0
 
   return (
     <div
       ref={divRef}
       className={className}
-      style={{
-        position: 'relative',
-        padding: '10px 16px',
-      }}
+      style={{ position: 'relative', padding: '10px 16px' }}
     >
       {size && size.w > 0 && size.h > 0 && (
         <svg
           aria-hidden="true"
           style={{
             position: 'absolute',
-            inset: -OVER,
-            width: svgW,
-            height: svgH,
+            top: -PAD, left: -PAD,
+            width: svgW, height: svgH,
             overflow: 'visible',
             pointerEvents: 'none',
           }}
         >
-          {/* top-left: arms go right and down */}
-          <Corner x={OVER} y={OVER} hDir={1} vDir={1} color={color} />
-          {/* top-right: arms go left and down */}
-          <Corner x={svgW - OVER} y={OVER} hDir={-1} vDir={1} color={color} />
-          {/* bottom-left: arms go right and up */}
-          <Corner x={OVER} y={svgH - OVER} hDir={1} vDir={-1} color={color} />
-          {/* bottom-right: arms go left and up */}
-          <Corner x={svgW - OVER} y={svgH - OVER} hDir={-1} vDir={-1} color={color} />
+          <Corner x={PAD}        y={PAD}        hDir={1}  vDir={1}  color={color} />
+          <Corner x={svgW - PAD} y={PAD}        hDir={-1} vDir={1}  color={color} />
+          <Corner x={PAD}        y={svgH - PAD} hDir={1}  vDir={-1} color={color} />
+          <Corner x={svgW - PAD} y={svgH - PAD} hDir={-1} vDir={-1} color={color} />
         </svg>
       )}
       {children}
