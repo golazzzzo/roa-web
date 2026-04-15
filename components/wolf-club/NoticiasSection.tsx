@@ -232,7 +232,7 @@ export default function NoticiasSection() {
                 <div className="max-w-[480px]">
                   <SigilBubble variant="broadcast">
                     {post.title && (
-                      <p className="font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#5533ee]/70 mb-1">
+                      <p className="font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#a0a0a0]/70 mb-1">
                         {post.title}
                       </p>
                     )}
@@ -306,13 +306,13 @@ export default function NoticiasSection() {
               placeholder="Escribe un anuncio..."
               maxLength={2000}
               rows={1}
-              className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#5533ee] outline-none resize-none py-1.5 font-wc text-[15px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
+              className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#a0a0a0] outline-none resize-none py-1.5 font-wc text-[15px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
               style={{ lineHeight: '1.6' }}
             />
             <button
               onClick={publish}
               disabled={(!input.trim() && !attachment) || sending}
-              className="shrink-0 bg-[#5533ee] hover:bg-[#a01818] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-1.5 font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#f2f2f2] transition-all duration-200"
+              className="shrink-0 bg-[#a0a0a0] hover:bg-[#a01818] disabled:opacity-20 disabled:cursor-not-allowed px-4 py-1.5 font-wc-label text-[9px] tracking-[0.15em] uppercase text-[#f2f2f2] transition-all duration-200"
             >↑</button>
           </div>
         </>
