@@ -402,16 +402,16 @@ export default function ComunidadPage() {
       <div className="flex flex-1 overflow-hidden pt-[72px] relative">
 
         {/* ── Separators — both in the same parent so they share one coordinate system ── */}
-        {/* Vertical chain: right edge of sidebar (w-52 = 208px) */}
-        <div className="absolute top-0 bottom-0 w-[8px] pointer-events-none" style={{
-          left: '208px', zIndex: 20,
+        {/* Vertical chain: right edge of sidebar (w-52 = 208px), starts below nav padding */}
+        <div className="absolute bottom-0 w-[8px] pointer-events-none" style={{
+          left: '208px', top: '72px', zIndex: 20,
           backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="8" height="16"><polygon points="4,5 7,8 4,11 1,8" fill="none" stroke="rgba(160,160,160,0.5)" stroke-width="0.8"/><line x1="4" y1="0" x2="4" y2="5" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/><line x1="4" y1="11" x2="4" y2="16" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/></svg>')}")`,
           backgroundRepeat: 'repeat-y',
           backgroundSize: '8px 16px',
         }} />
-        {/* Horizontal chain: full width below header row (h-12 = 48px) */}
+        {/* Horizontal chain: full width below header row (pt-[72px] nav + h-12 header = 120px) */}
         <div className="absolute left-0 right-0 h-[8px] pointer-events-none" style={{
-          top: '48px', zIndex: 20,
+          top: '120px', zIndex: 20,
           backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 11.5,4 8,6.5 4.5,4" fill="none" stroke="rgba(160,160,160,0.6)" stroke-width="0.8"/><line x1="0" y1="4" x2="4.5" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/><line x1="11.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/></svg>')}")`,
           backgroundRepeat: 'repeat-x',
           backgroundSize: '16px 8px',
