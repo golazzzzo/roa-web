@@ -205,9 +205,9 @@ export default function ChatSection() {
                       <div key={msg.id} className="relative group">
                         <div className={`px-4 py-2.5 ${
                           isOwn
-                            ? 'bg-[#a0a0a0]/20 rounded-2xl rounded-br-sm'
-                            : 'bg-[#1a1a1a] rounded-2xl rounded-bl-sm'
-                        }`}>
+                            ? 'rounded-2xl rounded-br-sm'
+                            : 'rounded-2xl rounded-bl-sm'
+                        }`} style={{ background: isOwn ? 'rgba(255,255,255,0.09)' : 'rgba(255,255,255,0.03)' }}>
                           {msg.media_url && msg.media_type === 'image' && (
                             <img src={msg.media_url} alt="" className="max-w-[260px] max-h-[300px] w-full object-cover block mb-1 rounded-lg" />
                           )}

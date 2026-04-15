@@ -230,7 +230,7 @@ export default function CanalSection() {
                 </div>
 
                 <div className="max-w-[480px]">
-                  <div className="bg-[#141414] border border-[#2a2a2a] rounded-2xl px-5 py-4">
+                  <div className="rounded-2xl px-5 py-4" style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.06)' }}>
                     {post.media_url && post.media_type === 'image' && (
                       <img src={post.media_url} alt="" className="w-full max-h-[400px] object-cover mb-3 rounded-lg" />
                     )}
