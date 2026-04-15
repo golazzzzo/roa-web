@@ -36,10 +36,14 @@ export default function ChatSection() {
   const fanNames = useRef<Map<string, string>>(new Map())
   const textareaRef = useRef<HTMLTextAreaElement>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const messagesRef = useRef<ChatMessage[]>([])
 
   useEffect(() => {
     if (user && fanProfile) fanNames.current.set(user.id, fanProfile.display_name)
   }, [user, fanProfile])
+
+  // Keep ref in sync so polling doesn't use stale messages
+  useEffect(() => { messagesRef.current = messages }, [messages])
 
   useEffect(() => {
     supabase
@@ -91,6 +95,30 @@ export default function ChatSection() {
       .subscribe()
 
     return () => { supabase.removeChannel(channel) }
+  }, [user])
+
+  // Polling fallback — fetches only messages newer than the last one every 3s
+  useEffect(() => {
+    if (!user) return
+    const poll = setInterval(async () => {
+      const last = messagesRef.current[messagesRef.current.length - 1]
+      const { data } = await supabase
+        .from('chat_messages')
+        .select('*, fans(display_name)')
+        .order('created_at', { ascending: true })
+        .gt('created_at', last?.created_at ?? '1970-01-01')
+      if (!data || data.length === 0) return
+      const newMsgs = data as ChatMessage[]
+      newMsgs.forEach(m => {
+        if (m.fans?.display_name) fanNames.current.set(m.fan_id, m.fans.display_name)
+      })
+      setMessages(prev => {
+        const ids = new Set(prev.map(m => m.id))
+        const fresh = newMsgs.filter(m => !ids.has(m.id))
+        return fresh.length ? [...prev, ...fresh] : prev
+      })
+    }, 3000)
+    return () => clearInterval(poll)
   }, [user])
 
   const sendMessage = useCallback(async () => {
