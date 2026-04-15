@@ -408,11 +408,11 @@ export default function ComunidadPage() {
             <p className="font-display text-[13px] tracking-[0.15em] uppercase text-[#a0a0a0]/70">
               Wolf Club
             </p>
-            {/* Chain separator — [rect link]◇[rect link]◇ */}
-            <div className="absolute bottom-0 left-0 right-0 h-[12px]" style={{
-              backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="12"><rect x="1" y="2" width="17" height="8" rx="1" fill="none" stroke="rgba(160,160,160,0.55)" stroke-width="0.85"/><polygon points="24,3 27,6 24,9 21,6" fill="none" stroke="rgba(160,160,160,0.45)" stroke-width="0.85"/></svg>')}")`,
+            {/* Chain separator ◇─◇─◇ */}
+            <div className="absolute bottom-0 left-0 right-0 h-[8px]" style={{
+              backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 11.5,4 8,6.5 4.5,4" fill="none" stroke="rgba(160,160,160,0.55)" stroke-width="0.8"/><line x1="0" y1="4" x2="4.5" y2="4" stroke="rgba(160,160,160,0.35)" stroke-width="0.8"/><line x1="11.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.35)" stroke-width="0.8"/></svg>')}")`,
               backgroundRepeat: 'repeat-x',
-              backgroundSize: '28px 12px',
+              backgroundSize: '16px 8px',
             }} />
           </div>
 
@@ -451,11 +451,11 @@ export default function ComunidadPage() {
             })}
           </nav>
 
-          {/* Right edge — vertical chain */}
-          <div className="absolute right-0 top-0 bottom-0 w-[12px]" style={{
-            backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="12" height="28"><rect x="2" y="1" width="8" height="17" rx="1" fill="none" stroke="rgba(160,160,160,0.5)" stroke-width="0.85"/><polygon points="3,24 6,21 9,24 6,27" fill="none" stroke="rgba(160,160,160,0.4)" stroke-width="0.85"/></svg>')}")`,
+          {/* Right edge — vertical chain ◇│◇│◇ */}
+          <div className="absolute right-0 top-0 bottom-0 w-[8px]" style={{
+            backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="8" height="16"><polygon points="4,5 7,8 4,11 1,8" fill="none" stroke="rgba(160,160,160,0.5)" stroke-width="0.8"/><line x1="4" y1="0" x2="4" y2="5" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/><line x1="4" y1="11" x2="4" y2="16" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/></svg>')}")`,
             backgroundRepeat: 'repeat-y',
-            backgroundSize: '12px 28px',
+            backgroundSize: '8px 16px',
           }} />
         </aside>
 
@@ -478,11 +478,11 @@ export default function ComunidadPage() {
             <span className="font-wc-label text-[9px] text-[#2a2a2a] tracking-[0.1em] uppercase ml-2">
               — {activeChannel.description}
             </span>
-            {/* Chain bottom separator */}
-            <div className="absolute bottom-0 left-0 right-0 h-[12px]" style={{
-              backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="28" height="12"><rect x="1" y="2" width="17" height="8" rx="1" fill="none" stroke="rgba(160,160,160,0.6)" stroke-width="0.85"/><polygon points="24,3 27,6 24,9 21,6" fill="none" stroke="rgba(160,160,160,0.5)" stroke-width="0.85"/></svg>')}")`,
+            {/* Chain bottom separator ◇─◇─◇ */}
+            <div className="absolute bottom-0 left-0 right-0 h-[8px]" style={{
+              backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 11.5,4 8,6.5 4.5,4" fill="none" stroke="rgba(160,160,160,0.6)" stroke-width="0.8"/><line x1="0" y1="4" x2="4.5" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/><line x1="11.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/></svg>')}")`,
               backgroundRepeat: 'repeat-x',
-              backgroundSize: '28px 12px',
+              backgroundSize: '16px 8px',
             }} />
           </div>
 
