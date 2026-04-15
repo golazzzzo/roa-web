@@ -399,7 +399,23 @@ export default function ComunidadPage() {
     <main className="h-[100dvh] flex flex-col overflow-hidden bg-[#0a0a0a]">
       <Navigation />
 
-      <div className="flex flex-1 overflow-hidden pt-[72px]">
+      <div className="flex flex-1 overflow-hidden pt-[72px] relative">
+
+        {/* ── Separators — both in the same parent so they share one coordinate system ── */}
+        {/* Vertical chain: right edge of sidebar (w-52 = 208px) */}
+        <div className="absolute top-0 bottom-0 w-[8px] pointer-events-none" style={{
+          left: '208px', zIndex: 20,
+          backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="8" height="16"><polygon points="4,5 7,8 4,11 1,8" fill="none" stroke="rgba(160,160,160,0.5)" stroke-width="0.8"/><line x1="4" y1="0" x2="4" y2="5" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/><line x1="4" y1="11" x2="4" y2="16" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/></svg>')}")`,
+          backgroundRepeat: 'repeat-y',
+          backgroundSize: '8px 16px',
+        }} />
+        {/* Horizontal chain: below channel header (h-12 = 48px), starts at right edge of sidebar */}
+        <div className="absolute right-0 h-[8px] pointer-events-none" style={{
+          left: '216px', top: '48px', zIndex: 20,
+          backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 11.5,4 8,6.5 4.5,4" fill="none" stroke="rgba(160,160,160,0.6)" stroke-width="0.8"/><line x1="0" y1="4" x2="4.5" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/><line x1="11.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/></svg>')}")`,
+          backgroundRepeat: 'repeat-x',
+          backgroundSize: '16px 8px',
+        }} />
 
         {/* Sidebar */}
         <aside className="w-52 shrink-0 bg-[#0a0a0a] flex flex-col overflow-y-auto relative">
@@ -451,12 +467,6 @@ export default function ComunidadPage() {
             })}
           </nav>
 
-          {/* Right edge — vertical chain ◇│◇│◇ */}
-          <div className="absolute right-0 top-0 bottom-0 w-[8px]" style={{
-            backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="8" height="16"><polygon points="4,5 7,8 4,11 1,8" fill="none" stroke="rgba(160,160,160,0.5)" stroke-width="0.8"/><line x1="4" y1="0" x2="4" y2="5" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/><line x1="4" y1="11" x2="4" y2="16" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/></svg>')}")`,
-            backgroundRepeat: 'repeat-y',
-            backgroundSize: '8px 16px',
-          }} />
         </aside>
 
         {/* Content */}
@@ -478,12 +488,6 @@ export default function ComunidadPage() {
             <span className="font-wc-label text-[9px] text-[#2a2a2a] tracking-[0.1em] uppercase ml-2">
               — {activeChannel.description}
             </span>
-            {/* Chain bottom separator ◇─◇─◇ */}
-            <div className="absolute bottom-0 left-0 right-0 h-[8px]" style={{
-              backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 11.5,4 8,6.5 4.5,4" fill="none" stroke="rgba(160,160,160,0.6)" stroke-width="0.8"/><line x1="0" y1="4" x2="4.5" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/><line x1="11.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/></svg>')}")`,
-              backgroundRepeat: 'repeat-x',
-              backgroundSize: '16px 8px',
-            }} />
           </div>
 
           {/* Section content */}
