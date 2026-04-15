@@ -402,15 +402,17 @@ export default function ComunidadPage() {
       {/* Wrapper — flex-col so header row and body row stack naturally */}
       <div className="flex flex-col flex-1 overflow-hidden pt-[72px] relative">
 
-        {/* Chain separators — absolute within this container */}
+        {/* Chain separators — absolute within outer div (which starts at y=0, pt-72 pushes flex children) */}
+        {/* Vertical: top=72px (where flex content begins), runs to bottom */}
         <div className="absolute bottom-0 w-[8px] pointer-events-none" style={{
-          left: '208px', top: '48px', zIndex: 20,
+          left: '208px', top: '72px', zIndex: 20,
           backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="8" height="16"><polygon points="4,5 7,8 4,11 1,8" fill="none" stroke="rgba(160,160,160,0.5)" stroke-width="0.8"/><line x1="4" y1="0" x2="4" y2="5" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/><line x1="4" y1="11" x2="4" y2="16" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/></svg>')}")`,
           backgroundRepeat: 'repeat-y',
           backgroundSize: '8px 16px',
         }} />
+        {/* Horizontal: top=120px (72px padding + 48px header row) */}
         <div className="absolute left-0 right-0 h-[8px] pointer-events-none" style={{
-          top: '48px', zIndex: 20,
+          top: '120px', zIndex: 20,
           backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 11.5,4 8,6.5 4.5,4" fill="none" stroke="rgba(160,160,160,0.6)" stroke-width="0.8"/><line x1="0" y1="4" x2="4.5" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/><line x1="11.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/></svg>')}")`,
           backgroundRepeat: 'repeat-x',
           backgroundSize: '16px 8px',
@@ -432,7 +434,7 @@ export default function ComunidadPage() {
 
         {/* ── ROW 2: Body — photo bg covers both sidebar nav + content ── */}
         <div className="flex flex-1 overflow-hidden relative z-5"
-          style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center 30%' }}>
+          style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: '50% auto', backgroundPosition: 'center center', backgroundRepeat: 'no-repeat' }}>
           {/* Dark overlay — heavy dim */}
           <div className="absolute inset-0 bg-black/88 pointer-events-none" style={{ zIndex: 0 }} />
           {/* Edge fades — blend into surrounding black */}
