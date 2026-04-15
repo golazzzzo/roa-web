@@ -399,9 +399,12 @@ export default function ComunidadPage() {
     <main className="h-[100dvh] flex flex-col overflow-hidden bg-[#0a0a0a]">
       <Navigation />
 
-      <div className="flex flex-1 overflow-hidden pt-[72px] relative" style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        {/* Dark overlay — covers only below the header row */}
-        <div className="absolute left-0 right-0 bottom-0 bg-black/72 pointer-events-none" style={{ top: '48px', zIndex: 0 }} />
+      <div className="flex flex-1 overflow-hidden pt-[72px] relative">
+
+        {/* Photo background — starts at top:48px (below header row), covers full width */}
+        <div className="absolute left-0 right-0 bottom-0 pointer-events-none" style={{ top: '48px', zIndex: 1, backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          <div className="absolute inset-0 bg-black/72" />
+        </div>
 
         {/* ── Separators — both in the same parent so they share one coordinate system ── */}
         {/* Vertical chain: right edge of sidebar (w-52 = 208px), starts below nav padding */}
@@ -420,8 +423,8 @@ export default function ComunidadPage() {
         }} />
 
         {/* Sidebar */}
-        <aside className="w-52 shrink-0 flex flex-col overflow-y-auto relative" style={{ zIndex: 5 }}>
-          {/* Header — solid black, above the photo */}
+        <aside className="w-52 shrink-0 flex flex-col overflow-y-auto relative" style={{ zIndex: 5, background: 'transparent' }}>
+          {/* Header — solid black above photo line */}
           <div className="h-12 px-5 flex items-center shrink-0 bg-[#0a0a0a]">
             <p className="font-display text-[13px] tracking-[0.15em] uppercase text-[#a0a0a0]/70">
               Wolf Club
@@ -468,8 +471,8 @@ export default function ComunidadPage() {
         {/* Content */}
         <div className="flex-1 flex flex-col overflow-hidden relative" style={{ zIndex: 5 }}>
 
-          {/* Channel header — solid black, above the photo */}
-          <div className="shrink-0 bg-[#0a0a0a] px-6 h-12 flex items-center gap-3 relative" style={{ zIndex: 10 }}>
+          {/* Channel header — solid black above photo line */}
+          <div className="shrink-0 bg-[#0a0a0a] px-6 h-12 flex items-center gap-3">
             <span className="font-display text-[15px] text-[#a0a0a0]">#</span>
             <span className="font-display text-[14px] tracking-[0.08em] uppercase text-[#f2f2f2]">
               {activeChannel.label}
@@ -479,9 +482,9 @@ export default function ComunidadPage() {
             </span>
           </div>
 
-          {/* Section content */}
+          {/* Section content — transparent, sits over photo bg layer */}
           <div className="flex-1 overflow-hidden flex flex-col relative">
-            {/* Watermarks — on top of the dim overlay, below messages */}
+            {/* Watermarks on top of photo */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
               {active === 'noticias' && <NoticiasWatermark />}
               {active === 'general'  && <GeneralWatermark />}
