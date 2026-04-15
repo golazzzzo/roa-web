@@ -396,7 +396,9 @@ export default function ComunidadPage() {
   const activeChannel = CHANNELS.find(c => c.id === active)!
 
   return (
-    <main className="h-[100dvh] flex flex-col overflow-hidden bg-[#0a0a0a]">
+    <main className="h-[100dvh] flex flex-col overflow-hidden" style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      {/* Dark overlay — dims the photo heavily */}
+      <div className="absolute inset-0 bg-black/75 pointer-events-none" style={{ zIndex: 0 }} />
       <Navigation />
 
       <div className="flex flex-1 overflow-hidden pt-[72px] relative">
@@ -418,7 +420,7 @@ export default function ComunidadPage() {
         }} />
 
         {/* Sidebar */}
-        <aside className="w-52 shrink-0 bg-[#0a0a0a] flex flex-col overflow-y-auto relative">
+        <aside className="w-52 shrink-0 flex flex-col overflow-y-auto relative" style={{ background: 'rgba(0,0,0,0.3)' }}>
           {/* Header — h-12 matches channel header height so horizontal chain lines up */}
           <div className="h-12 px-5 flex items-center shrink-0">
             <p className="font-display text-[13px] tracking-[0.15em] uppercase text-[#a0a0a0]/70">
@@ -448,8 +450,8 @@ export default function ComunidadPage() {
                       ? 'bg-gradient-to-b from-[#a0a0a0] via-[#a0a0a0]/60 to-transparent'
                       : 'bg-[#1a1a1a]'
                   }`} />
-                  <div className={`relative pl-4 pr-3 py-3 flex items-center gap-2.5 ${isActive ? 'text-[#f2f2f2]' : 'text-[#383838] hover:text-[#666]'}`}>
-                    <span className={`font-display text-[15px] leading-none ${isActive ? 'text-[#a0a0a0]' : 'text-[#252525]'}`}>#</span>
+                  <div className={`relative pl-4 pr-3 py-3 flex items-center gap-2.5 ${isActive ? 'text-[#f2f2f2]' : 'text-[#777] hover:text-[#aaa]'}`}>
+                    <span className={`font-display text-[15px] leading-none ${isActive ? 'text-[#a0a0a0]' : 'text-[#555]'}`}>#</span>
                     <span className="font-display text-[13px] tracking-[0.08em] uppercase">{ch.label}</span>
                   </div>
                   {/* Bottom rule between channels */}
@@ -464,13 +466,10 @@ export default function ComunidadPage() {
         </aside>
 
         {/* Content */}
-        <div className="flex-1 flex flex-col overflow-hidden relative" style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-
-          {/* Dark overlay over photo */}
-          <div className="absolute inset-0 bg-black/55 pointer-events-none" style={{ zIndex: 0 }} />
+        <div className="flex-1 flex flex-col overflow-hidden relative">
 
           {/* Watermarks — strictly clipped to this container */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
+          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
             {active === 'noticias' && <NoticiasWatermark />}
             {active === 'general'  && <GeneralWatermark />}
             {active === 'canal'    && <CanalWatermark />}
