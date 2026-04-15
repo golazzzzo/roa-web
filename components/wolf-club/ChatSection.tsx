@@ -251,7 +251,7 @@ export default function ChatSection() {
         </div>
       )}
 
-      <div className="shrink-0 border-t border-white/5 px-6 py-3 flex items-end gap-3" style={{ background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(6px)' }}>
+      <div className="shrink-0 border-t border-white/5 px-6 py-3 flex items-end gap-3" style={{ background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)' }}>
         <input ref={fileInputRef} type="file" accept="image/*,video/*" className="hidden" onChange={handleFileSelect} />
         <button
           onClick={() => fileInputRef.current?.click()}
