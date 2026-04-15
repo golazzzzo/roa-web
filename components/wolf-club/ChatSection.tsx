@@ -65,14 +65,16 @@ export default function ChatSection() {
   }, [messages])
 
   useEffect(() => {
+    if (!user) return  // wait for auth before subscribing
+
     const channel = supabase
-      .channel('wolf-club-chat')
+      .channel(`wolf-club-chat-${user.id}`)
       .on('postgres_changes', { event: 'INSERT', schema: 'public', table: 'chat_messages' }, async (payload) => {
         const row = payload.new as Omit<ChatMessage, 'fans'>
         // skip if already in state (optimistic)
         setMessages(prev => {
           if (prev.some(m => m.id === row.id)) return prev
-          let displayName = fanNames.current.get(row.fan_id) ?? 'Fan'
+          const displayName = fanNames.current.get(row.fan_id) ?? 'Fan'
           return [...prev, { ...row, fans: { display_name: displayName } }]
         })
         // fetch name if not cached
@@ -87,8 +89,9 @@ export default function ChatSection() {
         setMessages(prev => prev.filter(m => m.id !== (payload.old as ChatMessage).id))
       })
       .subscribe()
+
     return () => { supabase.removeChannel(channel) }
-  }, [])
+  }, [user])
 
   const sendMessage = useCallback(async () => {
     if ((!input.trim() && !attachment) || !user || sending) return
