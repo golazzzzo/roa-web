@@ -408,11 +408,12 @@ export default function ComunidadPage() {
             <p className="font-display text-[13px] tracking-[0.15em] uppercase text-[#a0a0a0]/70">
               Wolf Club
             </p>
-            {/* Thick compound header separator */}
-            <div className="absolute bottom-0 left-0 right-0 flex flex-col">
-              <div className="h-[2px] bg-gradient-to-r from-[#a0a0a0]/70 via-[#a0a0a0]/30 to-transparent" />
-              <div className="h-px bg-[#0d0d0d]" />
-            </div>
+            {/* Chain separator */}
+            <div className="absolute bottom-0 left-0 right-0 h-[8px]" style={{
+              backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 12.5,4 8,6.5 3.5,4" fill="none" stroke="rgba(160,160,160,0.55)" stroke-width="0.8"/><line x1="0" y1="4" x2="3.5" y2="4" stroke="rgba(160,160,160,0.35)" stroke-width="0.8"/><line x1="12.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.35)" stroke-width="0.8"/></svg>')}")`,
+              backgroundRepeat: 'repeat-x',
+              backgroundSize: '16px 8px',
+            }} />
           </div>
 
           <nav className="flex flex-col px-3 pt-4 gap-2">
@@ -450,12 +451,12 @@ export default function ComunidadPage() {
             })}
           </nav>
 
-          {/* Right edge — thick compound bar */}
-          <div className="absolute right-0 top-0 bottom-0 flex">
-            <div className="w-[3px] bg-gradient-to-b from-[#a0a0a0] via-[#a0a0a0]/35 to-[#a0a0a0]/10" />
-            <div className="w-[2px] bg-[#111]" />
-            <div className="w-px bg-[#1e1e1e]" />
-          </div>
+          {/* Right edge — vertical chain */}
+          <div className="absolute right-0 top-0 bottom-0 w-[12px]" style={{
+            backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="12" height="16"><polygon points="6,3 9.5,6 6,9 2.5,6" fill="none" stroke="rgba(160,160,160,0.5)" stroke-width="0.8"/><line x1="6" y1="0" x2="6" y2="3" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/><line x1="6" y1="9" x2="6" y2="16" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/></svg>')}")`,
+            backgroundRepeat: 'repeat-y',
+            backgroundSize: '12px 16px',
+          }} />
         </aside>
 
         {/* Content */}
@@ -477,11 +478,12 @@ export default function ComunidadPage() {
             <span className="font-wc-label text-[9px] text-[#2a2a2a] tracking-[0.1em] uppercase ml-2">
               — {activeChannel.description}
             </span>
-            {/* Thick compound bottom separator */}
-            <div className="absolute bottom-0 left-0 right-0 flex flex-col">
-              <div className="h-[3px] bg-gradient-to-r from-[#a0a0a0] via-[#a0a0a0]/40 to-transparent" />
-              <div className="h-[2px] bg-[#0d0d0d]" />
-            </div>
+            {/* Chain bottom separator */}
+            <div className="absolute bottom-0 left-0 right-0 h-[8px]" style={{
+              backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 12.5,4 8,6.5 3.5,4" fill="none" stroke="rgba(160,160,160,0.6)" stroke-width="0.8"/><line x1="0" y1="4" x2="3.5" y2="4" stroke="rgba(160,160,160,0.35)" stroke-width="0.8"/><line x1="12.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.35)" stroke-width="0.8"/></svg>')}")`,
+              backgroundRepeat: 'repeat-x',
+              backgroundSize: '16px 8px',
+            }} />
           </div>
 
           {/* Section content */}
