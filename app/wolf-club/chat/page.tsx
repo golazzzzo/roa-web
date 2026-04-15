@@ -396,7 +396,7 @@ export default function ComunidadPage() {
   const activeChannel = CHANNELS.find(c => c.id === active)!
 
   return (
-    <main className="h-[100dvh] flex flex-col overflow-hidden bg-[#0a0a0a]">
+    <main className="h-[100dvh] flex flex-col overflow-hidden" style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <Navigation />
 
       <div className="flex flex-1 overflow-hidden pt-[72px] relative">
