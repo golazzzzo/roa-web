@@ -399,92 +399,75 @@ export default function ComunidadPage() {
     <main className="h-[100dvh] flex flex-col overflow-hidden bg-[#0a0a0a]">
       <Navigation />
 
-      <div className="flex flex-1 overflow-hidden pt-[72px] relative">
+      {/* Wrapper — flex-col so header row and body row stack naturally */}
+      <div className="flex flex-col flex-1 overflow-hidden pt-[72px] relative">
 
-        {/* Photo background — top:120px = 72px nav padding + 48px header row */}
-        <div className="absolute left-0 right-0 bottom-0 pointer-events-none" style={{ top: '120px', zIndex: 1, backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
-          <div className="absolute inset-0 bg-black/72" />
-        </div>
-
-        {/* ── Separators — both in the same parent so they share one coordinate system ── */}
-        {/* Vertical chain: right edge of sidebar (w-52 = 208px), starts below nav padding */}
+        {/* Chain separators — absolute within this container */}
         <div className="absolute bottom-0 w-[8px] pointer-events-none" style={{
-          left: '208px', top: '72px', zIndex: 20,
+          left: '208px', top: '48px', zIndex: 20,
           backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="8" height="16"><polygon points="4,5 7,8 4,11 1,8" fill="none" stroke="rgba(160,160,160,0.5)" stroke-width="0.8"/><line x1="4" y1="0" x2="4" y2="5" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/><line x1="4" y1="11" x2="4" y2="16" stroke="rgba(160,160,160,0.3)" stroke-width="0.8"/></svg>')}")`,
           backgroundRepeat: 'repeat-y',
           backgroundSize: '8px 16px',
         }} />
-        {/* Horizontal chain: full width below header row (pt-[72px] nav + h-12 header = 120px) */}
         <div className="absolute left-0 right-0 h-[8px] pointer-events-none" style={{
-          top: '120px', zIndex: 20,
+          top: '48px', zIndex: 20,
           backgroundImage: `url("data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="16" height="8"><polygon points="8,1.5 11.5,4 8,6.5 4.5,4" fill="none" stroke="rgba(160,160,160,0.6)" stroke-width="0.8"/><line x1="0" y1="4" x2="4.5" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/><line x1="11.5" y1="4" x2="16" y2="4" stroke="rgba(160,160,160,0.38)" stroke-width="0.8"/></svg>')}")`,
           backgroundRepeat: 'repeat-x',
           backgroundSize: '16px 8px',
         }} />
 
-        {/* Sidebar */}
-        <aside className="w-52 shrink-0 flex flex-col overflow-y-auto relative" style={{ zIndex: 5, background: 'transparent' }}>
-          {/* Header — solid black above photo line */}
-          <div className="h-12 px-5 flex items-center shrink-0 bg-[#0a0a0a]">
-            <p className="font-display text-[13px] tracking-[0.15em] uppercase text-[#a0a0a0]/70">
-              Wolf Club
-            </p>
+        {/* ── ROW 1: Header — solid black, h-12 ── */}
+        <div className="flex shrink-0 h-12 bg-[#0a0a0a] relative z-10">
+          {/* Sidebar header */}
+          <div className="w-52 shrink-0 px-5 flex items-center">
+            <p className="font-display text-[13px] tracking-[0.15em] uppercase text-[#a0a0a0]/70">Wolf Club</p>
           </div>
-
-          <nav className="flex flex-col px-3 pt-4 gap-2">
-            {CHANNELS.map((ch) => {
-              const isActive = active === ch.id
-              return (
-                <button
-                  key={ch.id}
-                  onClick={() => setActive(ch.id)}
-                  className="w-full text-left relative transition-all duration-200 outline-none focus:outline-none"
-                >
-                  {/* Sigil-shaped active card */}
-                  {isActive && (
-                    <div
-                      className="absolute inset-0 bg-[#a0a0a0]/12"
-                      style={{ clipPath: 'polygon(10px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 10px)' }}
-                    />
-                  )}
-                  {/* Left accent bar — 3px thick */}
-                  <div className={`absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-200 ${
-                    isActive
-                      ? 'bg-gradient-to-b from-[#a0a0a0] via-[#a0a0a0]/60 to-transparent'
-                      : 'bg-[#1a1a1a]'
-                  }`} />
-                  <div className={`relative pl-4 pr-3 py-3 flex items-center gap-2.5 ${isActive ? 'text-[#f2f2f2]' : 'text-[#777] hover:text-[#bbb]'}`}>
-                    <span className={`font-display text-[15px] leading-none ${isActive ? 'text-[#a0a0a0]' : 'text-[#555]'}`}>#</span>
-                    <span className="font-display text-[13px] tracking-[0.08em] uppercase">{ch.label}</span>
-                  </div>
-                  {/* Bottom rule between channels */}
-                  {!isActive && (
-                    <div className="absolute bottom-0 left-4 right-0 h-px bg-[#141414]" />
-                  )}
-                </button>
-              )
-            })}
-          </nav>
-
-        </aside>
-
-        {/* Content */}
-        <div className="flex-1 flex flex-col overflow-hidden relative" style={{ zIndex: 5 }}>
-
-          {/* Channel header — solid black above photo line */}
-          <div className="shrink-0 bg-[#0a0a0a] px-6 h-12 flex items-center gap-3">
+          {/* Channel header */}
+          <div className="flex-1 px-6 flex items-center gap-3">
             <span className="font-display text-[15px] text-[#a0a0a0]">#</span>
-            <span className="font-display text-[14px] tracking-[0.08em] uppercase text-[#f2f2f2]">
-              {activeChannel.label}
-            </span>
-            <span className="font-wc-label text-[9px] text-[#2a2a2a] tracking-[0.1em] uppercase ml-2">
-              — {activeChannel.description}
-            </span>
+            <span className="font-display text-[14px] tracking-[0.08em] uppercase text-[#f2f2f2]">{activeChannel.label}</span>
+            <span className="font-wc-label text-[9px] text-[#2a2a2a] tracking-[0.1em] uppercase ml-2">— {activeChannel.description}</span>
           </div>
+        </div>
 
-          {/* Section content — transparent, sits over photo bg layer */}
-          <div className="flex-1 overflow-hidden flex flex-col relative">
-            {/* Watermarks on top of photo */}
+        {/* ── ROW 2: Body — photo bg covers both sidebar nav + content ── */}
+        <div className="flex flex-1 overflow-hidden relative z-5"
+          style={{ backgroundImage: 'url(/roa-pro.jpeg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/80 pointer-events-none" style={{ zIndex: 0 }} />
+
+          {/* Sidebar nav */}
+          <aside className="w-52 shrink-0 overflow-y-auto relative" style={{ zIndex: 5 }}>
+            <nav className="flex flex-col px-3 pt-4 gap-2">
+              {CHANNELS.map((ch) => {
+                const isActive = active === ch.id
+                return (
+                  <button
+                    key={ch.id}
+                    onClick={() => setActive(ch.id)}
+                    className="w-full text-left relative transition-all duration-200 outline-none focus:outline-none"
+                  >
+                    {isActive && (
+                      <div className="absolute inset-0 bg-[#a0a0a0]/12"
+                        style={{ clipPath: 'polygon(10px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 10px)' }} />
+                    )}
+                    <div className={`absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-200 ${
+                      isActive ? 'bg-gradient-to-b from-[#a0a0a0] via-[#a0a0a0]/60 to-transparent' : 'bg-white/5'
+                    }`} />
+                    <div className={`relative pl-4 pr-3 py-3 flex items-center gap-2.5 ${isActive ? 'text-[#f2f2f2]' : 'text-[#888] hover:text-[#ccc]'}`}>
+                      <span className={`font-display text-[15px] leading-none ${isActive ? 'text-[#a0a0a0]' : 'text-[#666]'}`}>#</span>
+                      <span className="font-display text-[13px] tracking-[0.08em] uppercase">{ch.label}</span>
+                    </div>
+                    {!isActive && <div className="absolute bottom-0 left-4 right-0 h-px bg-white/5" />}
+                  </button>
+                )
+              })}
+            </nav>
+          </aside>
+
+          {/* Section content */}
+          <div className="flex-1 overflow-hidden flex flex-col relative" style={{ zIndex: 5 }}>
+            {/* Watermarks */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 1 }}>
               {active === 'noticias' && <NoticiasWatermark />}
               {active === 'general'  && <GeneralWatermark />}
