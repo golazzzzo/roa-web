@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Space_Mono, Inter, Cinzel, Spectral } from 'next/font/google'
+import { Space_Mono, Inter, Cinzel, Chakra_Petch } from 'next/font/google'
 import { AuthProvider } from '@/lib/auth-context'
 import './globals.css'
 
@@ -25,10 +25,10 @@ const cinzel = Cinzel({
   display: 'swap',
 })
 
-const spectral = Spectral({
-  weight: ['300', '400', '500', '600'],
+const chakraPetch = Chakra_Petch({
+  weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin'],
-  variable: '--font-spectral',
+  variable: '--font-chakra-petch',
   display: 'swap',
 })
 
@@ -48,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${spaceMono.variable} ${inter.variable} ${cinzel.variable} ${spectral.variable}`}>
+    <html lang="es" className={`${spaceMono.variable} ${inter.variable} ${cinzel.variable} ${chakraPetch.variable}`}>
       <body>
         <AuthProvider>
           {children}

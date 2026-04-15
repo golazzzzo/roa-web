@@ -405,15 +405,18 @@ export default function ComunidadPage() {
         <aside className="w-52 shrink-0 bg-[#0a0a0a] flex flex-col overflow-y-auto relative">
           {/* Header */}
           <div className="px-5 pt-5 pb-4 relative">
-            <p className="font-wc-label text-[9px] tracking-[0.3em] uppercase text-[#c41e1e]/60">
+            <p className="font-wc-label text-[9px] tracking-[0.3em] uppercase text-[#c41e1e]/70">
               Wolf Club
             </p>
-            {/* Gradient separator */}
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#c41e1e]/40 via-[#c41e1e]/15 to-transparent" />
+            {/* Thick compound header separator */}
+            <div className="absolute bottom-0 left-0 right-0 flex flex-col">
+              <div className="h-[2px] bg-gradient-to-r from-[#c41e1e]/70 via-[#c41e1e]/30 to-transparent" />
+              <div className="h-px bg-[#0d0d0d]" />
+            </div>
           </div>
 
-          <nav className="flex flex-col px-3 pt-3 gap-1.5">
-            {CHANNELS.map((ch, i) => {
+          <nav className="flex flex-col px-3 pt-4 gap-2">
+            {CHANNELS.map((ch) => {
               const isActive = active === ch.id
               return (
                 <button
@@ -424,51 +427,61 @@ export default function ComunidadPage() {
                   {/* Sigil-shaped active card */}
                   {isActive && (
                     <div
-                      className="absolute inset-0 bg-[#c41e1e]/10"
-                      style={{ clipPath: 'polygon(8px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 8px)' }}
+                      className="absolute inset-0 bg-[#c41e1e]/12"
+                      style={{ clipPath: 'polygon(10px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 10px)' }}
                     />
                   )}
-                  {/* Left accent bar */}
-                  {isActive && (
-                    <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#c41e1e] to-[#c41e1e]/30" />
-                  )}
-                  <div className={`relative px-3 py-2.5 flex items-center gap-2.5 ${isActive ? 'text-[#f2f2f2]' : 'text-[#3a3a3a] hover:text-[#666]'}`}>
-                    <span className={`font-wc-label text-[11px] leading-none ${isActive ? 'text-[#c41e1e]' : 'text-[#2a2a2a]'}`}>#</span>
-                    <span className="font-wc-label text-[9px] tracking-[0.12em] uppercase">{ch.label}</span>
+                  {/* Left accent bar — 3px thick */}
+                  <div className={`absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-200 ${
+                    isActive
+                      ? 'bg-gradient-to-b from-[#c41e1e] via-[#c41e1e]/60 to-transparent'
+                      : 'bg-[#1a1a1a]'
+                  }`} />
+                  <div className={`relative pl-4 pr-3 py-3 flex items-center gap-2.5 ${isActive ? 'text-[#f2f2f2]' : 'text-[#383838] hover:text-[#666]'}`}>
+                    <span className={`font-wc-label text-[11px] leading-none ${isActive ? 'text-[#c41e1e]' : 'text-[#252525]'}`}>#</span>
+                    <span className="font-wc-label text-[10px] tracking-[0.12em] uppercase">{ch.label}</span>
                   </div>
+                  {/* Bottom rule between channels */}
+                  {!isActive && (
+                    <div className="absolute bottom-0 left-4 right-0 h-px bg-[#141414]" />
+                  )}
                 </button>
               )
             })}
           </nav>
 
-          {/* Right edge — double line */}
-          <div className="absolute right-0 top-0 bottom-0 flex gap-px">
-            <div className="w-px bg-[#222]" />
-            <div className="w-px bg-gradient-to-b from-[#c41e1e]/25 via-[#c41e1e]/08 to-transparent" />
+          {/* Right edge — thick compound bar */}
+          <div className="absolute right-0 top-0 bottom-0 flex">
+            <div className="w-[3px] bg-gradient-to-b from-[#c41e1e] via-[#c41e1e]/35 to-[#c41e1e]/10" />
+            <div className="w-[2px] bg-[#111]" />
+            <div className="w-px bg-[#1e1e1e]" />
           </div>
         </aside>
 
         {/* Content */}
         <div className="flex-1 flex flex-col overflow-hidden bg-[#0a0a0a] relative">
 
-          {/* Watermarks — hard-clipped to this container */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+          {/* Watermarks — strictly clipped to this container */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none" style={{ zIndex: 0 }}>
             {active === 'noticias' && <NoticiasWatermark />}
             {active === 'general'  && <GeneralWatermark />}
             {active === 'canal'    && <CanalWatermark />}
           </div>
 
-          {/* Channel header */}
-          <div className="shrink-0 px-6 h-11 flex items-center gap-3 relative z-10">
-            {/* Gradient bottom border */}
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-[#c41e1e]/50 via-[#2a2a2a] to-transparent" />
+          {/* Channel header — solid bg masks watermarks */}
+          <div className="shrink-0 bg-[#0a0a0a] px-6 h-12 flex items-center gap-3 relative" style={{ zIndex: 10 }}>
             <span className="font-wc-label text-[10px] text-[#c41e1e]">#</span>
-            <span className="font-wc-label text-[10px] tracking-[0.1em] uppercase text-[#f2f2f2]">
+            <span className="font-wc-label text-[11px] tracking-[0.12em] uppercase text-[#f2f2f2]">
               {activeChannel.label}
             </span>
             <span className="font-wc-label text-[9px] text-[#2a2a2a] tracking-[0.1em] uppercase ml-2">
               — {activeChannel.description}
             </span>
+            {/* Thick compound bottom separator */}
+            <div className="absolute bottom-0 left-0 right-0 flex flex-col">
+              <div className="h-[3px] bg-gradient-to-r from-[#c41e1e] via-[#c41e1e]/40 to-transparent" />
+              <div className="h-[2px] bg-[#0d0d0d]" />
+            </div>
           </div>
 
           {/* Section content */}

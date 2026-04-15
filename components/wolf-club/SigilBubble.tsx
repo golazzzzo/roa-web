@@ -18,14 +18,14 @@ const CLIP: Record<SigilVariant, string> = {
 const BG: Record<SigilVariant, string> = {
   own: '#c41e1e',
   other: '#161616',
-  broadcast: '#f2f2f2',
+  broadcast: '#1a1408',
 }
 
 // drop-shadow follows the clip-path outline — acts as a thin glowing edge
 const GLOW: Record<SigilVariant, string> = {
   own: 'drop-shadow(0 0 0.5px rgba(255,60,60,0.55)) drop-shadow(0 2px 8px rgba(196,30,30,0.2))',
   other: 'drop-shadow(0 0 0.5px rgba(90,90,90,0.5))',
-  broadcast: 'drop-shadow(0 0 0.5px rgba(200,200,200,0.4)) drop-shadow(0 2px 12px rgba(0,0,0,0.3))',
+  broadcast: 'drop-shadow(0 0 1px rgba(180,130,30,0.45)) drop-shadow(0 2px 14px rgba(0,0,0,0.5))',
 }
 
 const PADDING: Record<SigilVariant, string> = {

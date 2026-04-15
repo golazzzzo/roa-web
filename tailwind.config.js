@@ -12,7 +12,7 @@ module.exports = {
         tour: ['var(--font-space-mono)', 'monospace'],
         ui: ['var(--font-inter)', 'sans-serif'],
         'wc-label': ['var(--font-cinzel)', 'serif'],
-        wc: ['var(--font-spectral)', 'serif'],
+        wc: ['var(--font-chakra-petch)', 'sans-serif'],
       },
       colors: {
         roa: {

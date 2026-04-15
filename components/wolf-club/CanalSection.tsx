@@ -239,7 +239,7 @@ export default function CanalSection() {
                       <video src={post.media_url} className="w-full max-h-[400px] mb-1" controls />
                     )}
                     {hasText && (
-                      <p className="font-wc text-[15px] text-[#0a0a0a] leading-relaxed whitespace-pre-line">
+                      <p className="font-wc text-[15px] text-[#e2d5b0] leading-relaxed whitespace-pre-line">
                         {post.body}
                       </p>
                     )}

@@ -60,11 +60,11 @@ function VideoCard({ post, onDelete, isOwner }: {
       {/* Hover overlay */}
       <div className="absolute inset-0 bg-[#0a0a0a]/0 group-hover:bg-[#0a0a0a]/60 transition-all duration-300 flex flex-col justify-end p-3 opacity-0 group-hover:opacity-100">
         {post.caption && (
-          <p className="font-tour text-[9px] tracking-[0.1em] text-[#f2f2f2] leading-relaxed mb-1">
+          <p className="font-display text-[9px] tracking-[0.1em] text-[#f2f2f2] leading-relaxed mb-1">
             {post.caption}
           </p>
         )}
-        <p className="font-tour text-[9px] tracking-[0.15em] uppercase text-[#6b6b6b]">
+        <p className="font-display text-[9px] tracking-[0.15em] uppercase text-[#6b6b6b]">
           {post.fans?.display_name ?? 'Fan'}
         </p>
 
@@ -89,7 +89,7 @@ function VideoCard({ post, onDelete, isOwner }: {
         {isOwner && (
           <button
             onClick={(e) => { e.stopPropagation(); onDelete(post.id) }}
-            className="absolute top-2 right-2 z-10 w-6 h-6 flex items-center justify-center text-[#f2f2f2]/0 group-hover:text-[#f2f2f2]/60 hover:!text-red-400 transition-colors duration-200 font-tour text-[10px]"
+            className="absolute top-2 right-2 z-10 w-6 h-6 flex items-center justify-center text-[#f2f2f2]/0 group-hover:text-[#f2f2f2]/60 hover:!text-red-400 transition-colors duration-200 font-display text-[10px]"
           >
             ✕
           </button>
@@ -136,7 +136,7 @@ export default function GallerySection() {
           <motion.button
             whileHover={{ y: -2 }}
             onClick={() => setUploadOpen(true)}
-            className="border border-[#2a2a2a] hover:border-[#f2f2f2]/30 px-6 py-3 font-tour text-[10px] tracking-[0.25em] uppercase text-[#f2f2f2]/60 hover:text-[#f2f2f2] transition-all duration-300"
+            className="border border-[#2a2a2a] hover:border-[#f2f2f2]/30 px-6 py-3 font-display text-[10px] tracking-[0.25em] uppercase text-[#f2f2f2]/60 hover:text-[#f2f2f2] transition-all duration-300"
           >
             + Subir
           </motion.button>
@@ -145,10 +145,10 @@ export default function GallerySection() {
 
       {/* Grid */}
       {loading ? (
-        <p className="font-tour text-[10px] tracking-[0.2em] uppercase text-[#3a3a3a]">Cargando...</p>
+        <p className="font-display text-[10px] tracking-[0.2em] uppercase text-[#3a3a3a]">Cargando...</p>
       ) : posts.length === 0 ? (
         <div className="border border-dashed border-[#1f1f1f] h-48 flex items-center justify-center">
-          <p className="font-tour text-[10px] tracking-[0.2em] uppercase text-[#2e2e2e]">Sé el primero en subir algo</p>
+          <p className="font-display text-[10px] tracking-[0.2em] uppercase text-[#2e2e2e]">Sé el primero en subir algo</p>
         </div>
       ) : (
         <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
@@ -171,18 +171,18 @@ export default function GallerySection() {
                   <img src={post.file_url} alt={post.caption ?? ''} className="w-full object-cover" />
                   <div className="absolute inset-0 bg-[#0a0a0a]/0 group-hover:bg-[#0a0a0a]/60 transition-all duration-300 flex flex-col justify-end p-3 opacity-0 group-hover:opacity-100">
                     {post.caption && (
-                      <p className="font-tour text-[9px] tracking-[0.1em] text-[#f2f2f2] leading-relaxed mb-1">
+                      <p className="font-display text-[9px] tracking-[0.1em] text-[#f2f2f2] leading-relaxed mb-1">
                         {post.caption}
                       </p>
                     )}
-                    <p className="font-tour text-[9px] tracking-[0.15em] uppercase text-[#6b6b6b]">
+                    <p className="font-display text-[9px] tracking-[0.15em] uppercase text-[#6b6b6b]">
                       {post.fans?.display_name ?? 'Fan'}
                     </p>
                   </div>
                   {user?.id === post.fan_id && (
                     <button
                       onClick={() => handleDelete(post.id)}
-                      className="absolute top-2 right-2 z-10 w-6 h-6 flex items-center justify-center text-[#f2f2f2]/0 group-hover:text-[#f2f2f2]/60 hover:!text-red-400 transition-colors duration-200 font-tour text-[10px]"
+                      className="absolute top-2 right-2 z-10 w-6 h-6 flex items-center justify-center text-[#f2f2f2]/0 group-hover:text-[#f2f2f2]/60 hover:!text-red-400 transition-colors duration-200 font-display text-[10px]"
                     >
                       ✕
                     </button>
