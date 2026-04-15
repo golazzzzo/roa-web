@@ -251,7 +251,7 @@ export default function ChatSection() {
         </div>
       )}
 
-      <div className="shrink-0 border-t border-[#1a1a1a] bg-[#0a0a0a] px-6 py-3 flex items-end gap-3">
+      <div className="shrink-0 border-t border-white/5 px-6 py-3 flex items-end gap-3" style={{ background: 'rgba(0,0,0,0.45)', backdropFilter: 'blur(6px)' }}>
         <input ref={fileInputRef} type="file" accept="image/*,video/*" className="hidden" onChange={handleFileSelect} />
         <button
           onClick={() => fileInputRef.current?.click()}
@@ -265,7 +265,7 @@ export default function ChatSection() {
           placeholder="Mensaje..."
           maxLength={500}
           rows={1}
-          className="flex-1 bg-transparent border-b border-[#1a1a1a] focus:border-[#a0a0a0] outline-none resize-none py-1.5 font-wc text-[15px] text-[#f2f2f2] placeholder:text-[#2a2a2a] transition-colors duration-200"
+          className="flex-1 bg-transparent border-b border-white/10 focus:border-[#a0a0a0] outline-none resize-none py-1.5 font-wc text-[15px] text-[#f2f2f2] placeholder:text-[#666] transition-colors duration-200"
           style={{ lineHeight: '1.5' }}
         />
         <button
